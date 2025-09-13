@@ -54,6 +54,35 @@ function ChatWindow({ matchId }: { matchId: string }) {
     addUserMessage(matchId, text.trim())
     setText('')
   }
+
+  /**
+   * Renders message text with clickable links
+   * @param text - Message text that may contain URLs
+   * @returns JSX element with clickable links
+   */
+  const renderMessageText = (text: string) => {
+    // Simple URL detection regex
+    const urlRegex = /(https?:\/\/[^\s]+)/g
+    const parts = text.split(urlRegex)
+    
+    return parts.map((part, index) => {
+      if (urlRegex.test(part)) {
+        return (
+          <a 
+            key={index} 
+            href={part} 
+            target="_blank" 
+            rel="noreferrer" 
+            className="link-blue"
+            style={{ wordBreak: 'break-all' }}
+          >
+            {part}
+          </a>
+        )
+      }
+      return part
+    })
+  }
   
   return (
     <div className="chat">
@@ -63,7 +92,9 @@ function ChatWindow({ matchId }: { matchId: string }) {
       </div>
       <div className="chat-messages">
         {messages.map((m, i) => (
-          <div key={i} className={`bubble ${m.from==='user' ? 'bubble--user' : 'bubble--bot'}`}>{m.text}</div>
+          <div key={i} className={`bubble ${m.from==='user' ? 'bubble--user' : 'bubble--bot'}`}>
+            {renderMessageText(m.text)}
+          </div>
         ))}
       </div>
       <div className="chat-input">

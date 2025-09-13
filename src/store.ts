@@ -67,8 +67,22 @@ export const useAppStore = create<AppState>((set) => ({
     next.add(id)
     const chats = { ...state.chats }
     if (!chats[id]) {
+      // Find the profile to get strike fund information
+      const profile = state.profiles.find(p => p.id === id)
+      const strikeFundLink = profile ? profile.strikeFund.url : '#'
+      const strikeFundTitle = profile ? profile.strikeFund.title : 'Strike Fund'
+      
       chats[id] = [
-        { from: 'bot', text: 'Hey! Thanks for the support ❤️ — quick link below helps fund the strike.', ts: Date.now() },
+        { 
+          from: 'bot', 
+          text: `Hey! Thanks for the support ❤️ — here's the link to help fund the strike: ${strikeFundTitle}`, 
+          ts: Date.now() 
+        },
+        { 
+          from: 'bot', 
+          text: `🔗 ${strikeFundLink}`, 
+          ts: Date.now() + 1 
+        },
       ]
     }
     return { likedIds: next, chats }
@@ -96,7 +110,22 @@ export const useAppStore = create<AppState>((set) => ({
    */
   ensureChatFor: (id) => set((state) => {
     if (state.chats[id]) return {}
-    return { chats: { ...state.chats, [id]: [{ from: 'bot', text: 'Hey! Appreciate you stopping by ✊', ts: Date.now() }] } }
+    
+    // Find the profile to get strike fund information
+    const profile = state.profiles.find(p => p.id === id)
+    const strikeFundLink = profile ? profile.strikeFund.url : '#'
+    const strikeFundTitle = profile ? profile.strikeFund.title : 'Strike Fund'
+    
+    return { 
+      chats: { 
+        ...state.chats, 
+        [id]: [
+          { from: 'bot', text: 'Hey! Appreciate you stopping by ✊', ts: Date.now() },
+          { from: 'bot', text: `Here's the link to support the cause: ${strikeFundTitle}`, ts: Date.now() + 1 },
+          { from: 'bot', text: `🔗 ${strikeFundLink}`, ts: Date.now() + 2 }
+        ] 
+      } 
+    }
   }),
   
   /**
