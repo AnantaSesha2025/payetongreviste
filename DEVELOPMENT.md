@@ -2,6 +2,8 @@
 
 This guide provides detailed instructions for setting up and developing the PayeTonGréviste Strike fund discovery app.
 
+> **⚠️ Important**: This project boycotts Google services in solidarity with the strike movement. We do not use Google Analytics, Google Fonts, or any other Google services. Please avoid suggesting Google-based solutions.
+
 ## 🏗️ Architecture Overview
 
 PayeTonGréviste is a React + TypeScript web application that uses a Tinder-like interface to help users discover Strike funds through fake activist profiles.

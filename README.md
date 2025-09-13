@@ -147,6 +147,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 - **Verified Funds**: All Strike funds are verified and legitimate
 - **Privacy-First Design**: Complete anonymity for users
 - **Secure Links**: All fund links are verified and safe
+- **Google Boycott**: We avoid Google services in solidarity with the strike movement
 
 ## 🏗️ Development
 

@@ -94,7 +94,7 @@ The app is a functional React + TypeScript Tinder-like interface for discovering
 - [ ] **Add browsing history** - Track which funds user has viewed (anonymously)
 - [ ] **Add favorite funds** - Save favorite funds for later viewing
 - [ ] **Add fund recommendations** - Suggest funds based on browsing history
-- [ ] **Add anonymous analytics** - Track app usage without personal data
+- [ ] **Add privacy-first analytics** - Track app usage without personal data (avoiding Google services)
 
 ### 8. Performance & Optimization
 
@@ -118,7 +118,7 @@ The app is a functional React + TypeScript Tinder-like interface for discovering
 
 ### 10. Analytics & Monitoring
 
-- [ ] **Add anonymous usage analytics** - Track app usage without personal data
+- [ ] **Add privacy-first usage analytics** - Track app usage without personal data (avoiding Google services)
 - [ ] **Add performance monitoring** - Monitor app performance
 - [ ] **Add error tracking** - Track and report errors
 - [ ] **Add A/B testing** - Test different fake profiles and fund presentations
@@ -218,7 +218,7 @@ The app is a functional React + TypeScript Tinder-like interface for discovering
 - [ ] **Security patches** - Security vulnerability fixes
 - [ ] **Performance monitoring** - Monitor app performance
 - [ ] **User feedback collection** - Gather user input on fund discovery experience
-- [ ] **Feature usage analytics** - Track fund discovery feature adoption
+- [ ] **Feature usage analytics** - Track fund discovery feature adoption (privacy-first, no Google)
 
 ---
 
@@ -250,7 +250,7 @@ The app is a functional React + TypeScript Tinder-like interface for discovering
 - [ ] **CDN setup** - Content delivery network for fund images
 - [ ] **SSL certificate** - HTTPS security for fund links
 - [ ] **Domain setup** - Custom domain
-- [ ] **Analytics setup** - Anonymous user analytics
+- [ ] **Analytics setup** - Privacy-first user analytics (avoiding Google services)
 
 ### Monitoring & Maintenance
 

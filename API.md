@@ -2,6 +2,8 @@
 
 This document describes the internal APIs and data structures used in the PayeTonGréviste Strike fund discovery app.
 
+> **⚠️ Important**: This project boycotts Google services in solidarity with the strike movement. We do not use Google Analytics, Google Fonts, or any other Google services.
+
 ## 📋 Table of Contents
 
 - [Data Structures](#data-structures)

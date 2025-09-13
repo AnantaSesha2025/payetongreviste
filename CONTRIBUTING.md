@@ -2,6 +2,8 @@
 
 Thank you for your interest in contributing to PayeTonGréviste! This app helps people discover Strike funds through a fun, Tinder-like interface with fake activist profiles.
 
+> **⚠️ Important**: This project boycotts Google services in solidarity with the strike movement. We do not use Google Analytics, Google Fonts, or any other Google services. Please avoid suggesting Google-based solutions.
+
 ## 🎯 Project Overview
 
 PayeTonGréviste is a Strike fund discovery app where users anonymously browse fake activist profiles to find and support real Strike funds. It's not a real matching app - it's a gamified way to discover and support important causes.

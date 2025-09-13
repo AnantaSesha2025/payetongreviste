@@ -228,7 +228,7 @@ Free hosting for public repositories.
 
 ### Firebase Hosting
 
-Google's hosting platform with global CDN.
+Firebase hosting platform with global CDN (Note: We avoid Google services when possible in solidarity with the strike movement).
 
 #### Setup
 
@@ -423,23 +423,7 @@ Sentry.init({
 
 ### Analytics
 
-#### Google Analytics
-
-```html
-<!-- Add to index.html -->
-<script
-  async
-  src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
-></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag('js', new Date());
-  gtag('config', 'GA_MEASUREMENT_ID');
-</script>
-```
+> **⚠️ Important**: This project boycotts Google services in solidarity with the strike movement. We do not use Google Analytics, Google Fonts, or any other Google services.
 
 #### Privacy-First Analytics
 
