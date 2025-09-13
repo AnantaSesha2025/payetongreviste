@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
+import { motion, useAnimation, AnimatePresence } from 'framer-motion'
+import type { PanInfo } from 'framer-motion'
 import { Card } from './Card'
 // import { BioWithFund } from './BioWithFund'
-import { Heart, Plus, X } from 'react-feather'
+import { Heart, Plus, X, ArrowDown } from 'react-feather'
 import { mockProfiles, useAppStore } from '../store'
 // import { haversineKm } from '../lib/geo'
 
@@ -51,7 +53,20 @@ export function SwipeDeck() {
         <div className="empty-state"><p>You're all caught up</p></div>
       )}
       <ActionBar onPass={() => handleChoice('left')} onLike={() => handleChoice('right')} onDetails={openDetails} />
-      {showDetails && current && <DetailsModal onClose={closeDetails} name={current.name} age={current.age} bio={current.bio} strikeUrl={current.strikeFund.url} strikeTitle={current.strikeFund.title} photoUrl={current.photoUrl} />}
+      <AnimatePresence>
+        {showDetails && current && (
+          <DetailsModal 
+            key="details-modal"
+            onClose={closeDetails} 
+            name={current.name} 
+            age={current.age} 
+            bio={current.bio} 
+            strikeUrl={current.strikeFund.url} 
+            strikeTitle={current.strikeFund.title} 
+            photoUrl={current.photoUrl} 
+          />
+        )}
+      </AnimatePresence>
     </div>
   )
 }
@@ -75,7 +90,7 @@ function ActionBar({ onPass, onLike, onDetails }: { onPass: () => void; onLike: 
 }
 
 /**
- * Modal component that displays detailed profile information
+ * Full-screen profile details component with swipe-down to close functionality
  * @param props - Component props
  * @param props.onClose - Callback to close the modal
  * @param props.name - Profile name
@@ -84,7 +99,7 @@ function ActionBar({ onPass, onLike, onDetails }: { onPass: () => void; onLike: 
  * @param props.strikeUrl - URL to the strike fund
  * @param props.strikeTitle - Title of the strike fund
  * @param props.photoUrl - URL to the profile photo
- * @returns JSX element representing the details modal
+ * @returns JSX element representing the full-screen details view
  */
 function DetailsModal({ onClose, name, age, bio, strikeUrl, strikeTitle, photoUrl }: { 
   onClose: () => void; 
@@ -95,20 +110,95 @@ function DetailsModal({ onClose, name, age, bio, strikeUrl, strikeTitle, photoUr
   strikeTitle: string; 
   photoUrl: string 
 }) {
+  const controls = useAnimation()
+  const swipeDownThreshold = 100
+
+  /**
+   * Handles the end of a drag gesture for swipe-down to close
+   * @param _ - Unused event parameter
+   * @param info - Pan gesture information containing offset data
+   */
+  const handleDragEnd = (_: any, info: PanInfo) => {
+    const y = info.offset.y
+    
+    // Swipe down to close
+    if (y > swipeDownThreshold) {
+      controls.start({ 
+        y: window.innerHeight, 
+        opacity: 0, 
+        transition: { duration: 0.3, ease: "easeInOut" } 
+      }).then(() => {
+        onClose()
+      })
+    } else {
+      // Return to original position
+      controls.start({ y: 0, opacity: 1 })
+    }
+  }
+
   return (
-    <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <img src={photoUrl} alt={name} className="modal-media" />
-        <div className="modal-body">
-          <div className="modal-title">{name}, {age}</div>
-          <p className="card-bio">{bio}</p>
-          <a href={strikeUrl} target="_blank" rel="noreferrer" className="link-blue">{strikeTitle}</a>
+    <motion.div 
+      className="details-fullscreen"
+      initial={{ y: window.innerHeight, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: window.innerHeight, opacity: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      drag="y"
+      dragConstraints={{ top: 0, bottom: 0 }}
+      dragElastic={{ top: 0, bottom: 0.2 }}
+      onDragEnd={handleDragEnd}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 1000,
+        backgroundColor: '#121214',
+        overflow: 'hidden'
+      }}
+    >
+      {/* Swipe indicator */}
+      <div className="swipe-indicator">
+        <ArrowDown size={24} />
+        <span>Swipe down to go back</span>
+      </div>
+
+      {/* Profile image */}
+      <div className="details-image-container">
+        <img src={photoUrl} alt={name} className="details-image" />
+      </div>
+
+      {/* Profile content */}
+      <div className="details-content">
+        <div className="details-header">
+          <h1 className="details-title">{name}, {age}</h1>
+          <button 
+            onClick={onClose} 
+            className="details-close-btn"
+            aria-label="Close details"
+          >
+            <X size={24} />
+          </button>
         </div>
-        <div className="modal-footer">
-          <button onClick={onClose}>Close</button>
+
+        <div className="details-body">
+          <p className="details-bio">{bio}</p>
+          
+          <div className="details-strike-fund">
+            <h3>Support the Cause</h3>
+            <a 
+              href={strikeUrl} 
+              target="_blank" 
+              rel="noreferrer" 
+              className="strike-fund-link"
+            >
+              {strikeTitle}
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
