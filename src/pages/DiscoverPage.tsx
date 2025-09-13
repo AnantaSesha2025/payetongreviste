@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { SwipeDeck } from '../components/SwipeDeck'
 
 /**
@@ -17,6 +18,15 @@ export default function DiscoverPage() {
   
   return (
     <div className="discover">
+      <div className="discover-header">
+        <h1>Discover Activists</h1>
+        <Link to="/activist" className="activist-sublink">
+          <span>Create Profile</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </Link>
+      </div>
       <SwipeDeck />
     </div>
   )

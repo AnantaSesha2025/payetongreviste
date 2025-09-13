@@ -35,8 +35,8 @@ describe('App Component', () => {
     
     expect(screen.getByText('Discover')).toBeInTheDocument()
     expect(screen.getByText('Matches')).toBeInTheDocument()
-    expect(screen.getByText('Profile')).toBeInTheDocument()
-    expect(screen.getByText('Activist')).toBeInTheDocument()
+    expect(screen.queryByText('Profile')).not.toBeInTheDocument()
+    expect(screen.queryByText('Activist')).not.toBeInTheDocument()
   })
 
   it('renders discover page by default', () => {
@@ -61,17 +61,13 @@ describe('App Component', () => {
     expect(navElement).toBeInTheDocument()
   })
 
-  it('renders all navigation links as NavLink components', () => {
+  it('renders main navigation links as NavLink components', () => {
     render(<AppWithRouter />)
     
     const discoverLink = screen.getByText('Discover')
     const matchesLink = screen.getByText('Matches')
-    const profileLink = screen.getByText('Profile')
-    const activistLink = screen.getByText('Activist')
     
     expect(discoverLink).toHaveAttribute('href', '/')
     expect(matchesLink).toHaveAttribute('href', '/matches')
-    expect(profileLink).toHaveAttribute('href', '/profile')
-    expect(activistLink).toHaveAttribute('href', '/activist')
   })
 })

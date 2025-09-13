@@ -85,21 +85,74 @@ function ChatWindow({ matchId }: { matchId: string }) {
   }
   
   return (
-    <div className="chat">
-      <div className="chat-header">
-        <div className="chat-title">{profile.name}</div>
-        <a href={profile.strikeFund.url} target="_blank" rel="noreferrer" className="link-blue">{profile.strikeFund.title}</a>
+    <div className="modern-chat">
+      {/* Modern Chat Header */}
+      <div className="chat-header-modern">
+        <div className="chat-profile-info">
+          <div className="chat-avatar">
+            <img src={profile.photoUrl} alt={profile.name} />
+          </div>
+          <div className="chat-profile-details">
+            <h3 className="chat-name">{profile.name}</h3>
+            <p className="chat-status">Online</p>
+          </div>
+        </div>
+        <div className="chat-actions">
+          <a 
+            href={profile.strikeFund.url} 
+            target="_blank" 
+            rel="noreferrer" 
+            className="strike-fund-btn"
+          >
+            <span>Support</span>
+            <span className="fund-title">{profile.strikeFund.title}</span>
+          </a>
+        </div>
       </div>
-      <div className="chat-messages">
+
+      {/* Modern Chat Messages */}
+      <div className="chat-messages-modern">
         {messages.map((m, i) => (
-          <div key={i} className={`bubble ${m.from==='user' ? 'bubble--user' : 'bubble--bot'}`}>
-            {renderMessageText(m.text)}
+          <div key={i} className={`message ${m.from === 'user' ? 'message--user' : 'message--bot'}`}>
+            {m.from === 'bot' && (
+              <div className="message-avatar">
+                <img src={profile.photoUrl} alt={profile.name} />
+              </div>
+            )}
+            <div className="message-content">
+              <div className={`message-bubble ${m.from === 'user' ? 'message-bubble--user' : 'message-bubble--bot'}`}>
+                <div className="message-text">
+                  {renderMessageText(m.text)}
+                </div>
+                <div className="message-time">
+                  {new Date(m.ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
-      <div className="chat-input">
-        <input value={text} onChange={(e) => setText(e.target.value)} placeholder="Type a message" className="input" />
-        <button onClick={send}>Send</button>
+
+      {/* Modern Chat Input */}
+      <div className="chat-input-modern">
+        <div className="input-container">
+          <input 
+            value={text} 
+            onChange={(e) => setText(e.target.value)} 
+            placeholder="Type a message..." 
+            className="message-input"
+            onKeyPress={(e) => e.key === 'Enter' && send()}
+          />
+          <button 
+            onClick={send} 
+            className="send-btn"
+            disabled={!text.trim()}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   )
