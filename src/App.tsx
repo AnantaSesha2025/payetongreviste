@@ -5,6 +5,12 @@ import ProfilePage from './pages/ProfilePage'
 import ActivistSetupPage from './pages/ActivistSetupPage'
 import './App.css'
 
+/**
+ * Main App component that handles routing and layout.
+ * Provides navigation between the main app sections: Discover, Matches, Profile, and Activist Setup.
+ * 
+ * @returns JSX element representing the main app layout
+ */
 function App() {
   return (
     <div className="app">
@@ -26,7 +32,5 @@ function App() {
     </div>
   )
 }
-
-// App only handles layout and routing
 
 export default App

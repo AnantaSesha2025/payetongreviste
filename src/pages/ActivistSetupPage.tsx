@@ -2,22 +2,36 @@ import { useMemo, useState } from 'react'
 import type { Profile } from '../store'
 import { useAppStore } from '../store'
 
+/**
+ * Activist setup page component for creating and managing fake activist profiles.
+ * Allows activists to create profiles with AI generation, edit existing profiles,
+ * and preview how they will appear in the swipe interface.
+ * 
+ * @returns JSX element representing the activist setup page
+ */
 export default function ActivistSetupPage() {
   const { profiles, upsertProfile, removeProfile } = useAppStore()
   const [editingId, setEditingId] = useState<string | null>(profiles[0]?.id ?? null)
   const current = useMemo(() => profiles.find(p => p.id === editingId) ?? emptyProfile(), [profiles, editingId])
   const [draft, setDraft] = useState<Profile>(current)
 
+  // Helper functions for updating draft profile
   const set = <K extends keyof Profile>(key: K, value: Profile[K]) => setDraft({ ...draft, [key]: value })
   const setLoc = (key: 'lat' | 'lon', value: number) => setDraft({ ...draft, location: { ...draft.location, [key]: value } })
   const setFund = <K extends keyof Profile['strikeFund']>(key: K, value: Profile['strikeFund'][K]) => setDraft({ ...draft, strikeFund: { ...draft.strikeFund, [key]: value } })
 
+  /**
+   * Saves the current draft profile to the store
+   */
   const save = () => {
     const toSave = { ...draft, id: draft.id || crypto.randomUUID() }
     upsertProfile(toSave)
     setEditingId(toSave.id)
   }
 
+  /**
+   * Deletes the currently editing profile
+   */
   const del = () => {
     if (!editingId) return
     removeProfile(editingId)
@@ -25,6 +39,10 @@ export default function ActivistSetupPage() {
     setDraft(emptyProfile())
   }
 
+  /**
+   * Generates AI content for the profile (currently using mock data)
+   * In production, this would call an AI API to generate realistic profile content
+   */
   const generateAI = () => {
     // Placeholder: In production, call your API to generate profile fields
     const ideas = aiMock()
@@ -116,6 +134,10 @@ export default function ActivistSetupPage() {
   )
 }
 
+/**
+ * Creates an empty profile template for new profiles
+ * @returns Empty profile object with default values
+ */
 function emptyProfile(): Profile {
   return {
     id: '',
@@ -128,6 +150,11 @@ function emptyProfile(): Profile {
   }
 }
 
+/**
+ * Generates mock AI content for profile generation
+ * In production, this would be replaced with actual AI API calls
+ * @returns Object containing generated profile data
+ */
 function aiMock() {
   const names = ['Jordan', 'Casey', 'Morgan', 'Reese', 'Avery']
   const bios = [

@@ -5,18 +5,31 @@ import { Heart, Plus, X } from 'react-feather'
 import { mockProfiles, useAppStore } from '../store'
 // import { haversineKm } from '../lib/geo'
 
+/**
+ * Main swipe deck component that manages the card stack and user interactions.
+ * Displays profiles in a stack with the current card on top and next card previewed behind.
+ * Handles swipe gestures and provides action buttons for pass, like, and details.
+ * 
+ * @returns JSX element representing the swipe deck interface
+ */
 export function SwipeDeck() {
   const { profiles, setProfiles, likeProfile, passProfile } = useAppStore()
   const [index, setIndex] = useState(0)
 
+  // Initialize profiles with mock data if none exist
   useEffect(() => {
     if (profiles.length === 0) setProfiles(mockProfiles)
   }, [profiles.length, setProfiles])
 
+  // Get current and next profile for the card stack
   // Geolocation temporarily disabled due to bugs; show all profiles
   const current = profiles[index]
   const next = profiles[index + 1]
 
+  /**
+   * Handles user choice when swiping or clicking action buttons
+   * @param dir - Direction of the swipe ('left' for pass, 'right' for like)
+   */
   const handleChoice = (dir: 'left' | 'right') => {
     if (!current) return
     if (dir === 'right') likeProfile(current.id)
@@ -24,6 +37,7 @@ export function SwipeDeck() {
     setIndex((v) => v + 1)
   }
 
+  // State for managing details modal visibility
   const [showDetails, setShowDetails] = useState(false)
   const openDetails = () => setShowDetails(true)
   const closeDetails = () => setShowDetails(false)
@@ -42,6 +56,14 @@ export function SwipeDeck() {
   )
 }
 
+/**
+ * Action bar component with buttons for pass, details, and like actions
+ * @param props - Component props
+ * @param props.onPass - Callback for pass action
+ * @param props.onLike - Callback for like action  
+ * @param props.onDetails - Callback for details action
+ * @returns JSX element representing the action bar
+ */
 function ActionBar({ onPass, onLike, onDetails }: { onPass: () => void; onLike: () => void; onDetails: () => void }) {
   return (
     <div className="action-bar">
@@ -52,7 +74,27 @@ function ActionBar({ onPass, onLike, onDetails }: { onPass: () => void; onLike: 
   )
 }
 
-function DetailsModal({ onClose, name, age, bio, strikeUrl, strikeTitle, photoUrl }: { onClose: () => void; name: string; age: number; bio: string; strikeUrl: string; strikeTitle: string; photoUrl: string }) {
+/**
+ * Modal component that displays detailed profile information
+ * @param props - Component props
+ * @param props.onClose - Callback to close the modal
+ * @param props.name - Profile name
+ * @param props.age - Profile age
+ * @param props.bio - Profile bio text
+ * @param props.strikeUrl - URL to the strike fund
+ * @param props.strikeTitle - Title of the strike fund
+ * @param props.photoUrl - URL to the profile photo
+ * @returns JSX element representing the details modal
+ */
+function DetailsModal({ onClose, name, age, bio, strikeUrl, strikeTitle, photoUrl }: { 
+  onClose: () => void; 
+  name: string; 
+  age: number; 
+  bio: string; 
+  strikeUrl: string; 
+  strikeTitle: string; 
+  photoUrl: string 
+}) {
   return (
     <div className="modal-backdrop" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>

@@ -1,34 +1,67 @@
 import { create } from 'zustand'
 
+/**
+ * Profile type representing a user profile in the app
+ */
 export type Profile = {
+  /** Unique identifier for the profile */
   id: string
+  /** Display name of the profile */
   name: string
+  /** Age of the profile */
   age: number
+  /** Bio text description */
   bio: string
+  /** URL to the profile photo */
   photoUrl: string
+  /** Geographic location coordinates */
   location: { lat: number; lon: number }
+  /** Strike fund information */
   strikeFund: { url: string; title: string }
 }
 
+/**
+ * Application state type managed by Zustand store
+ */
 type AppState = {
+  /** Array of all profiles in the app */
   profiles: Profile[]
+  /** Set of profile IDs that have been liked */
   likedIds: Set<string>
+  /** Set of profile IDs that have been passed */
   passedIds: Set<string>
+  /** Chat messages organized by profile ID */
   chats: Record<string, { from: 'bot' | 'user'; text: string; ts: number }[]>
+  /** Function to like a profile and initialize chat */
   likeProfile: (id: string) => void
+  /** Function to pass on a profile */
   passProfile: (id: string) => void
+  /** Function to set all profiles */
   setProfiles: (profiles: Profile[]) => void
+  /** Function to ensure a chat exists for a profile */
   ensureChatFor: (id: string) => void
+  /** Function to add a user message to a chat */
   addUserMessage: (id: string, text: string) => void
+  /** Function to create or update a profile */
   upsertProfile: (profile: Profile) => void
+  /** Function to remove a profile */
   removeProfile: (id: string) => void
 }
 
+/**
+ * Zustand store for managing application state
+ * Handles profiles, likes, passes, and chat functionality
+ */
 export const useAppStore = create<AppState>((set) => ({
   profiles: [],
   likedIds: new Set<string>(),
   passedIds: new Set<string>(),
   chats: {},
+  
+  /**
+   * Likes a profile and initializes a chat with a welcome message
+   * @param id - Profile ID to like
+   */
   likeProfile: (id) => set((state) => {
     const next = new Set(state.likedIds)
     next.add(id)
@@ -40,20 +73,46 @@ export const useAppStore = create<AppState>((set) => ({
     }
     return { likedIds: next, chats }
   }),
+  
+  /**
+   * Passes on a profile (adds to passed set)
+   * @param id - Profile ID to pass
+   */
   passProfile: (id) => set((state) => {
     const next = new Set(state.passedIds)
     next.add(id)
     return { passedIds: next }
   }),
+  
+  /**
+   * Sets all profiles in the store
+   * @param profiles - Array of profiles to set
+   */
   setProfiles: (profiles) => set({ profiles }),
+  
+  /**
+   * Ensures a chat exists for a profile with a default message
+   * @param id - Profile ID to ensure chat for
+   */
   ensureChatFor: (id) => set((state) => {
     if (state.chats[id]) return {}
     return { chats: { ...state.chats, [id]: [{ from: 'bot', text: 'Hey! Appreciate you stopping by ✊', ts: Date.now() }] } }
   }),
+  
+  /**
+   * Adds a user message to a chat
+   * @param id - Profile ID to add message to
+   * @param text - Message text to add
+   */
   addUserMessage: (id, text) => set((state) => {
     const current = state.chats[id] ?? []
     return { chats: { ...state.chats, [id]: [...current, { from: 'user', text, ts: Date.now() }] } }
   }),
+  
+  /**
+   * Creates or updates a profile
+   * @param profile - Profile to create or update
+   */
   upsertProfile: (profile) => set((state) => {
     const idx = state.profiles.findIndex(p => p.id === profile.id)
     if (idx >= 0) {
@@ -63,9 +122,18 @@ export const useAppStore = create<AppState>((set) => ({
     }
     return { profiles: [...state.profiles, profile] }
   }),
+  
+  /**
+   * Removes a profile from the store
+   * @param id - Profile ID to remove
+   */
   removeProfile: (id) => set((state) => ({ profiles: state.profiles.filter(p => p.id !== id) })),
 }))
 
+/**
+ * Mock profiles for development and demonstration purposes
+ * These are sample profiles that appear in the swipe interface
+ */
 export const mockProfiles: Profile[] = [
   {
     id: '1',
