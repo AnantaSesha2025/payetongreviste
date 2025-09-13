@@ -1,0 +1,105 @@
+/* Discover Page Layout */
+.discover {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--secondary-black);
+}
+
+.discover-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem; /* 16px 20px */
+  background-color: var(--secondary-black);
+  border-bottom: 0.0625rem solid var(--border-color); /* 1px */
+  z-index: 10;
+  height: var(--discover-header-height);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.discover-header h1 {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.0625rem; /* 1px */
+}
+
+.create-profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* 8px */
+  background: var(--primary-yellow);
+  color: var(--secondary-black);
+  border: none;
+  padding: 0.625rem 1rem; /* 10px 16px */
+  border-radius: 0.75rem; /* 12px */
+  font-weight: 700;
+  font-size: 0.875rem; /* 14px */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.create-profile-btn:hover {
+  background: #f7d94a;
+  transform: translateY(-0.0625rem); /* -1px */
+  box-shadow: 0 0.25rem 0.75rem rgba(249, 226, 91, 0.3); /* 0 4px 12px */
+}
+
+.create-profile-btn:active {
+  transform: translateY(0);
+}
+
+.activist-sublink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* 8px */
+  background: var(--primary-yellow);
+  color: var(--secondary-black);
+  text-decoration: none;
+  padding: 0.625rem 1rem; /* 10px 16px */
+  border-radius: 1.5rem; /* 24px */
+  font-weight: 700;
+  font-size: 0.75rem; /* 12px */
+  text-transform: uppercase;
+  letter-spacing: 0.03125rem; /* 0.5px */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0.125rem 0.5rem rgba(249, 226, 91, 0.3); /* 0 2px 8px */
+}
+
+.activist-sublink:hover {
+  transform: translateY(-0.0625rem); /* -1px */
+  box-shadow: 0 0.25rem 0.75rem rgba(249, 226, 91, 0.4); /* 0 4px 12px */
+  background: #f7d94a;
+}
+
+.activist-sublink svg {
+  width: 1rem; /* 16px */
+  height: 1rem; /* 16px */
+  transition: transform 0.3s ease;
+}
+
+.activist-sublink:hover svg {
+  transform: rotate(90deg);
+}
+
+/* Mobile Responsive */
+@media (max-width: 40rem) { /* 640px */
+  .discover-header {
+    padding: 0.75rem 1rem; /* 12px 16px */
+  }
+  
+  .discover-header h1 {
+    font-size: 1.125rem; /* 18px */
+  }
+  
+  .activist-sublink {
+    padding: 0.5rem 0.75rem; /* 8px 12px */
+    font-size: 0.6875rem; /* 11px */
+  }
+}

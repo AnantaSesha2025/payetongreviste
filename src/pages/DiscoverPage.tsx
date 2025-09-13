@@ -1,6 +1,9 @@
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { SwipeDeck } from '../components/SwipeDeck'
+import { OnboardingFlow } from '../components/OnboardingFlow'
+import { Plus } from 'react-feather'
+import './DiscoverPage.css'
 
 /**
  * Main discover page component that displays the swipe interface.
@@ -9,25 +12,55 @@ import { SwipeDeck } from '../components/SwipeDeck'
  * @returns JSX element representing the discover page
  */
 export default function DiscoverPage() {
+  const navigate = useNavigate()
+  const [showOnboarding, setShowOnboarding] = useState(false)
+  const [hasSeenOnboarding, setHasSeenOnboarding] = useState(
+    localStorage.getItem('hasSeenOnboarding') === 'true'
+  )
+
   // Prevent body scrolling to maintain mobile app feel
   useEffect(() => {
     const prev = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = prev }
   }, [])
+
+  // Show onboarding for first-time users
+  useEffect(() => {
+    if (!hasSeenOnboarding) {
+      setShowOnboarding(true)
+    }
+  }, [hasSeenOnboarding])
+
+  const handleOnboardingComplete = () => {
+    setShowOnboarding(false)
+    setHasSeenOnboarding(true)
+    localStorage.setItem('hasSeenOnboarding', 'true')
+  }
+
+  const handleCreateProfile = () => {
+    navigate('/activist')
+  }
+
+  if (showOnboarding) {
+    return <OnboardingFlow onComplete={handleOnboardingComplete} />
+  }
   
   return (
     <div className="discover">
       <div className="discover-header">
         <h1>Discover Activists</h1>
-        <Link to="/activist" className="activist-sublink">
+        {/* Create Profile button hidden as requested */}
+        {/* <button 
+          className="create-profile-btn"
+          onClick={handleCreateProfile}
+          aria-label="Create your profile"
+        >
+          <Plus size={20} />
           <span>Create Profile</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </Link>
+        </button> */}
       </div>
-      <SwipeDeck />
+      <SwipeDeck onCreateProfile={handleCreateProfile} />
     </div>
   )
 }

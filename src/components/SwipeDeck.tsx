@@ -2,10 +2,13 @@ import { useEffect, useState } from 'react'
 import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 import type { PanInfo } from 'framer-motion'
 import { Card } from './Card'
+import { EnhancedEmptyState } from './EnhancedEmptyState'
+import { useToast } from './Toast'
 // import { BioWithFund } from './BioWithFund'
 import { Heart, Plus, X, ArrowDown } from 'react-feather'
 import { mockProfiles, useAppStore } from '../store'
 // import { haversineKm } from '../lib/geo'
+import './SwipeDeck.css'
 
 /**
  * Main swipe deck component that manages the card stack and user interactions.
@@ -14,8 +17,9 @@ import { mockProfiles, useAppStore } from '../store'
  * 
  * @returns JSX element representing the swipe deck interface
  */
-export function SwipeDeck() {
+export function SwipeDeck({ onCreateProfile }: { onCreateProfile: () => void }) {
   const { profiles, setProfiles, likeProfile, passProfile } = useAppStore()
+  const { showSuccess, showInfo } = useToast()
   const [index, setIndex] = useState(0)
 
   // Initialize profiles with mock data if none exist
@@ -28,14 +32,27 @@ export function SwipeDeck() {
   const current = profiles[index]
   const next = profiles[index + 1]
 
+  // Handle refresh - reset to beginning of profiles
+  const handleRefresh = () => {
+    setIndex(0)
+    // In a real app, this would reload profiles from server
+  }
+
   /**
    * Handles user choice when swiping or clicking action buttons
    * @param dir - Direction of the swipe ('left' for pass, 'right' for like)
    */
   const handleChoice = (dir: 'left' | 'right') => {
     if (!current) return
-    if (dir === 'right') likeProfile(current.id)
-    else passProfile(current.id)
+    
+    if (dir === 'right') {
+      likeProfile(current.id)
+      showSuccess('Profile Liked!', `You liked ${current.name}`)
+    } else {
+      passProfile(current.id)
+      showInfo('Profile Passed', `You passed on ${current.name}`)
+    }
+    
     setIndex((v) => v + 1)
   }
 
@@ -46,12 +63,29 @@ export function SwipeDeck() {
 
   return (
     <div className="deck">
-      {next && <Card profile={next} style={{ transform: 'scale(0.98)', opacity: 0.9 } as any} disabled />}
-      {current ? (
-        <Card key={current.id} profile={current} onSwipe={handleChoice} onSwipeUp={openDetails} />
-      ) : (
-        <div className="empty-state"><p>You're all caught up</p></div>
+      {/* Next card (behind) */}
+      {next && (
+        <Card 
+          profile={next} 
+          disabled 
+        />
       )}
+      
+      {/* Current card (on top) */}
+      {current ? (
+        <Card 
+          key={current.id} 
+          profile={current} 
+          onSwipe={handleChoice} 
+          onSwipeUp={openDetails}
+        />
+      ) : (
+        <EnhancedEmptyState 
+          onCreateProfile={onCreateProfile}
+          onRefresh={handleRefresh}
+        />
+      )}
+      
       <ActionBar onPass={() => handleChoice('left')} onLike={() => handleChoice('right')} onDetails={openDetails} />
       <AnimatePresence>
         {showDetails && current && (

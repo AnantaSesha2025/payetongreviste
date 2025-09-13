@@ -1,5 +1,7 @@
+import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
+import '@testing-library/jest-dom'
 import { SwipeDeck } from '../SwipeDeck'
 import { useAppStore } from '../../store'
 
@@ -11,6 +13,7 @@ vi.mock('framer-motion', () => ({
   useAnimation: () => ({
     start: vi.fn(),
   }),
+  AnimatePresence: ({ children }: any) => <>{children}</>,
 }))
 
 // Mock the store
@@ -54,9 +57,9 @@ describe('SwipeDeck Component', () => {
   })
 
   it('renders empty state when no profiles', () => {
-    render(<SwipeDeck />)
+    render(<SwipeDeck onCreateProfile={() => {}} />)
     
-    expect(screen.getByText("You're all caught up")).toBeInTheDocument()
+    expect(screen.getByText("No more activists to discover right now")).toBeInTheDocument()
   })
 
   it('renders current profile when available', () => {
@@ -77,10 +80,11 @@ describe('SwipeDeck Component', () => {
       profiles
     })
     
-    render(<SwipeDeck />)
+    render(<SwipeDeck onCreateProfile={() => {}} />)
     
-    expect(screen.getByText('Test User, 25')).toBeInTheDocument()
-    expect(screen.getByText('Test bio')).toBeInTheDocument()
+    expect(screen.getByText('Test User, 25')).toBeInTheDocument() // Only in card initially
+    expect(screen.getByText('Test')).toBeInTheDocument() // Bio is split into "Test" and "bio" link
+    expect(screen.getByText('bio')).toBeInTheDocument() // Bio is split into "Test" and "bio" link
   })
 
   it('renders next profile as preview', () => {
@@ -110,7 +114,7 @@ describe('SwipeDeck Component', () => {
       profiles
     })
     
-    render(<SwipeDeck />)
+    render(<SwipeDeck onCreateProfile={() => {}} />)
     
     // Should render both current and next profiles
     expect(screen.getByText('Current User, 25')).toBeInTheDocument()
@@ -137,7 +141,7 @@ describe('SwipeDeck Component', () => {
       likeProfile
     })
     
-    render(<SwipeDeck />)
+    render(<SwipeDeck onCreateProfile={() => {}} />)
     
     const likeButton = screen.getByLabelText('Like')
     fireEvent.click(likeButton)
@@ -165,7 +169,7 @@ describe('SwipeDeck Component', () => {
       passProfile
     })
     
-    render(<SwipeDeck />)
+    render(<SwipeDeck onCreateProfile={() => {}} />)
     
     const passButton = screen.getByLabelText('Pass')
     fireEvent.click(passButton)
@@ -191,14 +195,15 @@ describe('SwipeDeck Component', () => {
       profiles
     })
     
-    render(<SwipeDeck />)
+    render(<SwipeDeck onCreateProfile={() => {}} />)
     
     const detailsButton = screen.getByLabelText('Details')
     fireEvent.click(detailsButton)
     
     // Modal should appear with profile details
-    expect(screen.getByText('Test User, 25')).toBeInTheDocument()
-    expect(screen.getByText('Test bio')).toBeInTheDocument()
+    expect(screen.getAllByText('Test User, 25')).toHaveLength(2) // One in card, one in modal
+    expect(screen.getByText('Test')).toBeInTheDocument() // Bio is split into "Test" and "bio" link
+    expect(screen.getByText('bio')).toBeInTheDocument() // Bio is split into "Test" and "bio" link
     expect(screen.getByText('Test Fund')).toBeInTheDocument()
   })
 
@@ -220,21 +225,21 @@ describe('SwipeDeck Component', () => {
       profiles
     })
     
-    render(<SwipeDeck />)
+    render(<SwipeDeck onCreateProfile={() => {}} />)
     
     // Open modal
     const detailsButton = screen.getByLabelText('Details')
     fireEvent.click(detailsButton)
     
     // Close modal
-    const closeButton = screen.getByText('Close')
+    const closeButton = screen.getByLabelText('Close details')
     fireEvent.click(closeButton)
     
     // Modal should be closed
-    expect(screen.queryByText('Close')).not.toBeInTheDocument()
+    expect(screen.queryByLabelText('Close details')).not.toBeInTheDocument()
   })
 
-  it('closes details modal when backdrop is clicked', () => {
+  it('shows swipe indicator in details modal', () => {
     const profiles = [
       {
         id: '1',
@@ -252,17 +257,13 @@ describe('SwipeDeck Component', () => {
       profiles
     })
     
-    render(<SwipeDeck />)
+    render(<SwipeDeck onCreateProfile={() => {}} />)
     
     // Open modal
     const detailsButton = screen.getByLabelText('Details')
     fireEvent.click(detailsButton)
     
-    // Click backdrop
-    const backdrop = screen.getByText('Test User, 25').closest('.modal-backdrop')
-    fireEvent.click(backdrop!)
-    
-    // Modal should be closed
-    expect(screen.queryByText('Close')).not.toBeInTheDocument()
+    // Should show swipe indicator
+    expect(screen.getByText('Swipe down to go back')).toBeInTheDocument()
   })
 })

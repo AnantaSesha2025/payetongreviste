@@ -32,6 +32,8 @@ type AppState = {
   passedIds: Set<string>
   /** Chat messages organized by profile ID */
   chats: Record<string, { from: 'bot' | 'user'; text: string; ts: number }[]>
+  /** Current user profile */
+  currentUser: Profile | null
   /** Function to like a profile and initialize chat */
   likeProfile: (id: string) => void
   /** Function to pass on a profile */
@@ -46,17 +48,24 @@ type AppState = {
   upsertProfile: (profile: Profile) => void
   /** Function to remove a profile */
   removeProfile: (id: string) => void
+  /** Function to update current user profile */
+  updateUserProfile: (profile: Profile) => void
+  /** Function to delete current user profile */
+  deleteUserProfile: () => void
+  /** Check if user profile is complete */
+  isProfileComplete: () => boolean
 }
 
 /**
  * Zustand store for managing application state
  * Handles profiles, likes, passes, and chat functionality
  */
-export const useAppStore = create<AppState>((set) => ({
+export const useAppStore = create<AppState>((set, get) => ({
   profiles: [],
   likedIds: new Set<string>(),
   passedIds: new Set<string>(),
   chats: {},
+  currentUser: null,
   
   /**
    * Likes a profile and initializes a chat with a welcome message
@@ -157,6 +166,32 @@ export const useAppStore = create<AppState>((set) => ({
    * @param id - Profile ID to remove
    */
   removeProfile: (id) => set((state) => ({ profiles: state.profiles.filter(p => p.id !== id) })),
+  
+  /**
+   * Updates the current user profile
+   * @param profile - Profile to set as current user
+   */
+  updateUserProfile: (profile) => set({ currentUser: profile }),
+  
+  /**
+   * Deletes the current user profile
+   */
+  deleteUserProfile: () => set({ currentUser: null }),
+  
+  /**
+   * Check if user profile is complete
+   */
+  isProfileComplete: () => {
+    const state = get()
+    return !!(
+      state.currentUser &&
+      state.currentUser.name &&
+      state.currentUser.bio &&
+      state.currentUser.photoUrl &&
+      state.currentUser.strikeFund.title &&
+      state.currentUser.strikeFund.url
+    )
+  },
 }))
 
 /**

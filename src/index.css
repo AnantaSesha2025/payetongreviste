@@ -1,70 +1,83 @@
-html, body, #root { height: 100%; margin: 0; }
-body { background: #121214; color: #ffffff; font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; }
-.app { min-height: 100%; }
-.app-header { display: none; }
-.nav { position: fixed; left: 0; right: 0; bottom: 0; background: #121214; border-top: 1px solid #1f2937; display: flex; gap: 12px; justify-content: space-around; padding: 8px 12px; padding-bottom: max(10px, env(safe-area-inset-bottom)); z-index: 40; }
-.nav a { color: #9ca3af; text-decoration: none; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
-.nav a.active { color: #F9E25B; }
-.app-main { padding: 0; max-width: 420px; margin: 0 auto; }
-.app-main { padding-bottom: 80px; }
-.btn-yellow { background: #F9E25B; color: #121214; border: none; border-radius: 9999px; font-weight: 800; text-transform: uppercase; padding: 10px 16px; }
-.badge-like { color: #10b981; border: 3px solid #10b981; transform: rotate(-18deg); font-weight: 800; padding: 4px 8px; border-radius: 6px; background: rgba(16,185,129,0.1); }
-.badge-pass { color: #9ca3af; border: 3px solid #9ca3af; transform: rotate(18deg); font-weight: 800; padding: 4px 8px; border-radius: 6px; background: rgba(156,163,175,0.12); }
-.deck { position: relative; height: calc(100dvh - 160px); max-width: 420px; margin: 0 auto; }
-.discover { height: 100%; overflow: hidden; }
-.action-bar { position: absolute; left: 0; right: 0; bottom: 0; display: flex; gap: 8px; justify-content: center; }
-.action-btn { display: grid; place-items: center; border-radius: 9999px; border: 1px solid #374151; background: #1f2937; width: 56px; height: 56px; }
-.action-btn--pass { color: #9ca3af; }
-.action-btn--details { background: #F9E25B; border-color: #F9E25B; color: #121214; font-weight: 800; }
-.action-btn--like { color: #10b981; }
-.empty-state { height: 420px; border: 1px dashed #374151; border-radius: 16px; display: grid; place-items: center; }
+/* Import Design System */
+@import './styles/design-system.css';
 
-/* Card */
-.card { position: absolute; inset: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 24px 56px rgba(0,0,0,0.5); background: #111827; }
-.card-media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.card-overlay { position: absolute; left: 0; right: 0; bottom: 0; padding: 12px; padding-bottom: 96px; background: linear-gradient(180deg, transparent, rgba(0,0,0,0.7)); }
-.card-title { margin: 0; font-size: 22px; text-transform: uppercase; font-weight: 800; }
-.card-bio { margin: 6px 0 0 0; color: #d1d5db; }
+/* Base Reset and Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-/* Modal */
-.modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: grid; place-items: center; z-index: 50; }
-.modal { width: min(680px, 92vw); max-height: 80vh; overflow: auto; background: #0f1115; border: 1px solid #1f2937; border-radius: 16px; }
-.modal-media { width: 100%; height: 280px; object-fit: cover; border-top-left-radius: 16px; border-top-right-radius: 16px; }
-.modal-body { padding: 12px; }
-.modal-title { font-size: 22px; font-weight: 700; }
-.modal-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 8px 12px; border-top: 1px solid #1f2937; }
-.link-blue { color: #60a5fa; text-decoration: none; }
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
 
-/* Matches */
-.matches-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-.match-item { display: flex; gap: 8px; align-items: center; cursor: pointer; border-radius: 8px; padding: 6px; }
-.match-item--active { background: #111827; }
-.match-avatar { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; }
-.match-name { font-weight: 600; font-size: 14px; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #121214;
+  color: #ffffff;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-/* Chat */
-.chat { display: grid; grid-template-rows: auto 1fr auto; height: 500px; }
-.chat-header { padding: 8px; border-bottom: 1px solid #1f2937; }
-.chat-title { font-weight: 700; }
-.chat-messages { padding: 12px; overflow-y: auto; display: grid; gap: 8px; }
-.bubble { color: #ffffff; padding: 8px 12px; border-radius: 12px; max-width: 320px; }
-.bubble--user { justify-self: end; background: #2563eb; }
-.bubble--bot { justify-self: start; background: #374151; }
-.chat-input { display: flex; gap: 8px; padding: 8px; border-top: 1px solid #1f2937; }
-.input { flex: 1; }
+/* CSS Variables for Indignons-Nous Theme */
+:root {
+  --primary-yellow: #F9E25B;
+  --secondary-black: #121214;
+  --tertiary-white: #FFFFFF;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --border-color: #27272A;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.2);
+  --shadow-heavy: rgba(0, 0, 0, 0.4);
+}
 
-/* Forms */
-.form { display: grid; gap: 12px; max-width: 360px; }
-.field { display: grid; gap: 6px; }
-.matches-layout { gap: 16px; }
-.matches-aside { border-right: 0; margin-bottom: 16px; }
-.matches-section { min-height: 400px; }
-@media (min-width: 768px) {
-  .app-header { display: block; position: sticky; top: 0; background: #121214; border-bottom: 1px solid #1f2937; }
-  .nav { position: static; justify-content: center; }
-  .app-main { padding-bottom: 0; }
-  .deck { height: calc(100dvh - 140px); }
-  .matches-layout { display: flex; }
-  .matches-aside { border-right: 1px solid #1f2937; margin-bottom: 0; width: 260px; padding-right: 16px; }
-  .matches-section { flex: 1; }
+/* Utility Classes */
+.btn-yellow {
+  background: var(--primary-yellow);
+  color: var(--secondary-black);
+  border: none;
+  border-radius: 9999px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-yellow:hover {
+  background: #f7d94a;
+  transform: translateY(-1px);
+}
+
+.badge-like {
+  color: #10b981;
+  border: 3px solid #10b981;
+  transform: rotate(-18deg);
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.badge-pass {
+  color: #9ca3af;
+  border: 3px solid #9ca3af;
+  transform: rotate(18deg);
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(156, 163, 175, 0.12);
+}
+
+.link-blue {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.link-blue:hover {
+  text-decoration: underline;
 }

@@ -9,9 +9,4 @@ export default defineConfig({
     port: 3000,      // Default port
     strictPort: true, // Exit if port is already in use
   },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './src/test/setup.ts',
-  },
 })

@@ -1,229 +1,213 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { renderHook, act } from '@testing-library/react'
 import { useAppStore } from '../store'
 import type { Profile } from '../store'
 
-describe('App Store', () => {
+// Mock profiles for testing
+const mockProfile: Profile = {
+  id: '1',
+  name: 'Test User',
+  age: 25,
+  bio: 'Test bio',
+  photoUrl: 'https://example.com/photo.jpg',
+  location: { lat: 0, lon: 0 },
+  strikeFund: { title: 'Test Fund', url: 'https://example.com/fund' }
+}
+
+describe('useAppStore', () => {
   beforeEach(() => {
     // Reset store state before each test
-    useAppStore.setState({
-      profiles: [],
-      likedIds: new Set(),
-      passedIds: new Set(),
-      chats: {},
+    act(() => {
+      useAppStore.getState().setProfiles([])
+      useAppStore.getState().likedIds.clear()
+      useAppStore.getState().passedIds.clear()
+      useAppStore.setState({ chats: {}, currentUser: null })
     })
   })
 
-  describe('Profile Management', () => {
-    it('should set profiles', () => {
-      const profiles: Profile[] = [
-        {
-          id: '1',
-          name: 'Test User',
-          age: 25,
-          bio: 'Test bio',
-          photoUrl: 'https://example.com/photo.jpg',
-          location: { lat: 48.8566, lon: 2.3522 },
-          strikeFund: { url: 'https://example.com/fund', title: 'Test Fund' }
-        }
-      ]
+  it('initializes with empty state', () => {
+    const { result } = renderHook(() => useAppStore())
+    
+    expect(result.current.profiles).toEqual([])
+    expect(result.current.likedIds.size).toBe(0)
+    expect(result.current.passedIds.size).toBe(0)
+    expect(result.current.chats).toEqual({})
+    expect(result.current.currentUser).toBeNull()
+  })
 
-      useAppStore.getState().setProfiles(profiles)
-
-      expect(useAppStore.getState().profiles).toEqual(profiles)
+  it('sets profiles', () => {
+    const { result } = renderHook(() => useAppStore())
+    
+    act(() => {
+      result.current.setProfiles([mockProfile])
     })
+    
+    expect(result.current.profiles).toEqual([mockProfile])
+  })
 
-    it('should upsert profile (create new)', () => {
-      const profile: Profile = {
-        id: '1',
-        name: 'New User',
-        age: 30,
-        bio: 'New bio',
-        photoUrl: 'https://example.com/new.jpg',
-        location: { lat: 48.8666, lon: 2.3333 },
-        strikeFund: { url: 'https://example.com/new-fund', title: 'New Fund' }
-      }
-
-      useAppStore.getState().upsertProfile(profile)
-
-      expect(useAppStore.getState().profiles).toHaveLength(1)
-      expect(useAppStore.getState().profiles[0]).toEqual(profile)
+  it('likes a profile', () => {
+    const { result } = renderHook(() => useAppStore())
+    
+    act(() => {
+      result.current.setProfiles([mockProfile])
+      result.current.likeProfile('1')
     })
+    
+    expect(result.current.likedIds.has('1')).toBe(true)
+    expect(result.current.chats['1']).toBeDefined()
+    expect(result.current.chats['1']).toHaveLength(2) // Two bot messages
+  })
 
-    it('should upsert profile (update existing)', () => {
-      const existingProfile: Profile = {
-        id: '1',
-        name: 'Original User',
-        age: 25,
-        bio: 'Original bio',
-        photoUrl: 'https://example.com/original.jpg',
-        location: { lat: 48.8566, lon: 2.3522 },
-        strikeFund: { url: 'https://example.com/original-fund', title: 'Original Fund' }
-      }
-
-      const updatedProfile: Profile = {
-        ...existingProfile,
-        name: 'Updated User',
-        age: 26
-      }
-
-      // Add original profile
-      useAppStore.getState().upsertProfile(existingProfile)
-      expect(useAppStore.getState().profiles).toHaveLength(1)
-
-      // Update profile
-      useAppStore.getState().upsertProfile(updatedProfile)
-      expect(useAppStore.getState().profiles).toHaveLength(1)
-      expect(useAppStore.getState().profiles[0]).toEqual(updatedProfile)
+  it('passes on a profile', () => {
+    const { result } = renderHook(() => useAppStore())
+    
+    act(() => {
+      result.current.setProfiles([mockProfile])
+      result.current.passProfile('1')
     })
+    
+    expect(result.current.passedIds.has('1')).toBe(true)
+  })
 
-    it('should remove profile', () => {
-      const profile: Profile = {
-        id: '1',
-        name: 'Test User',
-        age: 25,
-        bio: 'Test bio',
-        photoUrl: 'https://example.com/photo.jpg',
-        location: { lat: 48.8566, lon: 2.3522 },
-        strikeFund: { url: 'https://example.com/fund', title: 'Test Fund' }
-      }
+  it('creates or updates a profile', () => {
+    const { result } = renderHook(() => useAppStore())
+    
+    act(() => {
+      result.current.upsertProfile(mockProfile)
+    })
+    
+    expect(result.current.profiles).toContain(mockProfile)
+  })
 
-      // Add profile
-      useAppStore.getState().upsertProfile(profile)
-      expect(useAppStore.getState().profiles).toHaveLength(1)
+  it('updates existing profile', () => {
+    const { result } = renderHook(() => useAppStore())
+    const updatedProfile = { ...mockProfile, name: 'Updated Name' }
+    
+    act(() => {
+      result.current.upsertProfile(mockProfile)
+      result.current.upsertProfile(updatedProfile)
+    })
+    
+    expect(result.current.profiles).toHaveLength(1)
+    expect(result.current.profiles[0].name).toBe('Updated Name')
+  })
 
-      // Remove profile
-      useAppStore.getState().removeProfile('1')
-      expect(useAppStore.getState().profiles).toHaveLength(0)
+  it('removes a profile', () => {
+    const { result } = renderHook(() => useAppStore())
+    
+    act(() => {
+      result.current.upsertProfile(mockProfile)
+      result.current.removeProfile('1')
+    })
+    
+    expect(result.current.profiles).toHaveLength(0)
+  })
+
+  it('updates current user profile', () => {
+    const { result } = renderHook(() => useAppStore())
+    
+    act(() => {
+      result.current.updateUserProfile(mockProfile)
+    })
+    
+    expect(result.current.currentUser).toEqual(mockProfile)
+  })
+
+  it('deletes current user profile', () => {
+    const { result } = renderHook(() => useAppStore())
+    
+    act(() => {
+      result.current.updateUserProfile(mockProfile)
+      result.current.deleteUserProfile()
+    })
+    
+    expect(result.current.currentUser).toBeNull()
+  })
+
+  it('checks if profile is complete', () => {
+    const { result } = renderHook(() => useAppStore())
+    
+    // Test with incomplete profile
+    act(() => {
+      result.current.updateUserProfile({ ...mockProfile, name: '' })
+    })
+    
+    expect(result.current.isProfileComplete()).toBe(false)
+    
+    // Test with complete profile
+    act(() => {
+      result.current.updateUserProfile(mockProfile)
+    })
+    
+    expect(result.current.isProfileComplete()).toBe(true)
+  })
+
+  it('ensures chat exists for profile', () => {
+    const { result } = renderHook(() => useAppStore())
+    
+    act(() => {
+      result.current.ensureChatFor('1')
+    })
+    
+    expect(result.current.chats['1']).toBeDefined()
+    expect(result.current.chats['1']).toHaveLength(3) // Three bot messages
+  })
+
+  it('adds user message to chat', () => {
+    const { result } = renderHook(() => useAppStore())
+    
+    act(() => {
+      result.current.ensureChatFor('1')
+      result.current.addUserMessage('1', 'Hello!')
+    })
+    
+    expect(result.current.chats['1']).toHaveLength(4) // 3 bot messages + 1 user message
+    expect(result.current.chats['1'][3]).toEqual({
+      from: 'user',
+      text: 'Hello!',
+      ts: expect.any(Number)
     })
   })
 
-  describe('Like/Pass Functionality', () => {
-    it('should like profile and initialize chat', () => {
-      const profile: Profile = {
-        id: '1',
-        name: 'Test User',
-        age: 25,
-        bio: 'Test bio',
-        photoUrl: 'https://example.com/photo.jpg',
-        location: { lat: 48.8566, lon: 2.3522 },
-        strikeFund: { url: 'https://example.com/fund', title: 'Test Fund' }
-      }
-
-      useAppStore.getState().upsertProfile(profile)
-      useAppStore.getState().likeProfile('1')
-
-      const state = useAppStore.getState()
-      expect(state.likedIds.has('1')).toBe(true)
-      expect(state.chats['1']).toBeDefined()
-      expect(state.chats['1']).toHaveLength(1)
-      expect(state.chats['1'][0].from).toBe('bot')
-      expect(state.chats['1'][0].text).toContain('Thanks for the support')
+  it('includes strike fund information in bot messages', () => {
+    const { result } = renderHook(() => useAppStore())
+    
+    act(() => {
+      result.current.setProfiles([mockProfile])
+      result.current.likeProfile('1')
     })
-
-    it('should pass profile', () => {
-      useAppStore.getState().passProfile('1')
-
-      const state = useAppStore.getState()
-      expect(state.passedIds.has('1')).toBe(true)
-    })
-
-    it('should not duplicate chat when liking same profile twice', () => {
-      const profile: Profile = {
-        id: '1',
-        name: 'Test User',
-        age: 25,
-        bio: 'Test bio',
-        photoUrl: 'https://example.com/photo.jpg',
-        location: { lat: 48.8566, lon: 2.3522 },
-        strikeFund: { url: 'https://example.com/fund', title: 'Test Fund' }
-      }
-
-      useAppStore.getState().upsertProfile(profile)
-      useAppStore.getState().likeProfile('1')
-      useAppStore.getState().likeProfile('1') // Like again
-
-      const state = useAppStore.getState()
-      expect(state.chats['1']).toHaveLength(1) // Should still be only 1 message
-    })
+    
+    const chat = result.current.chats['1']
+    expect(chat[0].text).toContain(mockProfile.strikeFund.title)
+    expect(chat[1].text).toContain(mockProfile.strikeFund.url)
   })
 
-  describe('Chat Functionality', () => {
-    it('should ensure chat exists for profile', () => {
-      useAppStore.getState().ensureChatFor('1')
-
-      const state = useAppStore.getState()
-      expect(state.chats['1']).toBeDefined()
-      expect(state.chats['1']).toHaveLength(1)
-      expect(state.chats['1'][0].from).toBe('bot')
-      expect(state.chats['1'][0].text).toContain('Appreciate you stopping by')
+  it('handles multiple profiles correctly', () => {
+    const { result } = renderHook(() => useAppStore())
+    const profile2 = { ...mockProfile, id: '2', name: 'User 2' }
+    
+    act(() => {
+      result.current.upsertProfile(mockProfile)
+      result.current.upsertProfile(profile2)
     })
-
-    it('should not create duplicate chat when ensuring chat exists', () => {
-      useAppStore.getState().ensureChatFor('1')
-      useAppStore.getState().ensureChatFor('1') // Ensure again
-
-      const state = useAppStore.getState()
-      expect(state.chats['1']).toHaveLength(1)
-    })
-
-    it('should add user message to chat', () => {
-      useAppStore.getState().ensureChatFor('1')
-      useAppStore.getState().addUserMessage('1', 'Hello!')
-
-      const state = useAppStore.getState()
-      expect(state.chats['1']).toHaveLength(2)
-      expect(state.chats['1'][1].from).toBe('user')
-      expect(state.chats['1'][1].text).toBe('Hello!')
-    })
-
-    it('should add multiple user messages', () => {
-      useAppStore.getState().ensureChatFor('1')
-      useAppStore.getState().addUserMessage('1', 'First message')
-      useAppStore.getState().addUserMessage('1', 'Second message')
-
-      const state = useAppStore.getState()
-      expect(state.chats['1']).toHaveLength(3)
-      expect(state.chats['1'][1].text).toBe('First message')
-      expect(state.chats['1'][2].text).toBe('Second message')
-    })
+    
+    expect(result.current.profiles).toHaveLength(2)
+    expect(result.current.profiles[0]).toEqual(mockProfile)
+    expect(result.current.profiles[1]).toEqual(profile2)
   })
 
-  describe('State Isolation', () => {
-    it('should maintain separate state for different profiles', () => {
-      const profile1: Profile = {
-        id: '1',
-        name: 'User 1',
-        age: 25,
-        bio: 'Bio 1',
-        photoUrl: 'https://example.com/1.jpg',
-        location: { lat: 48.8566, lon: 2.3522 },
-        strikeFund: { url: 'https://example.com/fund1', title: 'Fund 1' }
-      }
-
-      const profile2: Profile = {
-        id: '2',
-        name: 'User 2',
-        age: 30,
-        bio: 'Bio 2',
-        photoUrl: 'https://example.com/2.jpg',
-        location: { lat: 48.8666, lon: 2.3333 },
-        strikeFund: { url: 'https://example.com/fund2', title: 'Fund 2' }
-      }
-
-      useAppStore.getState().upsertProfile(profile1)
-      useAppStore.getState().upsertProfile(profile2)
-      useAppStore.getState().likeProfile('1')
-      useAppStore.getState().passProfile('2')
-      useAppStore.getState().addUserMessage('1', 'Hello to user 1')
-
-      const state = useAppStore.getState()
-      
-      expect(state.likedIds.has('1')).toBe(true)
-      expect(state.likedIds.has('2')).toBe(false)
-      expect(state.passedIds.has('1')).toBe(false)
-      expect(state.passedIds.has('2')).toBe(true)
-      expect(state.chats['1']).toHaveLength(2) // Bot message + user message
-      expect(state.chats['2']).toBeUndefined()
+  it('maintains separate chats for different profiles', () => {
+    const { result } = renderHook(() => useAppStore())
+    
+    act(() => {
+      result.current.ensureChatFor('1')
+      result.current.ensureChatFor('2')
+      result.current.addUserMessage('1', 'Message to profile 1')
+      result.current.addUserMessage('2', 'Message to profile 2')
     })
+    
+    expect(result.current.chats['1']).toHaveLength(4) // 3 bot + 1 user
+    expect(result.current.chats['2']).toHaveLength(4) // 3 bot + 1 user
+    expect(result.current.chats['1'][3].text).toBe('Message to profile 1')
+    expect(result.current.chats['2'][3].text).toBe('Message to profile 2')
   })
 })

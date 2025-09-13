@@ -1,5 +1,7 @@
+import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
+import '@testing-library/jest-dom'
 import MatchesPage from '../MatchesPage'
 import { useAppStore } from '../../store'
 
@@ -58,9 +60,9 @@ describe('MatchesPage Component', () => {
     
     render(<MatchesPage />)
     
-    expect(screen.getByText('Test User 1')).toBeInTheDocument()
+    expect(screen.getAllByText('Test User 1')).toHaveLength(2) // One in sidebar, one in chat header
     expect(screen.getByText('Test User 2')).toBeInTheDocument()
-    expect(screen.getByAltText('Test User 1')).toBeInTheDocument()
+    expect(screen.getAllByAltText('Test User 1')).toHaveLength(2) // One in sidebar, one in chat header
     expect(screen.getByAltText('Test User 2')).toBeInTheDocument()
   })
 
@@ -91,7 +93,7 @@ describe('MatchesPage Component', () => {
     fireEvent.click(sidebarProfile!)
     
     // Should show chat window
-    expect(screen.getByText('Test User')).toBeInTheDocument()
+    expect(screen.getAllByText('Test User')).toHaveLength(2) // One in sidebar, one in chat header
     expect(screen.getByText('Test Fund')).toBeInTheDocument()
   })
 
@@ -124,11 +126,11 @@ describe('MatchesPage Component', () => {
     fireEvent.click(sidebarProfile!)
     
     // Type message and send
-    const input = screen.getByPlaceholderText('Type a message')
+    const input = screen.getByPlaceholderText('Type a message...')
     fireEvent.change(input, { target: { value: 'Hello!' } })
     
-    const sendButton = screen.getByText('Send')
-    fireEvent.click(sendButton)
+    const sendButton = document.querySelector('.send-btn')
+    fireEvent.click(sendButton!)
     
     expect(addUserMessage).toHaveBeenCalledWith('1', 'Hello!')
   })

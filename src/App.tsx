@@ -1,7 +1,9 @@
 import { NavLink, Route, Routes } from 'react-router-dom'
+import { Search, MessageCircle } from 'react-feather'
 import DiscoverPage from './pages/DiscoverPage'
 import MatchesPage from './pages/MatchesPage'
 import ActivistSetupPage from './pages/ActivistSetupPage'
+import { ToastContainer, useToast } from './components/Toast'
 import './App.css'
 
 /**
@@ -12,9 +14,13 @@ import './App.css'
  * @returns JSX element representing the main app layout
  */
 function App() {
+  const { toasts, removeToast } = useToast()
+
   return (
     <div className="app">
-      <header className="app-header" />
+      <header className="app-header">
+        <h1 className="app-title">PayeToGreviste</h1>
+      </header>
       <main className="app-main">
         <Routes>
           <Route path="/" element={<DiscoverPage />} />
@@ -23,9 +29,16 @@ function App() {
         </Routes>
       </main>
       <nav className="nav">
-        <NavLink to="/" end className={({ isActive }) => isActive ? 'active' : ''}>Discover</NavLink>
-        <NavLink to="/matches" className={({ isActive }) => isActive ? 'active' : ''}>Matches</NavLink>
+        <NavLink to="/" end className={({ isActive }) => isActive ? 'active' : ''}>
+          <Search />
+          <span>Discover</span>
+        </NavLink>
+        <NavLink to="/matches" className={({ isActive }) => isActive ? 'active' : ''}>
+          <MessageCircle />
+          <span>Matches</span>
+        </NavLink>
       </nav>
+      <ToastContainer toasts={toasts} onClose={removeToast} />
     </div>
   )
 }

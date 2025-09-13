@@ -1,6 +1,8 @@
+import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { BrowserRouter } from 'react-router-dom'
+import '@testing-library/jest-dom'
 import DiscoverPage from '../DiscoverPage'
 
 // Mock the SwipeDeck component
@@ -14,7 +16,24 @@ const DiscoverPageWithRouter = () => (
   </BrowserRouter>
 )
 
+// Mock localStorage
+const mockLocalStorage = {
+  getItem: vi.fn(),
+  setItem: vi.fn(),
+  removeItem: vi.fn(),
+  clear: vi.fn(),
+}
+
+Object.defineProperty(window, 'localStorage', {
+  value: mockLocalStorage,
+})
+
 describe('DiscoverPage Component', () => {
+  beforeEach(() => {
+    // Mock localStorage to return that user has seen onboarding
+    mockLocalStorage.getItem.mockReturnValue('true')
+  })
+
   it('renders SwipeDeck component', () => {
     render(<DiscoverPageWithRouter />)
     
@@ -24,22 +43,22 @@ describe('DiscoverPage Component', () => {
   it('has correct CSS class', () => {
     render(<DiscoverPageWithRouter />)
     
-    const discoverElement = screen.getByTestId('swipe-deck').parentElement?.parentElement
+    const discoverElement = screen.getByText('Discover Activists').closest('.discover')
     expect(discoverElement).toHaveClass('discover')
   })
 
-  it('renders discover header with title and activist sublink', () => {
+  it('renders discover header with title only', () => {
     render(<DiscoverPageWithRouter />)
     
     expect(screen.getByText('Discover Activists')).toBeInTheDocument()
-    expect(screen.getByText('Create Profile')).toBeInTheDocument()
+    expect(screen.queryByText('Create Profile')).not.toBeInTheDocument()
   })
 
-  it('has activist sublink with correct href', () => {
+  it('does not have create profile button (hidden as requested)', () => {
     render(<DiscoverPageWithRouter />)
     
-    const activistLink = screen.getByText('Create Profile').closest('a')
-    expect(activistLink).toHaveAttribute('href', '/activist')
+    const createButton = screen.queryByText('Create Profile')
+    expect(createButton).not.toBeInTheDocument()
   })
 
   it('has discover header with correct CSS class', () => {

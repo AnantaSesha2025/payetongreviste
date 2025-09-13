@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useAppStore } from '../store'
+import './MatchesPage.css'
 
 /**
  * Matches page component that displays liked profiles and chat interface.
@@ -8,18 +9,27 @@ import { useAppStore } from '../store'
  * @returns JSX element representing the matches page
  */
 export default function MatchesPage() {
-  const { likedIds, profiles } = useAppStore()
+  const { likedIds, profiles, currentUser } = useAppStore()
   const liked = profiles.filter(p => likedIds.has(p.id))
-  const [activeId, setActiveId] = useState<string | null>(liked[0]?.id ?? null)
+  // Add current user profile at the beginning of the list
+  const allMatches = currentUser ? [currentUser, ...liked] : liked
+  const [activeId, setActiveId] = useState<string | null>(allMatches[0]?.id ?? null)
   
   return (
     <div className="matches-layout" style={{ padding: 0 }}>
       <aside className="matches-aside">
         <ul className="matches-list">
-          {liked.map(p => (
-            <li key={p.id} className={`match-item ${activeId===p.id ? 'match-item--active' : ''}`} onClick={() => setActiveId(p.id)}>
+          {allMatches.map(p => (
+            <li 
+              key={p.id} 
+              className={`match-item ${activeId===p.id ? 'match-item--active' : ''} ${p.id === currentUser?.id ? 'match-item--own' : ''}`} 
+              onClick={() => setActiveId(p.id)}
+            >
               <img src={p.photoUrl} alt={p.name} className="match-avatar" />
-              <div className="match-name">{p.name}</div>
+              <div className="match-name">
+                {p.name}
+                {p.id === currentUser?.id && <span className="own-badge">You</span>}
+              </div>
             </li>
           ))}
         </ul>

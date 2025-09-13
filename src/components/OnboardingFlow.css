@@ -1,0 +1,229 @@
+/* Onboarding Flow Styles */
+.onboarding-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--secondary-black);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.onboarding-container {
+  max-width: 400px;
+  width: 100%;
+  background: var(--secondary-black);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  position: relative;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.progress-dot.active {
+  background: var(--primary-yellow);
+  transform: scale(1.2);
+}
+
+/* Step Content */
+.step-content {
+  margin-bottom: 40px;
+}
+
+.step-icon {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.step-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.step-subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-yellow);
+  margin-bottom: 16px;
+}
+
+.step-description {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+/* Gesture Tutorial */
+.gesture-tutorial {
+  margin-top: 32px;
+}
+
+.gesture-demo {
+  display: flex;
+  justify-content: center;
+}
+
+.gesture-card {
+  width: 200px;
+  height: 300px;
+  background: var(--tertiary-white);
+  border-radius: 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px var(--shadow-heavy);
+}
+
+.gesture-arrows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.arrow-up {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--primary-yellow);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.arrow-left {
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.arrow-right {
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #10b981;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* Action Buttons */
+.onboarding-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.skip-btn {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.skip-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+.next-btn {
+  background: var(--primary-yellow);
+  color: var(--secondary-black);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.next-btn:hover {
+  background: #f7d94a;
+  transform: translateY(-1px);
+}
+
+.next-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .onboarding-container {
+    padding: 30px 20px;
+  }
+  
+  .step-title {
+    font-size: 24px;
+  }
+  
+  .step-subtitle {
+    font-size: 16px;
+  }
+  
+  .step-description {
+    font-size: 14px;
+  }
+  
+  .gesture-card {
+    width: 160px;
+    height: 240px;
+  }
+  
+  .arrow-left {
+    left: -30px;
+  }
+  
+  .arrow-right {
+    right: -30px;
+  }
+}

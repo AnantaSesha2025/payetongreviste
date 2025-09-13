@@ -1,0 +1,249 @@
+/* Deck Layout */
+.deck {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem var(--action-space) 1rem; /* Bottom padding for action buttons */
+  box-sizing: border-box;
+  overflow: hidden;
+  height: calc(100% - var(--discover-header-height)); /* Full height minus discover header */
+}
+
+/* Card Stack Positioning */
+.deck .card-swipeable {
+  position: relative;
+  width: 100%;
+  max-width: 25rem; /* 400px */
+  flex: 1;
+  margin: 0 auto;
+}
+
+/* Next card (behind) - slightly offset */
+.deck .card-swipeable:first-child {
+  z-index: 0;
+  transform: scale(0.95);
+  opacity: 0.8;
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.95);
+}
+
+/* Current card (on top) */
+.deck .card-swipeable:last-child {
+  z-index: 1;
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Action Bar */
+.action-bar {
+  position: relative;
+  display: flex;
+  gap: 1.5rem; /* 24px */
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto; /* Push to bottom of available space */
+}
+
+/* Action Buttons */
+.action-btn {
+  width: 3.5rem; /* 56px */
+  height: 3.5rem; /* 56px */
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0.25rem 1rem var(--shadow-medium); /* 0 4px 16px */
+  position: relative;
+  font-size: 1rem; /* Ensure proper font size */
+  font-weight: 600;
+}
+
+.action-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0.375rem 1.25rem var(--shadow-heavy); /* 0 6px 20px */
+}
+
+.action-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.1875rem rgba(249, 226, 91, 0.3); /* 0 0 0 3px */
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 0.125rem 0.5rem var(--shadow-medium); /* 0 2px 8px */
+}
+
+.action-btn--pass {
+  background: var(--tertiary-white);
+  color: var(--secondary-black);
+  border: 0.125rem solid #e5e7eb; /* 2px */
+}
+
+.action-btn--pass:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.action-btn--pass svg {
+  color: #6b7280; /* Ensure good contrast for X icon */
+}
+
+.action-btn--like {
+  background: var(--primary-yellow);
+  color: var(--secondary-black);
+  box-shadow: 0 0.25rem 1rem rgba(249, 226, 91, 0.3); /* 0 4px 16px */
+}
+
+.action-btn--like:hover {
+  background: #f7d94a;
+  box-shadow: 0 0.375rem 1.25rem rgba(249, 226, 91, 0.4); /* 0 6px 20px */
+}
+
+.action-btn--like svg {
+  color: var(--secondary-black); /* Ensure good contrast for heart icon */
+}
+
+.action-btn--details {
+  background: var(--secondary-black);
+  color: var(--tertiary-white);
+  border: 0.125rem solid var(--border-color); /* 2px */
+}
+
+.action-btn--details:hover {
+  background: #1f1f23;
+  border-color: var(--primary-yellow);
+}
+
+.action-btn--details svg {
+  color: var(--tertiary-white) !important; /* Ensure good contrast for plus icon */
+}
+
+/* Specific overrides for react-feather icons */
+.action-btn svg[data-feather] {
+  width: 1.75rem !important;
+  height: 1.75rem !important;
+  stroke-width: 2.5 !important;
+  fill: none !important;
+  stroke: currentColor !important;
+}
+
+/* Ensure icons are visible and properly sized */
+.action-btn > * {
+  width: 1.75rem !important;
+  height: 1.75rem !important;
+  display: block !important;
+}
+
+.action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.action-btn:disabled:hover {
+  transform: none;
+  box-shadow: 0 0.25rem 1rem var(--shadow-medium); /* 0 4px 16px */
+}
+
+.action-btn svg {
+  width: 1.75rem !important; /* 28px - larger for better visibility */
+  height: 1.75rem !important; /* 28px - larger for better visibility */
+  stroke-width: 2.5 !important; /* Make the stroke thicker for better visibility */
+  display: block !important; /* Ensure proper display */
+  fill: none !important; /* Ensure no fill for stroke-based icons */
+  stroke: currentColor !important; /* Use current color for stroke */
+  flex-shrink: 0 !important; /* Prevent shrinking */
+}
+
+/* Empty State */
+.empty-state {
+  position: relative;
+  height: calc(100vh - var(--header-height) - var(--navbar-height) - var(--discover-header-height) - var(--action-space));
+  width: 100%;
+  max-width: 25rem; /* 400px */
+  border: 0.0625rem dashed #374151; /* 1px */
+  border-radius: 1rem; /* 16px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(31, 41, 55, 0.3);
+  color: var(--text-secondary);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.empty-state p {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Mobile Responsive */
+@media (max-width: 40rem) { /* 640px */
+  .deck {
+    padding: 0.75rem 0.75rem var(--action-space-mobile) 0.75rem; /* 12px 12px 90px 12px */
+    height: calc(100% - var(--discover-header-height));
+  }
+  
+  .empty-state {
+    height: calc(100vh - var(--header-height) - var(--navbar-height-mobile) - var(--discover-header-height) - var(--action-space-mobile));
+  }
+  
+  .action-bar {
+    gap: 1.25rem; /* 20px */
+  }
+  
+  .action-btn {
+    width: 3.25rem; /* 52px */
+    height: 3.25rem; /* 52px */
+    font-size: 0.875rem; /* 14px - slightly smaller for mobile */
+  }
+  
+  .action-btn svg {
+    width: 1.5rem !important; /* 24px - appropriate for mobile button size */
+    height: 1.5rem !important; /* 24px - appropriate for mobile button size */
+    stroke-width: 2.5 !important; /* Make the stroke thicker for better visibility */
+    fill: none !important; /* Ensure no fill for stroke-based icons */
+    stroke: currentColor !important; /* Use current color for stroke */
+    flex-shrink: 0 !important; /* Prevent shrinking */
+  }
+}
+
+@media (max-width: 20rem) { /* 320px */
+  .deck {
+    padding: 0.5rem 0.5rem var(--action-space-small) 0.5rem; /* 8px 8px 80px 8px */
+    height: calc(100% - var(--discover-header-height));
+  }
+  
+  .empty-state {
+    height: calc(100vh - var(--header-height) - var(--navbar-height-small) - var(--discover-header-height) - var(--action-space-small));
+  }
+  
+  .action-bar {
+    gap: 1.25rem; /* 20px */
+  }
+  
+  .action-btn {
+    width: 3rem; /* 48px */
+    height: 3rem; /* 48px */
+    font-size: 0.75rem; /* 12px - smaller for very small screens */
+  }
+  
+  .action-btn svg {
+    width: 1.25rem !important; /* 20px - appropriate for very small screens */
+    height: 1.25rem !important; /* 20px - appropriate for very small screens */
+    stroke-width: 2.5 !important; /* Make the stroke thicker for better visibility */
+    fill: none !important; /* Ensure no fill for stroke-based icons */
+    stroke: currentColor !important; /* Use current color for stroke */
+    flex-shrink: 0 !important; /* Prevent shrinking */
+  }
+}

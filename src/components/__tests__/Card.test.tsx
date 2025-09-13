@@ -1,15 +1,20 @@
+import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect, vi } from 'vitest'
+import '@testing-library/jest-dom'
 import { Card, type CardProps } from '../Card'
 
 // Mock framer-motion to avoid animation issues in tests
 vi.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+    div: ({ children, drag, dragConstraints, dragElastic, dragMomentum, dragTransition, onDragStart, onDrag, onDragEnd, animate, whileDrag, ...props }: any) => (
+      <div {...props}>{children}</div>
+    ),
   },
   useAnimation: () => ({
     start: vi.fn(),
   }),
+  AnimatePresence: ({ children }: any) => <>{children}</>,
 }))
 
 const mockProfile = {
@@ -35,7 +40,8 @@ describe('Card Component', () => {
     render(<Card {...defaultProps} />)
     
     expect(screen.getByText('Test User, 25')).toBeInTheDocument()
-    expect(screen.getByText('Test bio with fund')).toBeInTheDocument()
+    expect(screen.getByText('Test bio with')).toBeInTheDocument()
+    expect(screen.getByText('fund')).toBeInTheDocument()
     expect(screen.getByAltText('Test User')).toBeInTheDocument()
   })
 
@@ -43,58 +49,42 @@ describe('Card Component', () => {
     const customStyle = { transform: 'scale(0.9)' }
     render(<Card {...defaultProps} style={customStyle} />)
     
-    const cardElement = screen.getByText('Test User, 25').closest('.card')
+    const cardElement = screen.getByText('Test User, 25').closest('.card-swipeable')
     expect(cardElement).toHaveStyle('transform: scale(0.9)')
   })
 
   it('can be disabled', () => {
     render(<Card {...defaultProps} disabled={true} />)
     
-    const cardElement = screen.getByText('Test User, 25').closest('.card')
-    expect(cardElement).toHaveAttribute('data-disabled', 'true')
+    const cardElement = screen.getByText('Test User, 25').closest('.card-swipeable')
+    expect(cardElement).toHaveClass('disabled')
   })
 
   it('calls onSwipe when swiped right', () => {
     const onSwipe = vi.fn()
     render(<Card {...defaultProps} onSwipe={onSwipe} />)
     
-    // Simulate swipe right by triggering drag end with positive x offset
-    const cardElement = screen.getByText('Test User, 25').closest('.card')
-    fireEvent.mouseDown(cardElement!, { clientX: 0, clientY: 0 })
-    fireEvent.mouseMove(cardElement!, { clientX: 150, clientY: 0 })
-    fireEvent.mouseUp(cardElement!, { clientX: 150, clientY: 0 })
-    
-    // Note: The actual drag handling is mocked, so we can't test the real behavior
-    // In a real test, you would need to properly mock the framer-motion drag events
-    expect(cardElement).toBeInTheDocument()
+    // Since framer-motion is mocked, we can't test actual drag behavior
+    // This test just verifies the component renders with the onSwipe prop
+    expect(screen.getByText('Test User, 25')).toBeInTheDocument()
   })
 
   it('calls onSwipe when swiped left', () => {
     const onSwipe = vi.fn()
     render(<Card {...defaultProps} onSwipe={onSwipe} />)
     
-    // Simulate swipe left by triggering drag end with negative x offset
-    const cardElement = screen.getByText('Test User, 25').closest('.card')
-    fireEvent.mouseDown(cardElement!, { clientX: 0, clientY: 0 })
-    fireEvent.mouseMove(cardElement!, { clientX: -150, clientY: 0 })
-    fireEvent.mouseUp(cardElement!, { clientX: -150, clientY: 0 })
-    
-    // Note: The actual drag handling is mocked, so we can't test the real behavior
-    expect(cardElement).toBeInTheDocument()
+    // Since framer-motion is mocked, we can't test actual drag behavior
+    // This test just verifies the component renders with the onSwipe prop
+    expect(screen.getByText('Test User, 25')).toBeInTheDocument()
   })
 
   it('calls onSwipeUp when swiped up', () => {
     const onSwipeUp = vi.fn()
     render(<Card {...defaultProps} onSwipeUp={onSwipeUp} />)
     
-    // Simulate swipe up by triggering drag end with negative y offset
-    const cardElement = screen.getByText('Test User, 25').closest('.card')
-    fireEvent.mouseDown(cardElement!, { clientX: 0, clientY: 0 })
-    fireEvent.mouseMove(cardElement!, { clientX: 0, clientY: -150 })
-    fireEvent.mouseUp(cardElement!, { clientX: 0, clientY: -150 })
-    
-    // Note: The actual drag handling is mocked, so we can't test the real behavior
-    expect(cardElement).toBeInTheDocument()
+    // Since framer-motion is mocked, we can't test actual drag behavior
+    // This test just verifies the component renders with the onSwipeUp prop
+    expect(screen.getByText('Test User, 25')).toBeInTheDocument()
   })
 
   it('does not call callbacks when swipe threshold is not met', () => {
@@ -102,20 +92,16 @@ describe('Card Component', () => {
     const onSwipeUp = vi.fn()
     render(<Card {...defaultProps} onSwipe={onSwipe} onSwipeUp={onSwipeUp} />)
     
-    // Simulate small movement that doesn't meet threshold
-    const cardElement = screen.getByText('Test User, 25').closest('.card')
-    fireEvent.mouseDown(cardElement!, { clientX: 0, clientY: 0 })
-    fireEvent.mouseMove(cardElement!, { clientX: 50, clientY: 0 })
-    fireEvent.mouseUp(cardElement!, { clientX: 50, clientY: 0 })
-    
-    // Note: The actual drag handling is mocked, so we can't test the real behavior
-    expect(cardElement).toBeInTheDocument()
+    // Since framer-motion is mocked, we can't test actual drag behavior
+    // This test just verifies the component renders without calling callbacks
+    expect(screen.getByText('Test User, 25')).toBeInTheDocument()
   })
 
   it('renders BioWithFund component with correct props', () => {
     render(<Card {...defaultProps} />)
     
     // Check that the bio text is rendered
-    expect(screen.getByText('Test bio with fund')).toBeInTheDocument()
+    expect(screen.getByText('Test bio with')).toBeInTheDocument()
+    expect(screen.getByText('fund')).toBeInTheDocument()
   })
 })
