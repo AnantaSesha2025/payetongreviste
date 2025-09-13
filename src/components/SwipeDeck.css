@@ -9,7 +9,9 @@
   padding: 1rem 1rem var(--action-space) 1rem; /* Bottom padding for action buttons */
   box-sizing: border-box;
   overflow: hidden;
-  height: calc(100% - var(--discover-header-height)); /* Full height minus discover header */
+  height: calc(
+    100% - var(--discover-header-height)
+  ); /* Full height minus discover header */
 }
 
 /* Card Stack Positioning */
@@ -124,7 +126,9 @@
 }
 
 .action-btn--details svg {
-  color: var(--tertiary-white) !important; /* Ensure good contrast for plus icon */
+  color: var(
+    --tertiary-white
+  ) !important; /* Ensure good contrast for plus icon */
 }
 
 /* Specific overrides for react-feather icons */
@@ -167,7 +171,10 @@
 /* Empty State */
 .empty-state {
   position: relative;
-  height: calc(100vh - var(--header-height) - var(--navbar-height) - var(--discover-header-height) - var(--action-space));
+  height: calc(
+    100vh - var(--header-height) - var(--navbar-height) -
+      var(--discover-header-height) - var(--action-space)
+  );
   width: 100%;
   max-width: 25rem; /* 400px */
   border: 0.0625rem dashed #374151; /* 1px */
@@ -188,26 +195,30 @@
 }
 
 /* Mobile Responsive */
-@media (max-width: 40rem) { /* 640px */
+@media (max-width: 40rem) {
+  /* 640px */
   .deck {
     padding: 0.75rem 0.75rem var(--action-space-mobile) 0.75rem; /* 12px 12px 90px 12px */
     height: calc(100% - var(--discover-header-height));
   }
-  
+
   .empty-state {
-    height: calc(100vh - var(--header-height) - var(--navbar-height-mobile) - var(--discover-header-height) - var(--action-space-mobile));
+    height: calc(
+      100vh - var(--header-height) - var(--navbar-height-mobile) -
+        var(--discover-header-height) - var(--action-space-mobile)
+    );
   }
-  
+
   .action-bar {
     gap: 1.25rem; /* 20px */
   }
-  
+
   .action-btn {
     width: 3.25rem; /* 52px */
     height: 3.25rem; /* 52px */
     font-size: 0.875rem; /* 14px - slightly smaller for mobile */
   }
-  
+
   .action-btn svg {
     width: 1.5rem !important; /* 24px - appropriate for mobile button size */
     height: 1.5rem !important; /* 24px - appropriate for mobile button size */
@@ -218,26 +229,30 @@
   }
 }
 
-@media (max-width: 20rem) { /* 320px */
+@media (max-width: 20rem) {
+  /* 320px */
   .deck {
     padding: 0.5rem 0.5rem var(--action-space-small) 0.5rem; /* 8px 8px 80px 8px */
     height: calc(100% - var(--discover-header-height));
   }
-  
+
   .empty-state {
-    height: calc(100vh - var(--header-height) - var(--navbar-height-small) - var(--discover-header-height) - var(--action-space-small));
+    height: calc(
+      100vh - var(--header-height) - var(--navbar-height-small) -
+        var(--discover-header-height) - var(--action-space-small)
+    );
   }
-  
+
   .action-bar {
     gap: 1.25rem; /* 20px */
   }
-  
+
   .action-btn {
     width: 3rem; /* 48px */
     height: 3rem; /* 48px */
     font-size: 0.75rem; /* 12px - smaller for very small screens */
   }
-  
+
   .action-btn svg {
     width: 1.25rem !important; /* 20px - appropriate for very small screens */
     height: 1.25rem !important; /* 20px - appropriate for very small screens */
@@ -245,5 +260,212 @@
     fill: none !important; /* Ensure no fill for stroke-based icons */
     stroke: currentColor !important; /* Use current color for stroke */
     flex-shrink: 0 !important; /* Prevent shrinking */
+  }
+}
+
+/* Details Modal Styles */
+.details-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: #121214;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Swipe indicator */
+.swipe-indicator {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  z-index: 10;
+}
+
+.swipe-indicator svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: 0.7;
+}
+
+/* Profile image container */
+.details-image-container {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  min-height: 300px;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.details-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Profile content */
+.details-content {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 50vh;
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.details-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.details-close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.details-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.details-close-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.details-body {
+  flex: 1;
+}
+
+.details-bio {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0 0 2rem 0;
+  white-space: pre-wrap;
+}
+
+.details-strike-fund {
+  background: rgba(249, 226, 91, 0.1);
+  border: 1px solid rgba(249, 226, 91, 0.3);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-top: auto;
+}
+
+.details-strike-fund h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-yellow);
+  margin: 0 0 1rem 0;
+}
+
+.strike-fund-link {
+  display: inline-block;
+  background: var(--primary-yellow);
+  color: var(--secondary-black);
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.strike-fund-link:hover {
+  background: #f7d94a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(249, 226, 91, 0.3);
+}
+
+/* Mobile responsive for details modal */
+@media (max-width: 40rem) {
+  /* 640px */
+  .details-content {
+    padding: 1rem;
+  }
+
+  .details-title {
+    font-size: 1.75rem;
+  }
+
+  .details-bio {
+    font-size: 1rem;
+  }
+
+  .details-image-container {
+    height: 40vh;
+    min-height: 250px;
+  }
+
+  .details-content {
+    max-height: 60vh;
+  }
+}
+
+@media (max-width: 20rem) {
+  /* 320px */
+  .details-content {
+    padding: 0.75rem;
+  }
+
+  .details-title {
+    font-size: 1.5rem;
+  }
+
+  .details-bio {
+    font-size: 0.875rem;
+  }
+
+  .details-image-container {
+    height: 35vh;
+    min-height: 200px;
+  }
+
+  .details-content {
+    max-height: 65vh;
+  }
+
+  .details-strike-fund {
+    padding: 1rem;
+  }
+
+  .strike-fund-link {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
   }
 }

@@ -1,92 +1,90 @@
-import React from 'react'
-import { render, screen } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
-import { describe, it, expect, vi } from 'vitest'
-import '@testing-library/jest-dom'
-import App from '../App'
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import { describe, it, expect, vi } from 'vitest';
+import '@testing-library/jest-dom';
+import App from '../App';
 
 // Mock the CSS imports
-vi.mock('../App.css', () => ({}))
+vi.mock('../App.css', () => ({}));
 vi.mock('../pages/DiscoverPage', () => ({
   __esModule: true,
-  default: () => <div data-testid="discover-page">Discover Page</div>
-}))
+  default: () => <div data-testid="discover-page">Discover Page</div>,
+}));
 vi.mock('../pages/MatchesPage', () => ({
   __esModule: true,
-  default: () => <div data-testid="matches-page">Matches Page</div>
-}))
+  default: () => <div data-testid="matches-page">Matches Page</div>,
+}));
 vi.mock('../pages/ActivistSetupPage', () => ({
   __esModule: true,
-  default: () => <div data-testid="activist-setup-page">Activist Setup Page</div>
-}))
+  default: () => (
+    <div data-testid="activist-setup-page">Activist Setup Page</div>
+  ),
+}));
 vi.mock('../components/Toast', () => ({
-  ToastContainer: ({ toasts }: { toasts: any[] }) => (
+  ToastContainer: () => (
     <div data-testid="toast-container">Toast Container</div>
   ),
   useToast: () => ({
     toasts: [],
-    removeToast: vi.fn()
-  })
-}))
+    removeToast: vi.fn(),
+  }),
+}));
 
 const renderWithRouter = (component: React.ReactElement) => {
-  return render(
-    <BrowserRouter>
-      {component}
-    </BrowserRouter>
-  )
-}
+  return render(<BrowserRouter>{component}</BrowserRouter>);
+};
 
 describe('App', () => {
   it('renders the main app structure', () => {
-    renderWithRouter(<App />)
-    
-    expect(screen.getByRole('banner')).toBeInTheDocument() // app-header
-    expect(screen.getByRole('main')).toBeInTheDocument() // app-main
-    expect(screen.getByRole('navigation')).toBeInTheDocument() // nav
-  })
+    renderWithRouter(<App />);
+
+    expect(screen.getByRole('banner')).toBeInTheDocument(); // app-header
+    expect(screen.getByRole('main')).toBeInTheDocument(); // app-main
+    expect(screen.getByRole('navigation')).toBeInTheDocument(); // nav
+  });
 
   it('renders navigation links', () => {
-    renderWithRouter(<App />)
-    
-    expect(screen.getByText('Discover')).toBeInTheDocument()
-    expect(screen.getByText('Matches')).toBeInTheDocument()
-  })
+    renderWithRouter(<App />);
+
+    expect(screen.getByText('Discover')).toBeInTheDocument();
+    expect(screen.getByText('Matches')).toBeInTheDocument();
+  });
 
   it('renders Discover page by default', () => {
-    renderWithRouter(<App />)
-    
-    expect(screen.getByTestId('discover-page')).toBeInTheDocument()
-  })
+    renderWithRouter(<App />);
+
+    expect(screen.getByTestId('discover-page')).toBeInTheDocument();
+  });
 
   it('renders ToastContainer', () => {
-    renderWithRouter(<App />)
-    
-    expect(screen.getByTestId('toast-container')).toBeInTheDocument()
-  })
+    renderWithRouter(<App />);
+
+    expect(screen.getByTestId('toast-container')).toBeInTheDocument();
+  });
 
   it('has proper navigation structure', () => {
-    renderWithRouter(<App />)
-    
-    const nav = screen.getByRole('navigation')
-    const links = nav.querySelectorAll('a')
-    
-    expect(links).toHaveLength(2)
-    expect(links[0]).toHaveAttribute('href', '/')
-    expect(links[1]).toHaveAttribute('href', '/matches')
-  })
+    renderWithRouter(<App />);
+
+    const nav = screen.getByRole('navigation');
+    const links = nav.querySelectorAll('a');
+
+    expect(links).toHaveLength(2);
+    expect(links[0]).toHaveAttribute('href', '/');
+    expect(links[1]).toHaveAttribute('href', '/matches');
+  });
 
   it('has proper main content area', () => {
-    renderWithRouter(<App />)
-    
-    const main = screen.getByRole('main')
-    expect(main).toHaveClass('app-main')
-  })
+    renderWithRouter(<App />);
+
+    const main = screen.getByRole('main');
+    expect(main).toHaveClass('app-main');
+  });
 
   it('has proper header area', () => {
-    renderWithRouter(<App />)
-    
-    const header = screen.getByRole('banner')
-    expect(header).toHaveClass('app-header')
-  })
-})
+    renderWithRouter(<App />);
+
+    const header = screen.getByRole('banner');
+    expect(header).toHaveClass('app-header');
+  });
+});
