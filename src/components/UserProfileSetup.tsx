@@ -39,35 +39,35 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
     const newErrors: Record<string, string> = {}
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required'
+      newErrors.name = 'Le nom est requis'
     } else if (formData.name.trim().length < 2) {
-      newErrors.name = 'Name must be at least 2 characters'
+      newErrors.name = 'Le nom doit contenir au moins 2 caractères'
     }
 
     if (formData.age < 18 || formData.age > 100) {
-      newErrors.age = 'Age must be between 18 and 100'
+      newErrors.age = 'L\'âge doit être entre 18 et 100 ans'
     }
 
     if (!formData.bio.trim()) {
-      newErrors.bio = 'Bio is required'
+      newErrors.bio = 'La biographie est requise'
     } else if (formData.bio.trim().length < 10) {
-      newErrors.bio = 'Bio must be at least 10 characters'
+      newErrors.bio = 'La biographie doit contenir au moins 10 caractères'
     }
 
     if (!formData.photoUrl.trim()) {
-      newErrors.photoUrl = 'Photo URL is required'
+      newErrors.photoUrl = 'L\'URL de la photo est requise'
     } else if (!isValidUrl(formData.photoUrl)) {
-      newErrors.photoUrl = 'Please enter a valid URL'
+      newErrors.photoUrl = 'Veuillez entrer une URL valide'
     }
 
     if (!formData.strikeFundTitle.trim()) {
-      newErrors.strikeFundTitle = 'Strike fund title is required'
+      newErrors.strikeFundTitle = 'Le titre de la caisse de grève est requis'
     }
 
     if (!formData.strikeFundUrl.trim()) {
-      newErrors.strikeFundUrl = 'Strike fund URL is required'
+      newErrors.strikeFundUrl = 'L\'URL de la caisse de grève est requise'
     } else if (!isValidUrl(formData.strikeFundUrl)) {
-      newErrors.strikeFundUrl = 'Please enter a valid URL'
+      newErrors.strikeFundUrl = 'Veuillez entrer une URL valide'
     }
 
     setErrors(newErrors)
@@ -115,15 +115,15 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
       updateUserProfile(profile)
       
       showSuccess(
-        currentUser ? 'Profile Updated!' : 'Profile Created!',
-        'Your activist profile is now live'
+        currentUser ? 'Profil Mis à Jour !' : 'Profil Créé !',
+        'Votre profil d\'activiste est maintenant en ligne'
       )
       
       onComplete()
     } catch (error) {
       console.error('Error saving profile:', error)
-      showError('Save Failed', 'Failed to save profile. Please try again.')
-      setErrors({ submit: 'Failed to save profile. Please try again.' })
+      showError('Échec de la Sauvegarde', 'Échec de la sauvegarde du profil. Veuillez réessayer.')
+      setErrors({ submit: 'Échec de la sauvegarde du profil. Veuillez réessayer.' })
     } finally {
       setIsLoading(false)
     }
@@ -151,7 +151,7 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
           >
             <ArrowLeft size={20} />
           </button>
-          <h1>{currentUser ? 'Edit Profile' : 'Create Your Profile'}</h1>
+          <h1>{currentUser ? 'Modifier le Profil' : 'Créez Votre Profil'}</h1>
           <div className="header-spacer" />
         </div>
 
@@ -160,7 +160,7 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
           <div className="form-section">
             <label htmlFor="photoUrl" className="form-label">
               <Camera size={20} />
-              Profile Photo
+              Photo de Profil
             </label>
             <div className="photo-preview-container">
               {formData.photoUrl && (
@@ -175,7 +175,7 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
               )}
               <div className="photo-placeholder">
                 <User size={32} />
-                <span>Photo Preview</span>
+                <span>Aperçu de la Photo</span>
               </div>
             </div>
             <input
@@ -183,7 +183,7 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
               type="url"
               value={formData.photoUrl}
               onChange={(e) => handlePhotoUrlChange(e.target.value)}
-              placeholder="Enter photo URL"
+              placeholder="Entrez l'URL de la photo"
               className={`form-input ${errors.photoUrl ? 'error' : ''}`}
             />
             {errors.photoUrl && <span className="error-message">{errors.photoUrl}</span>}
@@ -194,14 +194,14 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
             <div className="form-group">
               <label htmlFor="name" className="form-label">
                 <User size={20} />
-                Name
+                Nom
               </label>
               <input
                 id="name"
                 type="text"
                 value={formData.name}
                 onChange={(e) => handleInputChange('name', e.target.value)}
-                placeholder="Your name"
+                placeholder="Votre nom"
                 className={`form-input ${errors.name ? 'error' : ''}`}
               />
               {errors.name && <span className="error-message">{errors.name}</span>}
@@ -210,7 +210,7 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
             <div className="form-group">
               <label htmlFor="age" className="form-label">
                 <User size={20} />
-                Age
+                Âge
               </label>
               <input
                 id="age"
@@ -229,13 +229,13 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
           <div className="form-section">
             <label htmlFor="bio" className="form-label">
               <User size={20} />
-              Bio
+              Biographie
             </label>
             <textarea
               id="bio"
               value={formData.bio}
               onChange={(e) => handleInputChange('bio', e.target.value)}
-              placeholder="Tell us about your activism and causes you support..."
+              placeholder="Parlez-nous de votre activisme et des causes que vous soutenez..."
               rows={4}
               className={`form-textarea ${errors.bio ? 'error' : ''}`}
             />
@@ -245,22 +245,22 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
 
           {/* Strike Fund */}
           <div className="form-section">
-            <h3 className="section-title">Strike Fund Information</h3>
+            <h3 className="section-title">Informations sur la Caisse de Grève</h3>
             <p className="section-description">
-              Share your strike fund so others can support your cause
+              Partagez votre caisse de grève pour que d'autres puissent soutenir votre cause
             </p>
 
             <div className="form-group">
               <label htmlFor="strikeFundTitle" className="form-label">
                 <Link size={20} />
-                Fund Title
+                Titre du Fonds
               </label>
               <input
                 id="strikeFundTitle"
                 type="text"
                 value={formData.strikeFundTitle}
                 onChange={(e) => handleInputChange('strikeFundTitle', e.target.value)}
-                placeholder="e.g., Support the Climate Strike"
+                placeholder="ex: Soutenir la Grève pour le Climat"
                 className={`form-input ${errors.strikeFundTitle ? 'error' : ''}`}
               />
               {errors.strikeFundTitle && <span className="error-message">{errors.strikeFundTitle}</span>}
@@ -269,7 +269,7 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
             <div className="form-group">
               <label htmlFor="strikeFundUrl" className="form-label">
                 <Link size={20} />
-                Fund URL
+                URL du Fonds
               </label>
               <input
                 id="strikeFundUrl"
@@ -301,7 +301,7 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
             ) : (
               <>
                 <Save size={20} />
-                {currentUser ? 'Update Profile' : 'Create Profile'}
+                {currentUser ? 'Mettre à Jour le Profil' : 'Créer le Profil'}
               </>
             )}
           </button>

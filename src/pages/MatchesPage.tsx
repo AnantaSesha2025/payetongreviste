@@ -28,14 +28,14 @@ export default function MatchesPage() {
               <img src={p.photoUrl} alt={p.name} className="match-avatar" />
               <div className="match-name">
                 {p.name}
-                {p.id === currentUser?.id && <span className="own-badge">You</span>}
+                {p.id === currentUser?.id && <span className="own-badge">Vous</span>}
               </div>
             </li>
           ))}
         </ul>
       </aside>
       <section className="matches-section" style={{ padding: 0 }}>
-        {activeId ? <ChatWindow matchId={activeId} /> : <p>No matches yet</p>}
+        {activeId ? <ChatWindow matchId={activeId} /> : <p>Pas encore de correspondances</p>}
       </section>
     </div>
   )
@@ -104,7 +104,7 @@ function ChatWindow({ matchId }: { matchId: string }) {
           </div>
           <div className="chat-profile-details">
             <h3 className="chat-name">{profile.name}</h3>
-            <p className="chat-status">Online</p>
+            <p className="chat-status">En ligne</p>
           </div>
         </div>
         <div className="chat-actions">
@@ -114,7 +114,7 @@ function ChatWindow({ matchId }: { matchId: string }) {
             rel="noreferrer" 
             className="strike-fund-btn"
           >
-            <span>Support</span>
+            <span>Soutenir</span>
             <span className="fund-title">{profile.strikeFund.title}</span>
           </a>
         </div>
@@ -149,7 +149,7 @@ function ChatWindow({ matchId }: { matchId: string }) {
           <input 
             value={text} 
             onChange={(e) => setText(e.target.value)} 
-            placeholder="Type a message..." 
+            placeholder="Tapez un message..." 
             className="message-input"
             onKeyPress={(e) => e.key === 'Enter' && send()}
           />

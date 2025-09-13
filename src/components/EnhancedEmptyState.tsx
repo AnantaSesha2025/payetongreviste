@@ -37,11 +37,11 @@ export function EnhancedEmptyState({
         </motion.div>
         
         <h2 className="empty-state-title">
-          No more activists to discover right now
+          Plus d'activistes à découvrir pour le moment
         </h2>
         
         <p className="empty-state-description">
-          You've seen all available profiles! Check back later for new activists joining the movement, or create your own profile to connect with others.
+          Vous avez vu tous les profils disponibles ! Revenez plus tard pour de nouveaux activistes rejoignant le mouvement, ou créez votre propre profil pour vous connecter avec d'autres.
         </p>
         
         <div className="empty-state-actions">
@@ -50,7 +50,7 @@ export function EnhancedEmptyState({
             onClick={onCreateProfile}
           >
             <Plus size={20} />
-            Create Your Profile
+            Créer Votre Profil
           </button>
           
           <button 
@@ -58,16 +58,16 @@ export function EnhancedEmptyState({
             onClick={onRefresh}
           >
             <RefreshCw size={20} />
-            Refresh
+            Actualiser
           </button>
         </div>
         
         <div className="empty-state-tips">
-          <h3>What's next?</h3>
+          <h3>Et maintenant ?</h3>
           <ul>
-            <li>Create your activist profile to join the community</li>
-            <li>Check your matches to start conversations</li>
-            <li>Share the app to bring more activists on board</li>
+            <li>Créez votre profil d'activiste pour rejoindre la communauté</li>
+            <li>Consultez vos correspondances pour commencer des conversations</li>
+            <li>Partagez l'application pour amener plus d'activistes à bord</li>
           </ul>
         </div>
       </div>

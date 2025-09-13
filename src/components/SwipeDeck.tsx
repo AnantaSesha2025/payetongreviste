@@ -47,10 +47,10 @@ export function SwipeDeck({ onCreateProfile }: { onCreateProfile: () => void }) 
     
     if (dir === 'right') {
       likeProfile(current.id)
-      showSuccess('Profile Liked!', `You liked ${current.name}`)
+      showSuccess('Profil Aimé !', `Vous avez aimé ${current.name}`)
     } else {
       passProfile(current.id)
-      showInfo('Profile Passed', `You passed on ${current.name}`)
+      showInfo('Profil Passé', `Vous avez passé sur ${current.name}`)
     }
     
     setIndex((v) => v + 1)

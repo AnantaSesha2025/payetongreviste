@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1 className="app-title">PayeToGreviste</h1>
+        <h1 className="app-title">PayeTonGréviste</h1>
       </header>
       <main className="app-main">
         <Routes>
@@ -31,7 +31,7 @@ function App() {
       <nav className="nav">
         <NavLink to="/" end className={({ isActive }) => isActive ? 'active' : ''}>
           <Search />
-          <span>Discover</span>
+          <span>Découvrir</span>
         </NavLink>
         <NavLink to="/matches" className={({ isActive }) => isActive ? 'active' : ''}>
           <MessageCircle />

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SwipeDeck } from '../components/SwipeDeck'
 import { OnboardingFlow } from '../components/OnboardingFlow'
-import { Plus } from 'react-feather'
 import './DiscoverPage.css'
 
 /**
@@ -49,7 +48,7 @@ export default function DiscoverPage() {
   return (
     <div className="discover">
       <div className="discover-header">
-        <h1>Discover Activists</h1>
+        <h1>Découvrir les Activistes</h1>
         {/* Create Profile button hidden as requested */}
         {/* <button 
           className="create-profile-btn"

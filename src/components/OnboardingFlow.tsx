@@ -13,31 +13,31 @@ export function OnboardingFlow({ onComplete }: { onComplete: () => void }) {
 
   const steps = [
     {
-      title: "Welcome to PayeTonGreviste",
-      subtitle: "Connect with activists fighting for change",
-      content: "Discover like-minded activists, support their causes, and build meaningful connections in the fight for social justice.",
+      title: "Bienvenue sur PayeTonGréviste",
+      subtitle: "Connectez-vous avec des activistes qui luttent pour le changement",
+      content: "Découvrez des activistes partageant vos idées, soutenez leurs causes et créez des liens significatifs dans la lutte pour la justice sociale.",
       icon: <Users size={48} />,
       color: "var(--primary-yellow)"
     },
     {
-      title: "Swipe to Connect",
-      subtitle: "Learn the gestures",
-      content: "Swipe right to like, left to pass, or up to see more details about each activist's cause.",
+      title: "Glissez pour vous Connecter",
+      subtitle: "Apprenez les gestes",
+      content: "Glissez vers la droite pour aimer, vers la gauche pour passer, ou vers le haut pour voir plus de détails sur la cause de chaque activiste.",
       icon: <Target size={48} />,
       color: "#10b981",
       gestures: true
     },
     {
-      title: "Support Causes",
-      subtitle: "Make a real impact",
-      content: "Each activist has a strike fund you can support. Every contribution helps advance their cause.",
+      title: "Soutenir les Causes",
+      subtitle: "Faites une vraie différence",
+      content: "Chaque activiste a une caisse de grève que vous pouvez soutenir. Chaque contribution aide à faire avancer leur cause.",
       icon: <Heart size={48} />,
       color: "#ef4444"
     },
     {
-      title: "Create Your Profile",
-      subtitle: "Join the movement",
-      content: "Set up your own activist profile to connect with others and share your own strike fund.",
+      title: "Créez Votre Profil",
+      subtitle: "Rejoignez le mouvement",
+      content: "Configurez votre propre profil d'activiste pour vous connecter avec d'autres et partager votre propre caisse de grève.",
       icon: <Users size={48} />,
       color: "var(--primary-yellow)"
     }
@@ -109,15 +109,15 @@ export function OnboardingFlow({ onComplete }: { onComplete: () => void }) {
                     <div className="gesture-arrows">
                       <div className="arrow-up">
                         <ArrowUp size={24} />
-                        <span>Details</span>
+                        <span>Détails</span>
                       </div>
                       <div className="arrow-left">
                         <X size={24} />
-                        <span>Pass</span>
+                        <span>Passer</span>
                       </div>
                       <div className="arrow-right">
                         <Heart size={24} />
-                        <span>Like</span>
+                        <span>Aimer</span>
                       </div>
                     </div>
                   </div>
@@ -132,13 +132,13 @@ export function OnboardingFlow({ onComplete }: { onComplete: () => void }) {
               className="skip-btn"
               onClick={handleSkip}
             >
-              Skip
+              Passer
             </button>
             <button 
               className="next-btn"
               onClick={handleNext}
             >
-              {currentStep === steps.length - 1 ? 'Get Started' : 'Next'}
+              {currentStep === steps.length - 1 ? 'Commencer' : 'Suivant'}
               <ArrowRight size={16} />
             </button>
           </div>

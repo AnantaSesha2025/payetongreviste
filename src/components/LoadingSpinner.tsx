@@ -8,7 +8,7 @@ import './LoadingSpinner.css'
 export function LoadingSpinner({ 
   size = 'medium', 
   color = 'primary',
-  text = 'Loading...',
+  text = 'Chargement...',
   showText = true 
 }: {
   size?: 'small' | 'medium' | 'large'
