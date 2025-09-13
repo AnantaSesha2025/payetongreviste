@@ -69,9 +69,10 @@ describe('App', () => {
     const nav = screen.getByRole('navigation');
     const links = nav.querySelectorAll('a');
 
-    expect(links).toHaveLength(2);
+    expect(links).toHaveLength(3);
     expect(links[0]).toHaveAttribute('href', '/');
     expect(links[1]).toHaveAttribute('href', '/matches');
+    expect(links[2]).toHaveAttribute('href', '/gist-demo');
   });
 
   it('has proper main content area', () => {

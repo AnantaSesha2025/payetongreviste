@@ -19,12 +19,10 @@ vi.mock('react-router-dom', async () => {
  * Test wrapper component that provides router context
  */
 const TestWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <BrowserRouter>
-    {children}
-  </BrowserRouter>
+  <BrowserRouter>{children}</BrowserRouter>
 );
 
-describe.skip('GestureRecognizer', () => {
+describe('GestureRecognizer', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.useFakeTimers();

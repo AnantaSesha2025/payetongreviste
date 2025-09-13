@@ -1,0 +1,117 @@
+.gist-demo-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+.gist-demo-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.gist-demo-header h1 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-sm);
+}
+
+.gist-demo-header p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+  margin: 0;
+}
+
+.gist-demo-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.gist-demo-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.gist-demo-section h2 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.gist-demo-preview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.gist-demo-stats {
+  background: var(--color-primary-alpha);
+  color: var(--color-primary);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-primary);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  margin: 0;
+}
+
+.gist-demo-cards {
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-surface-secondary);
+  border-radius: var(--border-radius-lg);
+  border: 2px dashed var(--color-border);
+}
+
+.gist-demo-error {
+  background: var(--color-error-alpha);
+  color: var(--color-error);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-error);
+}
+
+.gist-demo-error h3 {
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.gist-demo-error p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .gist-demo-page {
+    padding: var(--spacing-md);
+  }
+
+  .gist-demo-section {
+    padding: var(--spacing-md);
+  }
+
+  .gist-demo-header h1 {
+    font-size: var(--font-size-xl);
+  }
+
+  .gist-demo-header p {
+    font-size: var(--font-size-md);
+  }
+
+  .gist-demo-section h2 {
+    font-size: var(--font-size-lg);
+  }
+}

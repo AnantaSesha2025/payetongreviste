@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { BioWithFund } from './BioWithFund';
-import { OptimizedImage, useBlurDataURL } from './OptimizedImage';
+import { OptimizedImage } from './OptimizedImage';
+import { useBlurDataURL } from '../hooks/useBlurDataURL';
 import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation';
 import type { PanInfo } from 'framer-motion';
 import './Card.css';
@@ -155,7 +156,7 @@ export function Card({
       className={`card-swipeable ${disabled ? 'disabled' : ''}`}
       style={style}
       data-swipe={swipeDirection}
-      drag={disabled ? false : true}
+      drag={!disabled}
       dragConstraints={{ left: -300, right: 300, top: -150, bottom: 150 }}
       dragElastic={0.1}
       dragMomentum={false}

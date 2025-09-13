@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { User, Camera, Link, Save, ArrowLeft } from 'react-feather';
+import { User, Camera, Link, Save, ArrowLeft, GitHub } from 'react-feather';
 import { useAppStore, type Profile } from '../store';
 import { useToast } from '../hooks/useToast';
+import { githubGistService } from '../lib/githubGist';
+import { DEFAULT_GIST_ID } from '../lib/constants';
 import './UserProfileSetup.css';
 
 /**
@@ -14,6 +16,8 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
   const { showSuccess, showError } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [githubToken, setGithubToken] = useState('');
+  const [showGistSection, setShowGistSection] = useState(false);
 
   const [formData, setFormData] = useState({
     name: currentUser?.name || '',
@@ -24,6 +28,14 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
     strikeFundUrl: currentUser?.strikeFund?.url || '',
     location: currentUser?.location || { lat: 0, lon: 0 },
   });
+
+  // Load GitHub token from localStorage on mount
+  useEffect(() => {
+    const savedToken = localStorage.getItem('github_token');
+    if (savedToken) {
+      setGithubToken(savedToken);
+    }
+  }, []);
 
   // Handle form input changes
   const handleInputChange = (field: string, value: string | number) => {
@@ -117,8 +129,68 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
 
+      // Save to local store
       await upsertProfile(profile);
       updateUserProfile(profile);
+
+      // Also save to Gist (optional - requires GitHub token)
+      if (githubToken.trim()) {
+        try {
+          // Get current profiles from Gist
+          const gistId = DEFAULT_GIST_ID;
+          const gistResult = await githubGistService.readProfiles(gistId);
+
+          if (gistResult.success && gistResult.profiles) {
+            // Convert app profile to Gist format
+            const gistProfile = {
+              id: profile.id,
+              name: profile.name,
+              age: profile.age,
+              bio: profile.bio,
+              photoUrl: profile.photoUrl,
+              strikeFund: profile.strikeFund,
+            };
+
+            // Add new profile to existing profiles
+            const updatedProfiles = [...gistResult.profiles, gistProfile];
+
+            // Update the Gist with the new profile
+            githubGistService.setGistId(gistId);
+            const updateResult = await githubGistService.updateGist(
+              updatedProfiles,
+              githubToken
+            );
+
+            if (updateResult.success) {
+              console.log('Profile successfully added to Gist:', gistProfile);
+              showSuccess(
+                'Profil Ajouté au Gist !',
+                'Votre profil a été ajouté à la base de données partagée'
+              );
+            } else {
+              console.error('Failed to update Gist:', updateResult.error);
+              showError(
+                'Erreur Gist',
+                "Profil créé localement mais échec de l'ajout au Gist partagé"
+              );
+            }
+          } else {
+            console.error('Failed to read existing Gist:', gistResult.error);
+            showError(
+              'Erreur Gist',
+              'Profil créé localement mais impossible de lire le Gist existant'
+            );
+          }
+        } catch (error) {
+          console.error('Error updating Gist:', error);
+          showError(
+            'Erreur Gist',
+            "Profil créé localement mais échec de l'ajout au Gist partagé"
+          );
+        }
+      } else {
+        console.log('No GitHub token provided - profile saved locally only');
+      }
 
       showSuccess(
         currentUser ? 'Profil Mis à Jour !' : 'Profil Créé !',
@@ -311,6 +383,56 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
                 <span className="error-message">{errors.strikeFundUrl}</span>
               )}
             </div>
+          </div>
+
+          {/* GitHub Token Section */}
+          <div className="form-section">
+            <div className="gist-toggle-section">
+              <button
+                type="button"
+                className="gist-toggle-btn"
+                onClick={() => setShowGistSection(!showGistSection)}
+              >
+                <GitHub size={20} />
+                {showGistSection ? 'Masquer' : 'Afficher'} les Options Gist
+              </button>
+              <p className="gist-description">
+                Ajoutez votre profil à la base de données partagée (optionnel)
+              </p>
+            </div>
+
+            {showGistSection && (
+              <div className="gist-section">
+                <div className="form-group">
+                  <label htmlFor="githubToken" className="form-label">
+                    <GitHub size={20} />
+                    Token GitHub
+                  </label>
+                  <input
+                    id="githubToken"
+                    type="password"
+                    value={githubToken}
+                    onChange={e => {
+                      setGithubToken(e.target.value);
+                      localStorage.setItem('github_token', e.target.value);
+                    }}
+                    placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+                    className="form-input"
+                  />
+                  <small className="form-help">
+                    Votre token personnel GitHub avec les permissions 'gist'.
+                    <a
+                      href="https://github.com/settings/tokens"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="help-link"
+                    >
+                      Créer un token
+                    </a>
+                  </small>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Submit Error */}

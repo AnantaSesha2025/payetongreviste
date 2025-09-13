@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import type { PanInfo } from 'framer-motion';
 import { Card } from './Card';
@@ -9,6 +9,9 @@ import { useSwipeHistory } from '../hooks/useUndo';
 // import { BioWithFund } from './BioWithFund'
 import { Heart, Plus, X, ArrowDown, RotateCcw } from 'react-feather';
 import { mockProfiles, useAppStore } from '../store';
+import { githubGistService } from '../lib/githubGist';
+import { convertGistProfileToAppProfile } from '../lib/fakeProfiles';
+import { DEFAULT_GIST_ID } from '../lib/constants';
 // import { haversineKm } from '../lib/geo'
 import './SwipeDeck.css';
 
@@ -31,26 +34,46 @@ export function SwipeDeck({
   const [index, setIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Initialize profiles with mock data if none exist
+  // Initialize profiles from Gist or mock data if none exist
   useEffect(() => {
     if (profiles.length === 0) {
-      // In test environment, load immediately
+      // In test environment, load mock data immediately
       if (import.meta.env.MODE === 'test') {
         setProfiles(mockProfiles);
         setIsLoading(false);
       } else {
-        // Simulate loading delay for better UX in production
-        const timer = setTimeout(() => {
-          setProfiles(mockProfiles);
-          setIsLoading(false);
-        }, 1000);
-
-        return () => clearTimeout(timer);
+        // Load from your existing Gist
+        loadProfilesFromGist();
       }
     } else {
       setIsLoading(false);
     }
-  }, [profiles.length, setProfiles]);
+  }, [profiles.length, setProfiles, loadProfilesFromGist]);
+
+  // Function to load profiles from your Gist
+  const loadProfilesFromGist = useCallback(async () => {
+    try {
+      const gistId = DEFAULT_GIST_ID;
+      const result = await githubGistService.readProfiles(gistId);
+
+      if (result.success && result.profiles && result.profiles.length > 0) {
+        // Convert Gist profiles to app format
+        const appProfiles = result.profiles.map(convertGistProfileToAppProfile);
+        setProfiles(appProfiles);
+        console.log('Loaded profiles from Gist:', appProfiles.length);
+      } else {
+        // Fallback to mock data if Gist is empty or fails
+        console.log('Gist is empty or failed to load, using mock data');
+        setProfiles(mockProfiles);
+      }
+    } catch (error) {
+      // Fallback to mock data on error
+      console.error('Error loading from Gist, using mock data:', error);
+      setProfiles(mockProfiles);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [setProfiles]);
 
   // Get current and next profile for the card stack
   // Geolocation temporarily disabled due to bugs; show all profiles

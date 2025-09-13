@@ -245,8 +245,71 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Gist Section Styles */
+.gist-toggle-section {
+  margin-bottom: 16px;
+}
+
+.gist-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  justify-content: center;
+}
+
+.gist-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--primary-yellow);
+}
+
+.gist-description {
+  color: var(--text-secondary);
+  font-size: 12px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.gist-section {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 12px;
+}
+
+.form-help {
+  color: var(--text-secondary);
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+.help-link {
+  color: var(--primary-yellow);
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.help-link:hover {
+  text-decoration: underline;
 }
 
 /* Mobile Responsive */
@@ -254,16 +317,16 @@
   .profile-setup-container {
     padding: 16px;
   }
-  
+
   .form-row {
     grid-template-columns: 1fr;
     gap: 12px;
   }
-  
+
   .profile-setup-header h1 {
     font-size: 20px;
   }
-  
+
   .photo-preview-container {
     width: 100px;
     height: 100px;

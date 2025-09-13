@@ -1,8 +1,9 @@
 import { NavLink, Route, Routes } from 'react-router-dom';
-import { Search, MessageCircle } from 'react-feather';
+import { Search, MessageCircle, GitHub } from 'react-feather';
 import DiscoverPage from './pages/DiscoverPage';
 import MatchesPage from './pages/MatchesPage';
 import ActivistSetupPage from './pages/ActivistSetupPage';
+import { GistDemoPage } from './pages/GistDemoPage';
 import { ToastContainer } from './components/Toast';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { useToast } from './hooks/useToast';
@@ -33,6 +34,7 @@ function App() {
               <Route path="/" element={<DiscoverPage />} />
               <Route path="/matches" element={<MatchesPage />} />
               <Route path="/activist" element={<ActivistSetupPage />} />
+              <Route path="/gist-demo" element={<GistDemoPage />} />
             </Routes>
           </ErrorBoundary>
         </main>
@@ -51,6 +53,13 @@ function App() {
           >
             <MessageCircle />
             <span>Matches</span>
+          </NavLink>
+          <NavLink
+            to="/gist-demo"
+            className={({ isActive }) => (isActive ? 'active' : '')}
+          >
+            <GitHub />
+            <span>Gist Demo</span>
           </NavLink>
         </nav>
         <ToastContainer toasts={toasts} onClose={removeToast} />

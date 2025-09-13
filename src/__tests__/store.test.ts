@@ -1,4 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { useAppStore } from '../store';
 import type { Profile } from '../store';
 
@@ -10,7 +11,16 @@ const mockProfile: Profile = {
   bio: 'Test bio',
   photoUrl: 'https://example.com/photo.jpg',
   location: { lat: 0, lon: 0 },
-  strikeFund: { title: 'Test Fund', url: 'https://example.com/fund' },
+  strikeFund: {
+    id: 'fund-1',
+    title: 'Test Fund',
+    url: 'https://example.com/fund',
+    description: 'Test fund description',
+    category: 'environment',
+    urgency: 'medium',
+    currentAmount: 0,
+    targetAmount: 1000,
+  },
 };
 
 describe('useAppStore', () => {

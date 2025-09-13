@@ -111,7 +111,7 @@ describe('Toast', () => {
     expect(screen.queryByText('Operation completed')).not.toBeInTheDocument();
   });
 
-  it.skip('calls onClose when close button is clicked', async () => {
+  it('calls onClose when close button is clicked', async () => {
     render(
       <Toast id="1" type="success" title="Success!" onClose={mockOnClose} />
     );
@@ -119,16 +119,13 @@ describe('Toast', () => {
     const closeButton = screen.getByLabelText('Close notification');
     fireEvent.click(closeButton);
 
-    // Wait for the 300ms delay in handleClose
-    await waitFor(
-      () => {
-        expect(mockOnClose).toHaveBeenCalledWith('1');
-      },
-      { timeout: 1000 }
-    );
+    // Advance timers to trigger the 300ms delay in handleClose
+    vi.advanceTimersByTime(300);
+
+    expect(mockOnClose).toHaveBeenCalledWith('1');
   });
 
-  it.skip('auto-closes after duration', async () => {
+  it('auto-closes after duration', async () => {
     render(
       <Toast
         id="1"
@@ -142,9 +139,7 @@ describe('Toast', () => {
     // Fast-forward time past duration + 300ms delay
     vi.advanceTimersByTime(1300);
 
-    await waitFor(() => {
-      expect(mockOnClose).toHaveBeenCalledWith('1');
-    });
+    expect(mockOnClose).toHaveBeenCalledWith('1');
   });
 
   it('applies correct CSS classes for different types', () => {
