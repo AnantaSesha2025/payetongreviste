@@ -3,9 +3,11 @@ import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import type { PanInfo } from 'framer-motion';
 import { Card } from './Card';
 import { EnhancedEmptyState } from './EnhancedEmptyState';
+import { SwipeDeckSkeleton } from './ProfileSkeleton';
 import { useToast } from '../hooks/useToast';
+import { useSwipeHistory } from '../hooks/useUndo';
 // import { BioWithFund } from './BioWithFund'
-import { Heart, Plus, X, ArrowDown } from 'react-feather';
+import { Heart, Plus, X, ArrowDown, RotateCcw } from 'react-feather';
 import { mockProfiles, useAppStore } from '../store';
 // import { haversineKm } from '../lib/geo'
 import './SwipeDeck.css';
@@ -24,11 +26,30 @@ export function SwipeDeck({
 }) {
   const { profiles, setProfiles, likeProfile, passProfile } = useAppStore();
   const { showSuccess, showInfo } = useToast();
+  const { recordSwipe, undoLastSwipe, canUndo, getUndoableAction } =
+    useSwipeHistory();
   const [index, setIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Initialize profiles with mock data if none exist
   useEffect(() => {
-    if (profiles.length === 0) setProfiles(mockProfiles);
+    if (profiles.length === 0) {
+      // In test environment, load immediately
+      if (import.meta.env.MODE === 'test') {
+        setProfiles(mockProfiles);
+        setIsLoading(false);
+      } else {
+        // Simulate loading delay for better UX in production
+        const timer = setTimeout(() => {
+          setProfiles(mockProfiles);
+          setIsLoading(false);
+        }, 1000);
+
+        return () => clearTimeout(timer);
+      }
+    } else {
+      setIsLoading(false);
+    }
   }, [profiles.length, setProfiles]);
 
   // Get current and next profile for the card stack
@@ -49,6 +70,9 @@ export function SwipeDeck({
   const handleChoice = (dir: 'left' | 'right') => {
     if (!current) return;
 
+    // Record the swipe action for undo functionality
+    recordSwipe(dir === 'right' ? 'like' : 'pass', current.id);
+
     if (dir === 'right') {
       likeProfile(current.id);
       showSuccess('Profil Aimé !', `Vous avez aimé ${current.name}`);
@@ -60,10 +84,57 @@ export function SwipeDeck({
     setIndex(v => v + 1);
   };
 
+  /**
+   * Handles undo action
+   */
+  const handleUndo = () => {
+    if (!canUndo) return;
+
+    const undoableAction = getUndoableAction();
+    if (!undoableAction) return;
+
+    // Move back one step
+    setIndex(v => Math.max(0, v - 1));
+
+    // Remove the action from store
+    if (undoableAction.type === 'like') {
+      // Remove from liked and chats
+      const { likedIds, chats } = useAppStore.getState();
+      const newLikedIds = new Set(likedIds);
+      newLikedIds.delete(undoableAction.profileId);
+
+      const newChats = { ...chats };
+      delete newChats[undoableAction.profileId];
+
+      useAppStore.setState({ likedIds: newLikedIds, chats: newChats });
+    } else {
+      // Remove from passed
+      const { passedIds } = useAppStore.getState();
+      const newPassedIds = new Set(passedIds);
+      newPassedIds.delete(undoableAction.profileId);
+
+      useAppStore.setState({ passedIds: newPassedIds });
+    }
+
+    // Remove from history
+    undoLastSwipe();
+
+    showInfo('Annulé', 'Dernière action annulée');
+  };
+
   // State for managing details modal visibility
   const [showDetails, setShowDetails] = useState(false);
   const openDetails = () => setShowDetails(true);
   const closeDetails = () => setShowDetails(false);
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="deck">
+        <SwipeDeckSkeleton />
+      </div>
+    );
+  }
 
   return (
     <div className="deck">
@@ -89,6 +160,8 @@ export function SwipeDeck({
         onPass={() => handleChoice('left')}
         onLike={() => handleChoice('right')}
         onDetails={openDetails}
+        onUndo={handleUndo}
+        canUndo={canUndo}
       />
       <AnimatePresence>
         {showDetails && current && (
@@ -109,21 +182,27 @@ export function SwipeDeck({
 }
 
 /**
- * Action bar component with buttons for pass, details, and like actions
+ * Action bar component with buttons for pass, details, like, and undo actions
  * @param props - Component props
  * @param props.onPass - Callback for pass action
  * @param props.onLike - Callback for like action
  * @param props.onDetails - Callback for details action
+ * @param props.onUndo - Callback for undo action
+ * @param props.canUndo - Whether undo is available
  * @returns JSX element representing the action bar
  */
 function ActionBar({
   onPass,
   onLike,
   onDetails,
+  onUndo,
+  canUndo,
 }: {
   onPass: () => void;
   onLike: () => void;
   onDetails: () => void;
+  onUndo: () => void;
+  canUndo: boolean;
 }) {
   return (
     <div className="action-bar">
@@ -147,6 +226,14 @@ function ActionBar({
         className="action-btn action-btn--like"
       >
         <Heart />
+      </button>
+      <button
+        aria-label="Annuler la dernière action"
+        onClick={onUndo}
+        disabled={!canUndo}
+        className={`action-btn action-btn--undo ${!canUndo ? 'action-btn--disabled' : ''}`}
+      >
+        <RotateCcw />
       </button>
     </div>
   );

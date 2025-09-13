@@ -47,7 +47,7 @@ describe('App', () => {
   it('renders navigation links', () => {
     renderWithRouter(<App />);
 
-    expect(screen.getByText('Discover')).toBeInTheDocument();
+    expect(screen.getByText('Découvrir')).toBeInTheDocument();
     expect(screen.getByText('Matches')).toBeInTheDocument();
   });
 

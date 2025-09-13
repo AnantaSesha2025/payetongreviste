@@ -68,7 +68,7 @@ describe('SwipeDeck Component', () => {
     render(<SwipeDeck onCreateProfile={() => {}} />);
 
     expect(
-      screen.getByText('No more activists to discover right now')
+      screen.getByText("Plus d'activistes à découvrir pour le moment")
     ).toBeInTheDocument();
   });
 

@@ -1,0 +1,128 @@
+/* Error Boundary Styles */
+.error-boundary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--space-4);
+  background: var(--secondary-black);
+  color: var(--tertiary-white);
+}
+
+.error-boundary__content {
+  text-align: center;
+  max-width: 500px;
+  padding: var(--space-8);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.error-boundary__icon {
+  color: #ef4444;
+  margin-bottom: var(--space-4);
+}
+
+.error-boundary__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-3);
+  color: var(--tertiary-white);
+}
+
+.error-boundary__message {
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: var(--space-6);
+  line-height: var(--leading-relaxed);
+}
+
+.error-boundary__details {
+  text-align: left;
+  margin-bottom: var(--space-6);
+  padding: var(--space-4);
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.error-boundary__details summary {
+  cursor: pointer;
+  font-weight: var(--font-medium);
+  margin-bottom: var(--space-2);
+  color: var(--primary-yellow);
+}
+
+.error-boundary__error-stack {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: var(--text-sm);
+  color: #ef4444;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+}
+
+.error-boundary__actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.error-boundary__retry-btn,
+.error-boundary__reload-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-lg);
+  font-weight: var(--font-medium);
+  font-size: var(--text-base);
+  cursor: pointer;
+  transition: all var(--duration-200) var(--ease-out);
+  border: none;
+}
+
+.error-boundary__retry-btn {
+  background: var(--primary-yellow);
+  color: var(--secondary-black);
+}
+
+.error-boundary__retry-btn:hover {
+  background: #f7d94a;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.error-boundary__reload-btn {
+  background: transparent;
+  color: var(--tertiary-white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.error-boundary__reload-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary-yellow);
+  color: var(--primary-yellow);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .error-boundary {
+    padding: var(--space-2);
+  }
+
+  .error-boundary__content {
+    padding: var(--space-6);
+  }
+
+  .error-boundary__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .error-boundary__retry-btn,
+  .error-boundary__reload-btn {
+    justify-content: center;
+  }
+}

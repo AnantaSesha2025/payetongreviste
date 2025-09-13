@@ -23,6 +23,24 @@ vi.mock('framer-motion', () => ({
   ),
 }));
 
+// Mock OptimizedImage component
+vi.mock('../OptimizedImage', () => ({
+  OptimizedImage: ({
+    src,
+    alt,
+    className,
+  }: {
+    src: string;
+    alt: string;
+    className?: string;
+  }) => <img src={src} alt={alt} className={className} />,
+}));
+
+// Mock useBlurDataURL hook
+vi.mock('../../hooks/useBlurDataURL', () => ({
+  useBlurDataURL: () => 'data:image/png;base64,test',
+}));
+
 const mockProfile = {
   id: '1',
   name: 'Test User',
@@ -48,7 +66,7 @@ describe('Card Component', () => {
     expect(screen.getByText('Test User, 25')).toBeInTheDocument();
     expect(screen.getByText('Test bio with')).toBeInTheDocument();
     expect(screen.getByText('fund')).toBeInTheDocument();
-    expect(screen.getByAltText('Test User')).toBeInTheDocument();
+    expect(screen.getByAltText('Photo de Test User')).toBeInTheDocument();
   });
 
   it('renders with custom styles', () => {

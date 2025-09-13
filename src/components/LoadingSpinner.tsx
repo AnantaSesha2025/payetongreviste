@@ -1,85 +1,72 @@
-import { motion } from 'framer-motion'
-import './LoadingSpinner.css'
+import './LoadingSpinner.css';
+
+interface LoadingSpinnerProps {
+  size?: 'small' | 'medium' | 'large';
+  color?: 'primary' | 'secondary' | 'white';
+  className?: string;
+  text?: string;
+  'data-testid'?: string;
+}
 
 /**
  * Loading spinner component with customizable size and color
- * Provides visual feedback during async operations
  */
-export function LoadingSpinner({ 
-  size = 'medium', 
+export function LoadingSpinner({
+  size = 'medium',
   color = 'primary',
+  className = '',
   text = 'Chargement...',
-  showText = true 
-}: {
-  size?: 'small' | 'medium' | 'large'
-  color?: 'primary' | 'white' | 'black'
-  text?: string
-  showText?: boolean
-}) {
-  const sizeClasses = {
-    small: 'spinner-small',
-    medium: 'spinner-medium',
-    large: 'spinner-large'
-  }
-
-  const colorClasses = {
-    primary: 'spinner-primary',
-    white: 'spinner-white',
-    black: 'spinner-black'
-  }
-
+  'data-testid': dataTestId = 'loading-spinner',
+}: LoadingSpinnerProps) {
   return (
-    <div className="loading-spinner-container">
-      <motion.div
-        data-testid="loading-spinner"
-        className={`loading-spinner ${sizeClasses[size]} ${colorClasses[color]}`}
-        animate={{ rotate: 360 }}
-        transition={{
-          duration: 1,
-          repeat: Infinity,
-          ease: "linear"
-        }}
-      />
-      {showText && text && (
-        <motion.p
-          className="loading-text"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          {text}
-        </motion.p>
-      )}
-    </div>
-  )
-}
-
-/**
- * Full-screen loading overlay component
- * Used for major loading states like app initialization
- */
-export function LoadingOverlay({ text = 'Loading...' }: { text?: string }) {
-  return (
-    <motion.div
-      data-testid="loading-overlay"
-      className="loading-overlay"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+    <div
+      className={`loading-spinner loading-spinner--${size} loading-spinner--${color} ${className}`}
+      role="status"
+      aria-label="Chargement en cours"
+      data-testid={dataTestId}
     >
-      <LoadingSpinner size="large" text={text} />
-    </motion.div>
-  )
+      <div className="loading-spinner__circle" />
+      <span className="loading-spinner__text">{text}</span>
+    </div>
+  );
 }
 
 /**
- * Inline loading component for buttons and small elements
- * Replaces button content during loading states
+ * Full-screen loading overlay
  */
-export function InlineLoader({ size = 'small' }: { size?: 'small' | 'medium' }) {
+export function LoadingOverlay({
+  text = 'Chargement...',
+  'data-testid': dataTestId = 'loading-overlay',
+}: {
+  text?: string;
+  'data-testid'?: string;
+}) {
   return (
-    <div data-testid="inline-loader" className="inline-loader">
-      <LoadingSpinner size={size} showText={false} />
+    <div className="loading-overlay" data-testid={dataTestId}>
+      <div className="loading-overlay__content">
+        <LoadingSpinner size="large" data-testid="loading-spinner" />
+        <p className="loading-overlay__message">{text}</p>
+      </div>
     </div>
-  )
+  );
+}
+
+/**
+ * Inline loader for small spaces
+ */
+export function InlineLoader({
+  size = 'small',
+  'data-testid': dataTestId = 'inline-loader',
+}: {
+  size?: 'small' | 'medium' | 'large';
+  'data-testid'?: string;
+}) {
+  return (
+    <LoadingSpinner
+      size={size}
+      className="inline-loader"
+      data-testid={dataTestId}
+      text=""
+    />
+  );
 }

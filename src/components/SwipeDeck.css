@@ -131,6 +131,22 @@
   ) !important; /* Ensure good contrast for plus icon */
 }
 
+.action-btn--undo {
+  background: #6b7280;
+  color: white;
+}
+
+.action-btn--undo:hover:not(.action-btn--disabled) {
+  background: #4b5563;
+  transform: scale(1.1);
+}
+
+.action-btn--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
 /* Specific overrides for react-feather icons */
 .action-btn svg[data-feather] {
   width: 1.75rem !important;

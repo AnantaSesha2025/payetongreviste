@@ -4,6 +4,7 @@ import DiscoverPage from './pages/DiscoverPage';
 import MatchesPage from './pages/MatchesPage';
 import ActivistSetupPage from './pages/ActivistSetupPage';
 import { ToastContainer } from './components/Toast';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { useToast } from './hooks/useToast';
 import './App.css';
 
@@ -18,36 +19,43 @@ function App() {
   const { toasts, removeToast } = useToast();
 
   return (
-    <div className="app">
-      <header className="app-header">
-        <h1 className="app-title">PayeTonGréviste</h1>
-      </header>
-      <main className="app-main">
-        <Routes>
-          <Route path="/" element={<DiscoverPage />} />
-          <Route path="/matches" element={<MatchesPage />} />
-          <Route path="/activist" element={<ActivistSetupPage />} />
-        </Routes>
-      </main>
-      <nav className="nav">
-        <NavLink
-          to="/"
-          end
-          className={({ isActive }) => (isActive ? 'active' : '')}
-        >
-          <Search />
-          <span>Découvrir</span>
-        </NavLink>
-        <NavLink
-          to="/matches"
-          className={({ isActive }) => (isActive ? 'active' : '')}
-        >
-          <MessageCircle />
-          <span>Matches</span>
-        </NavLink>
-      </nav>
-      <ToastContainer toasts={toasts} onClose={removeToast} />
-    </div>
+    <ErrorBoundary>
+      <div className="app">
+        <a href="#main-content" className="skip-link">
+          Aller au contenu principal
+        </a>
+        <header className="app-header">
+          <h1 className="app-title">PayeTonGréviste</h1>
+        </header>
+        <main id="main-content" className="app-main">
+          <ErrorBoundary>
+            <Routes>
+              <Route path="/" element={<DiscoverPage />} />
+              <Route path="/matches" element={<MatchesPage />} />
+              <Route path="/activist" element={<ActivistSetupPage />} />
+            </Routes>
+          </ErrorBoundary>
+        </main>
+        <nav className="nav">
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) => (isActive ? 'active' : '')}
+          >
+            <Search />
+            <span>Découvrir</span>
+          </NavLink>
+          <NavLink
+            to="/matches"
+            className={({ isActive }) => (isActive ? 'active' : '')}
+          >
+            <MessageCircle />
+            <span>Matches</span>
+          </NavLink>
+        </nav>
+        <ToastContainer toasts={toasts} onClose={removeToast} />
+      </div>
+    </ErrorBoundary>
   );
 }
 

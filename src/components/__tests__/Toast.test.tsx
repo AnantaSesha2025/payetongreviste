@@ -172,12 +172,14 @@ describe('ToastContainer', () => {
       type: 'success' as const,
       title: 'Success!',
       message: 'First toast',
+      onClose: mockOnClose,
     },
     {
       id: '2',
       type: 'error' as const,
       title: 'Error!',
       message: 'Second toast',
+      onClose: mockOnClose,
     },
   ];
 
