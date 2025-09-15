@@ -11,17 +11,9 @@ class MockIntersectionObserver implements IntersectionObserver {
   rootMargin = '';
   thresholds = Object.freeze([]);
 
-  constructor(
-    callback: IntersectionObserverCallback,
-    options?: IntersectionObserverInit
-  ) {
-    // Store callback for potential future use
-    this.callback = callback;
-    this.options = options;
+  constructor() {
+    // Mock implementation - no parameters needed
   }
-
-  private callback: IntersectionObserverCallback;
-  private options?: IntersectionObserverInit;
 
   observe() {
     // Mock implementation - do nothing
@@ -45,11 +37,9 @@ globalThis.IntersectionObserver = MockIntersectionObserver;
 
 // Mock ResizeObserver for tests
 class MockResizeObserver implements ResizeObserver {
-  constructor(callback: ResizeObserverCallback) {
-    this.callback = callback;
+  constructor() {
+    // Mock implementation - no parameters needed
   }
-
-  private callback: ResizeObserverCallback;
 
   observe() {
     // Mock implementation - do nothing

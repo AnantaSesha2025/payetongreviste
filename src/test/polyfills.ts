@@ -1,6 +1,9 @@
 // Polyfills for test environment
 // This file must be imported before any other modules
 
+// Type declaration for global
+declare const global: typeof globalThis;
+
 // Mock URL constructor for tests to avoid webidl-conversions errors
 class MockURL {
   href: string;
