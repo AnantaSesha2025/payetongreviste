@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { GistProfileWriter } from '../components/GistProfileWriter';
 import { GistProfileReader } from '../components/GistProfileReader';
 import { useGistProfiles } from '../hooks/useGistProfiles';

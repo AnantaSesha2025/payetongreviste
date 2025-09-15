@@ -148,6 +148,7 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
               age: profile.age,
               bio: profile.bio,
               photoUrl: profile.photoUrl,
+              location: profile.location,
               strikeFund: profile.strikeFund,
             };
 
