@@ -13,5 +13,14 @@ export default defineConfig({
     env: {
       NODE_ENV: 'test',
     },
+    pool: 'forks',
+    poolOptions: {
+      forks: {
+        singleFork: true,
+      },
+    },
+  },
+  define: {
+    global: 'globalThis',
   },
 });
