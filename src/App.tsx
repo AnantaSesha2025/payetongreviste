@@ -19,6 +19,11 @@ import './App.css';
 function App() {
   const { toasts, removeToast } = useToast();
 
+  // Debug information
+  console.log('App rendered');
+  console.log('Current location:', window.location.href);
+  console.log('Pathname:', window.location.pathname);
+
   return (
     <ErrorBoundary>
       <div className="app">
@@ -27,6 +32,9 @@ function App() {
         </a>
         <header className="app-header">
           <h1 className="app-title">PayeTonGréviste</h1>
+          <div style={{ color: 'red', fontSize: '12px', marginTop: '10px' }}>
+            DEBUG: App is loading - {new Date().toLocaleTimeString()}
+          </div>
         </header>
         <main id="main-content" data-testid="main-content" className="app-main">
           <ErrorBoundary>
@@ -35,6 +43,17 @@ function App() {
               <Route path="/matches" element={<MatchesPage />} />
               <Route path="/activist" element={<ActivistSetupPage />} />
               <Route path="/gist-demo" element={<GistDemoPage />} />
+              <Route
+                path="*"
+                element={
+                  <div style={{ padding: '20px', textAlign: 'center' }}>
+                    <h2>Page Not Found</h2>
+                    <p>Current path: {window.location.pathname}</p>
+                    <p>Base path: {import.meta.env.BASE_URL}</p>
+                    <a href="/">Go Home</a>
+                  </div>
+                }
+              />
             </Routes>
           </ErrorBoundary>
         </main>
