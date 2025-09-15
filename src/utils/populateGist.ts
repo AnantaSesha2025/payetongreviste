@@ -37,6 +37,7 @@ export async function populateYourGist() {
 
 // Make it available globally for console use
 if (typeof window !== 'undefined') {
-  (window as { populateYourGist: typeof populateYourGist }).populateYourGist =
-    populateYourGist;
+  (
+    window as unknown as { populateYourGist: typeof populateYourGist }
+  ).populateYourGist = populateYourGist;
 }

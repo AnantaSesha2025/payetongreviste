@@ -132,30 +132,56 @@ class GitHubGistService {
     gistId: string
   ): Promise<{ success: boolean; profiles?: GistProfile[]; error?: string }> {
     try {
-      const response = await fetch(`${this.baseUrl}/${gistId}`, {
+      // First try the API approach
+      const apiResponse = await fetch(`${this.baseUrl}/${gistId}`, {
         headers: {
           Accept: 'application/vnd.github.v3+json',
         },
       });
 
-      if (!response.ok) {
-        const errorData: GistError = await response.json();
+      if (apiResponse.ok) {
+        const result: GistResponse = await apiResponse.json();
+        const profilesContent = result.files['profiles.json']?.content;
+
+        if (profilesContent) {
+          const profiles = JSON.parse(profilesContent) as GistProfile[];
+          return {
+            success: true,
+            profiles,
+          };
+        } else {
+          return {
+            success: false,
+            error: 'Aucun fichier profiles.json trouvé dans le Gist',
+          };
+        }
+      } else {
+        const errorData = await apiResponse.json();
         return {
           success: false,
-          error: errorData.message || 'Erreur lors de la lecture du Gist',
+          error: errorData.message || 'Not Found',
         };
       }
 
-      const result: GistResponse = await response.json();
-      const profilesContent = result.files['profiles.json']?.content;
+      // If API fails, try the raw content URL (works for public gists)
+      console.log('API failed, trying raw content URL...');
+      const rawUrl = `https://gist.githubusercontent.com/AnantaSesha2025/${gistId}/raw/profiles.json`;
+      const rawResponse = await fetch(rawUrl);
 
-      if (!profilesContent) {
+      if (!rawResponse.ok) {
+        if (rawResponse.status === 404) {
+          return {
+            success: false,
+            error: 'Aucun fichier profiles.json trouvé dans le Gist',
+          };
+        }
         return {
           success: false,
-          error: 'Aucun fichier profiles.json trouvé dans le Gist',
+          error: `Erreur lors de la lecture du Gist (${rawResponse.status}): ${rawResponse.statusText}`,
         };
       }
 
+      const profilesContent = await rawResponse.text();
       const profiles = JSON.parse(profilesContent) as GistProfile[];
 
       return {

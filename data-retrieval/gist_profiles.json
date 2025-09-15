@@ -1,0 +1,2921 @@
+[
+  {
+    "id": "strike-fund-1",
+    "name": "Solidaires Yonne 89",
+    "age": 42,
+    "bio": "Gréviste de Solidaires Yonne 89, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 47.8,
+      "lon": 3.6
+    },
+    "strikeFund": {
+      "id": "fund-1",
+      "url": "https://www.helloasso.com/associations/solidaires-89/formulaires/1",
+      "title": "Solidaires Yonne 89",
+      "description": "Caisse de grève locale : Solidaires Yonne 89",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 20701,
+      "targetAmount": 89765
+    }
+  },
+  {
+    "id": "strike-fund-2",
+    "name": "Sud-Rail Paris-Sud-Est",
+    "age": 37,
+    "bio": "Gréviste de Sud-Rail Paris-Sud-Est, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-2",
+      "url": "https://www.leetchi.com/c/greve-des-retraites-sud-rail-pse",
+      "title": "Sud-Rail Paris-Sud-Est",
+      "description": "Caisse de grève locale : Sud-Rail Paris-Sud-Est",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 44665,
+      "targetAmount": 97812
+    }
+  },
+  {
+    "id": "strike-fund-3",
+    "name": "Nettoyage Sorbonne Arc-en-ciel",
+    "age": 26,
+    "bio": "Gréviste de Nettoyage Sorbonne Arc-en-ciel, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-3",
+      "url": "https://www.leetchi.com/c/soutien-arc-en-ciel-fevrier-2023-sorbonne-universite",
+      "title": "Nettoyage Sorbonne Arc-en-ciel",
+      "description": "Caisse de grève locale : Nettoyage Sorbonne Arc-en-ciel",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 20161,
+      "targetAmount": 63238
+    }
+  },
+  {
+    "id": "strike-fund-4",
+    "name": "Postiers sans papiers Chronopost",
+    "age": 46,
+    "bio": "Gréviste de Postiers sans papiers Chronopost, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-4",
+      "url": "https://www.cotizup.com/sans-papiers-chrono-alfortvill",
+      "title": "Postiers sans papiers Chronopost",
+      "description": "Caisse de grève locale : Postiers sans papiers Chronopost",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 6007,
+      "targetAmount": 135705
+    }
+  },
+  {
+    "id": "strike-fund-5",
+    "name": "1er degré et AESH",
+    "age": 30,
+    "bio": "Gréviste de 1er degré et AESH, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-5",
+      "url": "https://www.helloasso.com/associations/arret-images/formulaires/1",
+      "title": "1er degré et AESH",
+      "description": "Caisse de grève locale : 1er degré et AESH",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 1074,
+      "targetAmount": 103069
+    }
+  },
+  {
+    "id": "strike-fund-6",
+    "name": "Solidaires Aude 11",
+    "age": 63,
+    "bio": "Gréviste de Solidaires Aude 11, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 43.2,
+      "lon": 2.4
+    },
+    "strikeFund": {
+      "id": "fund-6",
+      "url": "https://www.helloasso.com/associations/union-syndicale-solidaires-11/formulaires/1",
+      "title": "Solidaires Aude 11",
+      "description": "Caisse de grève locale : Solidaires Aude 11",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 41835,
+      "targetAmount": 112882
+    }
+  },
+  {
+    "id": "strike-fund-7",
+    "name": "Lycée Balzac Paris AESH-AED",
+    "age": 53,
+    "bio": "Gréviste de Lycée Balzac Paris AESH-AED, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-7",
+      "url": "https://www.leetchi.com/c/caisse-de-greve-balzac-2023-aesh-aed",
+      "title": "Lycée Balzac Paris AESH-AED",
+      "description": "Caisse de grève locale : Lycée Balzac Paris AESH-AED",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 10594,
+      "targetAmount": 102189
+    }
+  },
+  {
+    "id": "strike-fund-8",
+    "name": "FSU Seine Maritime",
+    "age": 35,
+    "bio": "Gréviste de FSU Seine Maritime, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 49.4,
+      "lon": 1.1
+    },
+    "strikeFund": {
+      "id": "fund-8",
+      "url": "https://fsu76.fsu.fr/caisse-de-greve-nul-ne-doit-renoncer-a-se-mobiliser",
+      "title": "FSU Seine Maritime",
+      "description": "Caisse de grève locale : FSU Seine Maritime",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 1879,
+      "targetAmount": 85847
+    }
+  },
+  {
+    "id": "strike-fund-9",
+    "name": "Union Syndicale Solidaires Meuse 55",
+    "age": 61,
+    "bio": "Gréviste de Union Syndicale Solidaires Meuse 55, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-9",
+      "url": "https://caisse-solidarite.fr/c/solidairesmeuse/",
+      "title": "Union Syndicale Solidaires Meuse 55",
+      "description": "Caisse de grève locale : Union Syndicale Solidaires Meuse 55",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 49887,
+      "targetAmount": 97083
+    }
+  },
+  {
+    "id": "strike-fund-10",
+    "name": "FSU Université de Lille",
+    "age": 26,
+    "bio": "Gréviste de FSU Université de Lille, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 50.6,
+      "lon": 3.1
+    },
+    "strikeFund": {
+      "id": "fund-10",
+      "url": "https://www.helloasso.com/associations/l-amul/collectes/sdfsdf",
+      "title": "FSU Université de Lille",
+      "description": "Caisse de grève locale : FSU Université de Lille",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 19195,
+      "targetAmount": 93395
+    }
+  },
+  {
+    "id": "strike-fund-11",
+    "name": "Université Paris-Est Créteil",
+    "age": 63,
+    "bio": "Gréviste de Université Paris-Est Créteil, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-11",
+      "url": "https://www.leetchi.com/c/upec-cagnotte-retraites",
+      "title": "Université Paris-Est Créteil",
+      "description": "Caisse de grève locale : Université Paris-Est Créteil",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 47967,
+      "targetAmount": 50615
+    }
+  },
+  {
+    "id": "strike-fund-12",
+    "name": "Université Paris-Saclay",
+    "age": 58,
+    "bio": "Gréviste de Université Paris-Saclay, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.7,
+      "lon": 2.2
+    },
+    "strikeFund": {
+      "id": "fund-12",
+      "url": "https://www.papayoux-solidarite.com/fr/collecte/caisse-de-greve-de-l-universite-paris-saclay",
+      "title": "Université Paris-Saclay",
+      "description": "Caisse de grève locale : Université Paris-Saclay",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 48068,
+      "targetAmount": 101622
+    }
+  },
+  {
+    "id": "strike-fund-13",
+    "name": "AG éducation Val d'Oise",
+    "age": 51,
+    "bio": "Gréviste de AG éducation Val d'Oise, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-13",
+      "url": "https://caisse-solidarite.fr/c/AG-educ-du-95-sud/",
+      "title": "AG éducation Val d'Oise",
+      "description": "Caisse de grève locale : AG éducation Val d'Oise",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 19598,
+      "targetAmount": 89017
+    }
+  },
+  {
+    "id": "strike-fund-14",
+    "name": "AG éducation Romainville, les Lilas, le Prè St Gervais",
+    "age": 50,
+    "bio": "Gréviste de AG éducation Romainville, les Lilas, le Prè St Gervais, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-14",
+      "url": "https://caisse-solidarite.fr/c/AG-educ-rpl/",
+      "title": "AG éducation Romainville, les Lilas, le Prè St Gervais",
+      "description": "Caisse de grève locale : AG éducation Romainville, les Lilas, le Prè St Gervais",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 34688,
+      "targetAmount": 99528
+    }
+  },
+  {
+    "id": "strike-fund-15",
+    "name": "Caisse de grève AESH SNUDI FO 53",
+    "age": 55,
+    "bio": "Gréviste de Caisse de grève AESH SNUDI FO 53, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.1,
+      "lon": -0.8
+    },
+    "strikeFund": {
+      "id": "fund-15",
+      "url": "https://www.helloasso.com/associations/snudi-fo-53/formulaires/3",
+      "title": "Caisse de grève AESH SNUDI FO 53",
+      "description": "Caisse de grève locale : Caisse de grève AESH SNUDI FO 53",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 31237,
+      "targetAmount": 131899
+    }
+  },
+  {
+    "id": "strike-fund-16",
+    "name": "Lycée Léonard de Vinci Saint Witz",
+    "age": 31,
+    "bio": "Gréviste de Lycée Léonard de Vinci Saint Witz, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-16",
+      "url": "https://www.cotizup.com/caisseldv",
+      "title": "Lycée Léonard de Vinci Saint Witz",
+      "description": "Caisse de grève locale : Lycée Léonard de Vinci Saint Witz",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 3812,
+      "targetAmount": 106147
+    }
+  },
+  {
+    "id": "strike-fund-17",
+    "name": "FSU Jura",
+    "age": 38,
+    "bio": "Gréviste de FSU Jura, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 46.7,
+      "lon": 5.6
+    },
+    "strikeFund": {
+      "id": "fund-17",
+      "url": "https://www.helloasso.com/associations/fsu-39/formulaires/1",
+      "title": "FSU Jura",
+      "description": "Caisse de grève locale : FSU Jura",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 50862,
+      "targetAmount": 74969
+    }
+  },
+  {
+    "id": "strike-fund-18",
+    "name": "AED du lycée professionnel Joseph Gallieni",
+    "age": 53,
+    "bio": "Gréviste de AED du lycée professionnel Joseph Gallieni, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-18",
+      "url": "https://www.leetchi.com/c/aedgallieniengreve?utm_source=whatsapp&utm_medium=social_sharing",
+      "title": "AED du lycée professionnel Joseph Gallieni",
+      "description": "Caisse de grève locale : AED du lycée professionnel Joseph Gallieni",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 28407,
+      "targetAmount": 100129
+    }
+  },
+  {
+    "id": "strike-fund-19",
+    "name": "Lycée Romain Rolland Goussainville",
+    "age": 26,
+    "bio": "Gréviste de Lycée Romain Rolland Goussainville, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-19",
+      "url": "https://www.papayoux-solidarite.com/fr/collecte/caisse-de-greve-du-lycee-romain-rolland-de-goussainville",
+      "title": "Lycée Romain Rolland Goussainville",
+      "description": "Caisse de grève locale : Lycée Romain Rolland Goussainville",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 43836,
+      "targetAmount": 128131
+    }
+  },
+  {
+    "id": "strike-fund-20",
+    "name": "BPI Bibliothèque (Centre Pompidou)",
+    "age": 47,
+    "bio": "Gréviste de BPI Bibliothèque (Centre Pompidou), en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-20",
+      "url": "https://www.helloasso.com/associations/collectif-352-55/formulaires/1",
+      "title": "BPI Bibliothèque (Centre Pompidou)",
+      "description": "Caisse de grève locale : BPI Bibliothèque (Centre Pompidou)",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 44084,
+      "targetAmount": 117116
+    }
+  },
+  {
+    "id": "strike-fund-21",
+    "name": "SNES Guadeloupe",
+    "age": 47,
+    "bio": "Gréviste de SNES Guadeloupe, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 16.2,
+      "lon": -61.5
+    },
+    "strikeFund": {
+      "id": "fund-21",
+      "url": "https://www.helloasso.com/associations/snes-guadeloupe/formulaires/1",
+      "title": "SNES Guadeloupe",
+      "description": "Caisse de grève locale : SNES Guadeloupe",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 32565,
+      "targetAmount": 81027
+    }
+  },
+  {
+    "id": "strike-fund-22",
+    "name": "FSU Pays de la Loire",
+    "age": 30,
+    "bio": "Gréviste de FSU Pays de la Loire, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.1,
+      "lon": -0.8
+    },
+    "strikeFund": {
+      "id": "fund-22",
+      "url": "https://www.helloasso.com/associations/snetap-fsu-pays-de-la-loire/collectes/snetap-fsu-caisse-de-greve-retraite-2023",
+      "title": "FSU Pays de la Loire",
+      "description": "Caisse de grève locale : FSU Pays de la Loire",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 10874,
+      "targetAmount": 120339
+    }
+  },
+  {
+    "id": "strike-fund-23",
+    "name": "CGT spectacle (FNSAC)",
+    "age": 44,
+    "bio": "Gréviste de CGT spectacle (FNSAC), en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-23",
+      "url": "https://www.helloasso.com/associations/fnsac/formulaires/1",
+      "title": "CGT spectacle (FNSAC)",
+      "description": "Caisse de grève locale : CGT spectacle (FNSAC)",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 13542,
+      "targetAmount": 119737
+    }
+  },
+  {
+    "id": "strike-fund-24",
+    "name": "SNUDI-FO 53 Mayenne",
+    "age": 54,
+    "bio": "Gréviste de SNUDI-FO 53 Mayenne, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.1,
+      "lon": -0.8
+    },
+    "strikeFund": {
+      "id": "fund-24",
+      "url": "https://www.helloasso.com/associations/snudi-fo-53/formulaires/1",
+      "title": "SNUDI-FO 53 Mayenne",
+      "description": "Caisse de grève locale : SNUDI-FO 53 Mayenne",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 48426,
+      "targetAmount": 111924
+    }
+  },
+  {
+    "id": "strike-fund-25",
+    "name": "Cheminots du Bourget",
+    "age": 54,
+    "bio": "Gréviste de Cheminots du Bourget, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-25",
+      "url": "https://www.cotizup.com/greve-bourget",
+      "title": "Cheminots du Bourget",
+      "description": "Caisse de grève locale : Cheminots du Bourget",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 20164,
+      "targetAmount": 110725
+    }
+  },
+  {
+    "id": "strike-fund-26",
+    "name": "Raffineurs Grandpuits et sous-traitants",
+    "age": 33,
+    "bio": "Gréviste de Raffineurs Grandpuits et sous-traitants, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-26",
+      "url": "https://www.cotizup.com/raffineurssoustraitants",
+      "title": "Raffineurs Grandpuits et sous-traitants",
+      "description": "Caisse de grève locale : Raffineurs Grandpuits et sous-traitants",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 45701,
+      "targetAmount": 101726
+    }
+  },
+  {
+    "id": "strike-fund-27",
+    "name": "Lycée Robespierre Epinay-sur-Seine",
+    "age": 44,
+    "bio": "Gréviste de Lycée Robespierre Epinay-sur-Seine, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-27",
+      "url": "https://www.cotizup.com/greve-robespierre",
+      "title": "Lycée Robespierre Epinay-sur-Seine",
+      "description": "Caisse de grève locale : Lycée Robespierre Epinay-sur-Seine",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 1180,
+      "targetAmount": 65769
+    }
+  },
+  {
+    "id": "strike-fund-28",
+    "name": "Sud Santé Maine et Loire, Mayenne",
+    "age": 43,
+    "bio": "Gréviste de Sud Santé Maine et Loire, Mayenne, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.1,
+      "lon": -0.8
+    },
+    "strikeFund": {
+      "id": "fund-28",
+      "url": "https://www.helloasso.com/associations/sud-sante-sociaux-49-53/formulaires/1",
+      "title": "Sud Santé Maine et Loire, Mayenne",
+      "description": "Caisse de grève locale : Sud Santé Maine et Loire, Mayenne",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 21921,
+      "targetAmount": 130739
+    }
+  },
+  {
+    "id": "strike-fund-29",
+    "name": "Sundep Solidaire",
+    "age": 37,
+    "bio": "Gréviste de Sundep Solidaire, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 43.6,
+      "lon": 1.4
+    },
+    "strikeFund": {
+      "id": "fund-29",
+      "url": "https://www.helloasso.com/associations/syndicat-de-la-formation-et-de-l-enseignement-prive-de-l-academie-de-toulouse-sundep-solidaires-occitanie-et-aquitaine/formulaires/1",
+      "title": "Sundep Solidaire",
+      "description": "Caisse de grève locale : Sundep Solidaire",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 19910,
+      "targetAmount": 68128
+    }
+  },
+  {
+    "id": "strike-fund-30",
+    "name": "SNETAP-FSU IDF",
+    "age": 51,
+    "bio": "Gréviste de SNETAP-FSU IDF, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-30",
+      "url": "https://www.helloasso.com/associations/snetap-fsu-ile-de-france/collectes/don-pour-la-caisse-de-solidarite-ile-de-france",
+      "title": "SNETAP-FSU IDF",
+      "description": "Caisse de grève locale : SNETAP-FSU IDF",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 31205,
+      "targetAmount": 137860
+    }
+  },
+  {
+    "id": "strike-fund-31",
+    "name": "CGT SNJ",
+    "age": 38,
+    "bio": "Gréviste de CGT SNJ, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-31",
+      "url": "https://www.helloasso.com/associations/syndicat-national-des-journalistes-cgt/formulaires/1",
+      "title": "CGT SNJ",
+      "description": "Caisse de grève locale : CGT SNJ",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 41100,
+      "targetAmount": 66920
+    }
+  },
+  {
+    "id": "strike-fund-32",
+    "name": "Solidaire Ligne 3/3 bis",
+    "age": 51,
+    "bio": "Gréviste de Solidaire Ligne 3/3 bis, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-32",
+      "url": "https://www.cotizup.com/pour-aider-a-lutte-contre-cett",
+      "title": "Solidaire Ligne 3/3 bis",
+      "description": "Caisse de grève locale : Solidaire Ligne 3/3 bis",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 26475,
+      "targetAmount": 101345
+    }
+  },
+  {
+    "id": "strike-fund-33",
+    "name": "Hospitaliers et agents de laboratoire de Bordeaux",
+    "age": 58,
+    "bio": "Gréviste de Hospitaliers et agents de laboratoire de Bordeaux, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 44.8,
+      "lon": -0.6
+    },
+    "strikeFund": {
+      "id": "fund-33",
+      "url": "https://www.cotizup.com/greve-labo-hospitaliers?fbclid=IwAR329fgBFyc8SghNnrHM8l_u8NTUQsHxZSRfGqySIFLpActk-Wgli-5LPpM",
+      "title": "Hospitaliers et agents de laboratoire de Bordeaux",
+      "description": "Caisse de grève locale : Hospitaliers et agents de laboratoire de Bordeaux",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 30064,
+      "targetAmount": 59481
+    }
+  },
+  {
+    "id": "strike-fund-34",
+    "name": "Caisse de grève - AG féministe",
+    "age": 50,
+    "bio": "Gréviste de Caisse de grève - AG féministe, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-34",
+      "url": "https://fr.ulule.com/caisse-de-greve-ag-feministe/?utm_campaign=presale_158190&utm_source=shared-from-Ulule-project-page-on-Twitter",
+      "title": "Caisse de grève - AG féministe",
+      "description": "Caisse de grève locale : Caisse de grève - AG féministe",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 38966,
+      "targetAmount": 116754
+    }
+  },
+  {
+    "id": "strike-fund-35",
+    "name": "Gréviste du collège Fabien de St-Denis (93)",
+    "age": 43,
+    "bio": "Gréviste de Gréviste du collège Fabien de St-Denis (93), en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-35",
+      "url": "https://www.papayoux-solidarite.com/fr/collecte/caisse-de-greve-du-college-fabien-saint-denis",
+      "title": "Gréviste du collège Fabien de St-Denis (93)",
+      "description": "Caisse de grève locale : Gréviste du collège Fabien de St-Denis (93)",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 19833,
+      "targetAmount": 118024
+    }
+  },
+  {
+    "id": "strike-fund-36",
+    "name": "Personnels du lycée Paul Robert Les Lilas",
+    "age": 50,
+    "bio": "Gréviste de Personnels du lycée Paul Robert Les Lilas, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-36",
+      "url": "https://www.papayoux.com/fr/cagnotte/caisse-de-greve-paul-robert",
+      "title": "Personnels du lycée Paul Robert Les Lilas",
+      "description": "Caisse de grève locale : Personnels du lycée Paul Robert Les Lilas",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 49840,
+      "targetAmount": 117146
+    }
+  },
+  {
+    "id": "strike-fund-37",
+    "name": "CGT Ferc SUP",
+    "age": 40,
+    "bio": "Gréviste de CGT Ferc SUP, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 47.2,
+      "lon": -1.6
+    },
+    "strikeFund": {
+      "id": "fund-37",
+      "url": "https://www.helloasso.com/associations/syndicat-cgt-ferc-sup-de-nantes-universite/formulaires/1",
+      "title": "CGT Ferc SUP",
+      "description": "Caisse de grève locale : CGT Ferc SUP",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 41950,
+      "targetAmount": 52297
+    }
+  },
+  {
+    "id": "strike-fund-38",
+    "name": "AED 44",
+    "age": 52,
+    "bio": "Gréviste de AED 44, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 47.2,
+      "lon": -1.6
+    },
+    "strikeFund": {
+      "id": "fund-38",
+      "url": "https://www.helloasso.com/associations/collectif-aed-44/formulaires/1",
+      "title": "AED 44",
+      "description": "Caisse de grève locale : AED 44",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 12088,
+      "targetAmount": 92954
+    }
+  },
+  {
+    "id": "strike-fund-39",
+    "name": "AESH/AED/AP/APS Collège Chantereine",
+    "age": 49,
+    "bio": "Gréviste de AESH/AED/AP/APS Collège Chantereine, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-39",
+      "url": "https://www.leetchi.com/c/caisse-de-greve-aesh-ap-aps-clg-chantereine-sarcelles",
+      "title": "AESH/AED/AP/APS Collège Chantereine",
+      "description": "Caisse de grève locale : AESH/AED/AP/APS Collège Chantereine",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 45027,
+      "targetAmount": 88943
+    }
+  },
+  {
+    "id": "strike-fund-40",
+    "name": "Solidaires Isère 38",
+    "age": 52,
+    "bio": "Gréviste de Solidaires Isère 38, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 45.2,
+      "lon": 5.7
+    },
+    "strikeFund": {
+      "id": "fund-40",
+      "url": "https://www.okpal.com/caisse-de-solidarite-pour-les-grevistes/#/",
+      "title": "Solidaires Isère 38",
+      "description": "Caisse de grève locale : Solidaires Isère 38",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 32369,
+      "targetAmount": 72820
+    }
+  },
+  {
+    "id": "strike-fund-41",
+    "name": "AG Chaville Meudon Educ",
+    "age": 31,
+    "bio": "Gréviste de AG Chaville Meudon Educ, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-41",
+      "url": "https://www.cotizup.com/ag-meudon-chaville-educ",
+      "title": "AG Chaville Meudon Educ",
+      "description": "Caisse de grève locale : AG Chaville Meudon Educ",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 22145,
+      "targetAmount": 88619
+    }
+  },
+  {
+    "id": "strike-fund-42",
+    "name": "Transdev Cargo",
+    "age": 38,
+    "bio": "Gréviste de Transdev Cargo, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-42",
+      "url": "https://www.cotizup.com/solidariteavectransdevcargo",
+      "title": "Transdev Cargo",
+      "description": "Caisse de grève locale : Transdev Cargo",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 26592,
+      "targetAmount": 130555
+    }
+  },
+  {
+    "id": "strike-fund-43",
+    "name": "Caisse de grève de l'AG éducation 31",
+    "age": 59,
+    "bio": "Gréviste de Caisse de grève de l'AG éducation 31, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 43.6,
+      "lon": 1.4
+    },
+    "strikeFund": {
+      "id": "fund-43",
+      "url": "https://caisse-solidarite.fr/c/AG-educ-31/",
+      "title": "Caisse de grève de l'AG éducation 31",
+      "description": "Caisse de grève locale : Caisse de grève de l'AG éducation 31",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 50877,
+      "targetAmount": 67795
+    }
+  },
+  {
+    "id": "strike-fund-44",
+    "name": "Caisse de solidarité AG éducation et ESR 34",
+    "age": 31,
+    "bio": "Gréviste de Caisse de solidarité AG éducation et ESR 34, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 43.6,
+      "lon": 3.9
+    },
+    "strikeFund": {
+      "id": "fund-44",
+      "url": "https://caisse-solidarite.fr/c/AG-educ-34/",
+      "title": "Caisse de solidarité AG éducation et ESR 34",
+      "description": "Caisse de grève locale : Caisse de solidarité AG éducation et ESR 34",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 12193,
+      "targetAmount": 56935
+    }
+  },
+  {
+    "id": "strike-fund-45",
+    "name": "Caisse de grève des salarié·es de SNF",
+    "age": 60,
+    "bio": "Gréviste de Caisse de grève des salarié·es de SNF, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 45.8,
+      "lon": 4.8
+    },
+    "strikeFund": {
+      "id": "fund-45",
+      "url": "https://caisse-solidarite.fr/c/snf/",
+      "title": "Caisse de grève des salarié·es de SNF",
+      "description": "Caisse de grève locale : Caisse de grève des salarié·es de SNF",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 29445,
+      "targetAmount": 107588
+    }
+  },
+  {
+    "id": "strike-fund-46",
+    "name": "Toujours le pain levé !",
+    "age": 42,
+    "bio": "Gréviste de Toujours le pain levé !, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 50.6,
+      "lon": 3.1
+    },
+    "strikeFund": {
+      "id": "fund-46",
+      "url": "https://caisse-solidarite.fr/c/toujourslepainleve/",
+      "title": "Toujours le pain levé !",
+      "description": "Caisse de grève locale : Toujours le pain levé !",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 13260,
+      "targetAmount": 100333
+    }
+  },
+  {
+    "id": "strike-fund-47",
+    "name": "Caisse de grève des salarié·es de Mediapart",
+    "age": 52,
+    "bio": "Gréviste de Caisse de grève des salarié·es de Mediapart, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-47",
+      "url": "https://caisse-solidarite.fr/c/mediapart/",
+      "title": "Caisse de grève des salarié·es de Mediapart",
+      "description": "Caisse de grève locale : Caisse de grève des salarié·es de Mediapart",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 33348,
+      "targetAmount": 66767
+    }
+  },
+  {
+    "id": "strike-fund-48",
+    "name": "Caisse de grève mutualisée de l'union syndicale Solidaires 55",
+    "age": 52,
+    "bio": "Gréviste de Caisse de grève mutualisée de l'union syndicale Solidaires 55, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-48",
+      "url": "https://caisse-solidarite.fr/c/solidairesmeuse/",
+      "title": "Caisse de grève mutualisée de l'union syndicale Solidaires 55",
+      "description": "Caisse de grève locale : Caisse de grève mutualisée de l'union syndicale Solidaires 55",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 6337,
+      "targetAmount": 63611
+    }
+  },
+  {
+    "id": "strike-fund-49",
+    "name": "Cheminot·e·s SUD-Rail Pays-de-Loire dans la lutte contre la réforme des retraites",
+    "age": 55,
+    "bio": "Gréviste de Cheminot·e·s SUD-Rail Pays-de-Loire dans la lutte contre la réforme des retraites, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 47.2,
+      "lon": -1.6
+    },
+    "strikeFund": {
+      "id": "fund-49",
+      "url": "https://caisse-solidarite.fr/c/cheminotspaysdelaloire/",
+      "title": "Cheminot·e·s SUD-Rail Pays-de-Loire dans la lutte contre la réforme des retraites",
+      "description": "Caisse de grève locale : Cheminot·e·s SUD-Rail Pays-de-Loire dans la lutte contre la réforme des retraites",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 15425,
+      "targetAmount": 139697
+    }
+  },
+  {
+    "id": "strike-fund-50",
+    "name": "Caisse de grève des agent.es de Paris musées",
+    "age": 63,
+    "bio": "Gréviste de Caisse de grève des agent.es de Paris musées, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-50",
+      "url": "https://caisse-solidarite.fr/c/parismusées/",
+      "title": "Caisse de grève des agent.es de Paris musées",
+      "description": "Caisse de grève locale : Caisse de grève des agent.es de Paris musées",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 27013,
+      "targetAmount": 67426
+    }
+  },
+  {
+    "id": "strike-fund-51",
+    "name": "Caisse de grève des salarié·es de Smile France",
+    "age": 59,
+    "bio": "Gréviste de Caisse de grève des salarié·es de Smile France, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-51",
+      "url": "https://caisse-solidarite.fr/c/smilefrance/",
+      "title": "Caisse de grève des salarié·es de Smile France",
+      "description": "Caisse de grève locale : Caisse de grève des salarié·es de Smile France",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 18527,
+      "targetAmount": 58095
+    }
+  },
+  {
+    "id": "strike-fund-52",
+    "name": "Caisse de grève de l'AG collège René caillié",
+    "age": 32,
+    "bio": "Gréviste de Caisse de grève de l'AG collège René caillié, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 44.8,
+      "lon": -0.6
+    },
+    "strikeFund": {
+      "id": "fund-52",
+      "url": "https://caisse-solidarite.fr/c/collegerenecaillie/",
+      "title": "Caisse de grève de l'AG collège René caillié",
+      "description": "Caisse de grève locale : Caisse de grève de l'AG collège René caillié",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 15578,
+      "targetAmount": 56666
+    }
+  },
+  {
+    "id": "strike-fund-53",
+    "name": "Caisse de solidarité des personnels de l'éducation en lutte Isère",
+    "age": 61,
+    "bio": "Gréviste de Caisse de solidarité des personnels de l'éducation en lutte Isère, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 45.2,
+      "lon": 5.7
+    },
+    "strikeFund": {
+      "id": "fund-53",
+      "url": "https://caisse-solidarite.fr/c/educ38/",
+      "title": "Caisse de solidarité des personnels de l'éducation en lutte Isère",
+      "description": "Caisse de grève locale : Caisse de solidarité des personnels de l'éducation en lutte Isère",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 2831,
+      "targetAmount": 136647
+    }
+  },
+  {
+    "id": "strike-fund-54",
+    "name": "Collège Jean Vigo Epinay-Sur-Seine",
+    "age": 30,
+    "bio": "Gréviste de Collège Jean Vigo Epinay-Sur-Seine, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-54",
+      "url": "https://www.papayoux.com/fr/cagnotte/caisse-de-greve-college-jean-vigo",
+      "title": "Collège Jean Vigo Epinay-Sur-Seine",
+      "description": "Caisse de grève locale : Collège Jean Vigo Epinay-Sur-Seine",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 6262,
+      "targetAmount": 93109
+    }
+  },
+  {
+    "id": "strike-fund-55",
+    "name": "Collège Evariste Galois Epinay-sur-Seine",
+    "age": 36,
+    "bio": "Gréviste de Collège Evariste Galois Epinay-sur-Seine, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-55",
+      "url": "https://www.papayoux.com/fr/cagnotte/caisse-de-greve-college-evaristegalois-epinay-sur-seine",
+      "title": "Collège Evariste Galois Epinay-sur-Seine",
+      "description": "Caisse de grève locale : Collège Evariste Galois Epinay-sur-Seine",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 22794,
+      "targetAmount": 123418
+    }
+  },
+  {
+    "id": "strike-fund-56",
+    "name": "caisse de grève des cheminots Léon-Tregor.",
+    "age": 35,
+    "bio": "Gréviste de caisse de grève des cheminots Léon-Tregor., en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.6,
+      "lon": -3.4
+    },
+    "strikeFund": {
+      "id": "fund-56",
+      "url": "https://caisse-solidarite.fr/c/cheminotsleontregor/",
+      "title": "caisse de grève des cheminots Léon-Tregor.",
+      "description": "Caisse de grève locale : caisse de grève des cheminots Léon-Tregor.",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 6968,
+      "targetAmount": 145532
+    }
+  },
+  {
+    "id": "strike-fund-57",
+    "name": "caisse de grève de l'Institut National d'Histoire de l'art",
+    "age": 48,
+    "bio": "Gréviste de caisse de grève de l'Institut National d'Histoire de l'art, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-57",
+      "url": "https://www.cotizup.com/caissedegreveinha",
+      "title": "caisse de grève de l'Institut National d'Histoire de l'art",
+      "description": "Caisse de grève locale : caisse de grève de l'Institut National d'Histoire de l'art",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 9886,
+      "targetAmount": 87034
+    }
+  },
+  {
+    "id": "strike-fund-58",
+    "name": "Collège Roger Martin du Gard à Epinay sur Seine",
+    "age": 57,
+    "bio": "Gréviste de Collège Roger Martin du Gard à Epinay sur Seine, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-58",
+      "url": "https://lydia-app.com/collect/86913-cagnotte-solidaire-rmg/fr",
+      "title": "Collège Roger Martin du Gard à Epinay sur Seine",
+      "description": "Caisse de grève locale : Collège Roger Martin du Gard à Epinay sur Seine",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 47338,
+      "targetAmount": 95134
+    }
+  },
+  {
+    "id": "strike-fund-59",
+    "name": "Lycée de Vizille",
+    "age": 31,
+    "bio": "Gréviste de Lycée de Vizille, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 45.2,
+      "lon": 5.7
+    },
+    "strikeFund": {
+      "id": "fund-59",
+      "url": "https://www.leetchi.com/c/personnel-du-lycee-de-vizille-pour-une-retraite-solidaire-wmer7rkw",
+      "title": "Lycée de Vizille",
+      "description": "Caisse de grève locale : Lycée de Vizille",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 24959,
+      "targetAmount": 72075
+    }
+  },
+  {
+    "id": "strike-fund-60",
+    "name": "Solidaires 73",
+    "age": 53,
+    "bio": "Gréviste de Solidaires 73, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 45.6,
+      "lon": 6
+    },
+    "strikeFund": {
+      "id": "fund-60",
+      "url": "https://www.papayoux-solidarite.com/fr/collecte/caisse-de-greve-solidaires-73",
+      "title": "Solidaires 73",
+      "description": "Caisse de grève locale : Solidaires 73",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 41558,
+      "targetAmount": 101068
+    }
+  },
+  {
+    "id": "strike-fund-61",
+    "name": "CNT SO nettoyage PACA",
+    "age": 39,
+    "bio": "Gréviste de CNT SO nettoyage PACA, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 43.3,
+      "lon": 5.4
+    },
+    "strikeFund": {
+      "id": "fund-61",
+      "url": "https://www.papayoux-solidarite.com//fr/collecte/nettoyage-en-lutte-contre-la-retraite-macron",
+      "title": "CNT SO nettoyage PACA",
+      "description": "Caisse de grève locale : CNT SO nettoyage PACA",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 7222,
+      "targetAmount": 127745
+    }
+  },
+  {
+    "id": "strike-fund-62",
+    "name": "Salariés de l'université de Bourgogne",
+    "age": 40,
+    "bio": "Gréviste de Salariés de l'université de Bourgogne, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 47.3,
+      "lon": 5
+    },
+    "strikeFund": {
+      "id": "fund-62",
+      "url": "https://www.papayoux-solidarite.com/fr/collecte/caisse-de-greve-universite-de-bourgogne",
+      "title": "Salariés de l'université de Bourgogne",
+      "description": "Caisse de grève locale : Salariés de l'université de Bourgogne",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 10238,
+      "targetAmount": 105035
+    }
+  },
+  {
+    "id": "strike-fund-63",
+    "name": "CGT cheminots de Versailles",
+    "age": 29,
+    "bio": "Gréviste de CGT cheminots de Versailles, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.1
+    },
+    "strikeFund": {
+      "id": "fund-63",
+      "url": "https://www.leetchi.com/c/caisse-de-greve-cgt-cheminots-versailles?utm_source=copylink&utm_medium=social_sharing",
+      "title": "CGT cheminots de Versailles",
+      "description": "Caisse de grève locale : CGT cheminots de Versailles",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 35654,
+      "targetAmount": 94264
+    }
+  },
+  {
+    "id": "strike-fund-64",
+    "name": "Collectif « Nos Retraites Nous Rassemblent » Strasbourg",
+    "age": 31,
+    "bio": "Gréviste de Collectif « Nos Retraites Nous Rassemblent » Strasbourg, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.6,
+      "lon": 7.8
+    },
+    "strikeFund": {
+      "id": "fund-64",
+      "url": "https://www.cotizup.com/caisse-greve-solidaire",
+      "title": "Collectif « Nos Retraites Nous Rassemblent » Strasbourg",
+      "description": "Caisse de grève locale : Collectif « Nos Retraites Nous Rassemblent » Strasbourg",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 36319,
+      "targetAmount": 99439
+    }
+  },
+  {
+    "id": "strike-fund-65",
+    "name": "intersyndicale Tricastin",
+    "age": 37,
+    "bio": "Gréviste de intersyndicale Tricastin, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 44.3,
+      "lon": 4.7
+    },
+    "strikeFund": {
+      "id": "fund-65",
+      "url": "https://www.leetchi.com/c/tricastin-defense-des-retraites",
+      "title": "intersyndicale Tricastin",
+      "description": "Caisse de grève locale : intersyndicale Tricastin",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 37334,
+      "targetAmount": 89113
+    }
+  },
+  {
+    "id": "strike-fund-66",
+    "name": "Gaziers de Sorengy",
+    "age": 29,
+    "bio": "Gréviste de Gaziers de Sorengy, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-66",
+      "url": "https://www.leetchi.com/c/storengy-defense-des-retraites",
+      "title": "Gaziers de Sorengy",
+      "description": "Caisse de grève locale : Gaziers de Sorengy",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 29644,
+      "targetAmount": 104567
+    }
+  },
+  {
+    "id": "strike-fund-67",
+    "name": "Lycée Angela Davis Saint-Denis",
+    "age": 51,
+    "bio": "Gréviste de Lycée Angela Davis Saint-Denis, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-67",
+      "url": "https://www.leetchi.com/c/caisse-de-greve-angela-davis?utm_source=copylink&utm_medium=social_sharing",
+      "title": "Lycée Angela Davis Saint-Denis",
+      "description": "Caisse de grève locale : Lycée Angela Davis Saint-Denis",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 37140,
+      "targetAmount": 55296
+    }
+  },
+  {
+    "id": "strike-fund-68",
+    "name": "Caisse de greve education Beaujolais Val de Seine",
+    "age": 35,
+    "bio": "Gréviste de Caisse de greve education Beaujolais Val de Seine, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 46,
+      "lon": 4.7
+    },
+    "strikeFund": {
+      "id": "fund-68",
+      "url": "https://www.leetchi.com/c/caisse-de-greve-educ-bvs",
+      "title": "Caisse de greve education Beaujolais Val de Seine",
+      "description": "Caisse de grève locale : Caisse de greve education Beaujolais Val de Seine",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 19820,
+      "targetAmount": 84729
+    }
+  },
+  {
+    "id": "strike-fund-69",
+    "name": "SOLIDAIRES 28",
+    "age": 34,
+    "bio": "Gréviste de SOLIDAIRES 28, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.4,
+      "lon": 1.5
+    },
+    "strikeFund": {
+      "id": "fund-69",
+      "url": "https://www.papayoux-solidarite.com/fr/collecte/caisse-de-greve-pour-les-grevistes-deure-et-loir",
+      "title": "SOLIDAIRES 28",
+      "description": "Caisse de grève locale : SOLIDAIRES 28",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 9873,
+      "targetAmount": 126791
+    }
+  },
+  {
+    "id": "strike-fund-70",
+    "name": "Union Locale des syndicats CGT Antibes et sa région",
+    "age": 61,
+    "bio": "Gréviste de Union Locale des syndicats CGT Antibes et sa région, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 43.6,
+      "lon": 7.1
+    },
+    "strikeFund": {
+      "id": "fund-70",
+      "url": "https://www.helloasso.com/associations/union-locale-des-syndicats-cgt-d-antibes-et-region/formulaires/1",
+      "title": "Union Locale des syndicats CGT Antibes et sa région",
+      "description": "Caisse de grève locale : Union Locale des syndicats CGT Antibes et sa région",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 20885,
+      "targetAmount": 117554
+    }
+  },
+  {
+    "id": "strike-fund-71",
+    "name": "lycée Jacques Feyder Epinay sur Seine",
+    "age": 53,
+    "bio": "Gréviste de lycée Jacques Feyder Epinay sur Seine, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-71",
+      "url": "https://www.leetchi.com/c/caisse-de-greve-lycee-feyder",
+      "title": "lycée Jacques Feyder Epinay sur Seine",
+      "description": "Caisse de grève locale : lycée Jacques Feyder Epinay sur Seine",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 25269,
+      "targetAmount": 63041
+    }
+  },
+  {
+    "id": "strike-fund-72",
+    "name": "lycée Romain Rolland Ivry sur Seine",
+    "age": 50,
+    "bio": "Gréviste de lycée Romain Rolland Ivry sur Seine, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-72",
+      "url": "https://www.lepotcommun.fr/pot/0mjz8ni0",
+      "title": "lycée Romain Rolland Ivry sur Seine",
+      "description": "Caisse de grève locale : lycée Romain Rolland Ivry sur Seine",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 11115,
+      "targetAmount": 74428
+    }
+  },
+  {
+    "id": "strike-fund-73",
+    "name": "Solidaire Ille et Vilaine 35",
+    "age": 61,
+    "bio": "Gréviste de Solidaire Ille et Vilaine 35, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.1,
+      "lon": -1.7
+    },
+    "strikeFund": {
+      "id": "fund-73",
+      "url": "https://www.cotizup.com/solidaires35-greve-retraites",
+      "title": "Solidaire Ille et Vilaine 35",
+      "description": "Caisse de grève locale : Solidaire Ille et Vilaine 35",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 46007,
+      "targetAmount": 102640
+    }
+  },
+  {
+    "id": "strike-fund-74",
+    "name": "L'Enclume - Enthousiaste Comité de Lutte de Mulhouse et Environs",
+    "age": 35,
+    "bio": "Gréviste de L'Enclume - Enthousiaste Comité de Lutte de Mulhouse et Environs, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 47.7,
+      "lon": 7.3
+    },
+    "strikeFund": {
+      "id": "fund-74",
+      "url": "https://www.cotizup.com/caisse-de-greve-mulhouse",
+      "title": "L'Enclume - Enthousiaste Comité de Lutte de Mulhouse et Environs",
+      "description": "Caisse de grève locale : L'Enclume - Enthousiaste Comité de Lutte de Mulhouse et Environs",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 43481,
+      "targetAmount": 61607
+    }
+  },
+  {
+    "id": "strike-fund-75",
+    "name": "ASSO du 31 (Haute Garonne)",
+    "age": 26,
+    "bio": "Gréviste de ASSO du 31 (Haute Garonne), en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 43.6,
+      "lon": 1.4
+    },
+    "strikeFund": {
+      "id": "fund-75",
+      "url": "https://www.papayoux-solidarite.com/fr/collecte/caisse-de-greve-pour-les-salarie-e-s-des-asso",
+      "title": "ASSO du 31 (Haute Garonne)",
+      "description": "Caisse de grève locale : ASSO du 31 (Haute Garonne)",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 4842,
+      "targetAmount": 113675
+    }
+  },
+  {
+    "id": "strike-fund-76",
+    "name": "intersyndicale des Unions départementales de l'Eure",
+    "age": 31,
+    "bio": "Gréviste de intersyndicale des Unions départementales de l'Eure, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-76",
+      "url": "https://www.leetchi.com/c/fond-de-greve-des-ud-de-leure-2023",
+      "title": "intersyndicale des Unions départementales de l'Eure",
+      "description": "Caisse de grève locale : intersyndicale des Unions départementales de l'Eure",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 12310,
+      "targetAmount": 114034
+    }
+  },
+  {
+    "id": "strike-fund-77",
+    "name": "union syndicale solidaires 21",
+    "age": 34,
+    "bio": "Gréviste de union syndicale solidaires 21, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 47.3,
+      "lon": 5
+    },
+    "strikeFund": {
+      "id": "fund-77",
+      "url": "https://www.helloasso.com/associations/union-syndicale-solidaires-21/formulaires/1",
+      "title": "union syndicale solidaires 21",
+      "description": "Caisse de grève locale : union syndicale solidaires 21",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 33985,
+      "targetAmount": 84929
+    }
+  },
+  {
+    "id": "strike-fund-78",
+    "name": "comité de luttes de Champigny et environs",
+    "age": 33,
+    "bio": "Gréviste de comité de luttes de Champigny et environs, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-78",
+      "url": "https://gofund.me/206025ac",
+      "title": "comité de luttes de Champigny et environs",
+      "description": "Caisse de grève locale : comité de luttes de Champigny et environs",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 37147,
+      "targetAmount": 92218
+    }
+  },
+  {
+    "id": "strike-fund-79",
+    "name": "Grévistes du centre d'incinération d'Isséane - Issy-les-Moulineaux",
+    "age": 45,
+    "bio": "Gréviste de Grévistes du centre d'incinération d'Isséane - Issy-les-Moulineaux, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-79",
+      "url": "https://www.leetchi.com/c/soutien-grevistes-isseane",
+      "title": "Grévistes du centre d'incinération d'Isséane - Issy-les-Moulineaux",
+      "description": "Caisse de grève locale : Grévistes du centre d'incinération d'Isséane - Issy-les-Moulineaux",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 45301,
+      "targetAmount": 86413
+    }
+  },
+  {
+    "id": "strike-fund-80",
+    "name": "Grévistes du centre d'incinération TIRU de Saint-Ouen",
+    "age": 45,
+    "bio": "Gréviste de Grévistes du centre d'incinération TIRU de Saint-Ouen, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-80",
+      "url": "https://www.leetchi.com/c/soutien-aux-agents-grevistes-de-la-tiru-de-saint-ouen?utm_source=copylink&utm_medium=social_sharing",
+      "title": "Grévistes du centre d'incinération TIRU de Saint-Ouen",
+      "description": "Caisse de grève locale : Grévistes du centre d'incinération TIRU de Saint-Ouen",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 4285,
+      "targetAmount": 66236
+    }
+  },
+  {
+    "id": "strike-fund-81",
+    "name": "Personnel mobilisé de Sciences Po Bordeaux",
+    "age": 30,
+    "bio": "Gréviste de Personnel mobilisé de Sciences Po Bordeaux, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 44.8,
+      "lon": -0.6
+    },
+    "strikeFund": {
+      "id": "fund-81",
+      "url": "https://www.papayoux-solidarite.com/fr/collecte/caisse-de-greve",
+      "title": "Personnel mobilisé de Sciences Po Bordeaux",
+      "description": "Caisse de grève locale : Personnel mobilisé de Sciences Po Bordeaux",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 39263,
+      "targetAmount": 76631
+    }
+  },
+  {
+    "id": "strike-fund-82",
+    "name": "AG interpro 54",
+    "age": 62,
+    "bio": "Gréviste de AG interpro 54, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.7,
+      "lon": 6.2
+    },
+    "strikeFund": {
+      "id": "fund-82",
+      "url": "https://nancy-luttes.net/ag2020/CaisseDeGreveInterpro54.html",
+      "title": "AG interpro 54",
+      "description": "Caisse de grève locale : AG interpro 54",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 1261,
+      "targetAmount": 85657
+    }
+  },
+  {
+    "id": "strike-fund-83",
+    "name": "Comité de mobilisation de Rennes 2",
+    "age": 59,
+    "bio": "Gréviste de Comité de mobilisation de Rennes 2, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.1,
+      "lon": -1.7
+    },
+    "strikeFund": {
+      "id": "fund-83",
+      "url": "https://www.cotizup.com/caissedegreverennes2",
+      "title": "Comité de mobilisation de Rennes 2",
+      "description": "Caisse de grève locale : Comité de mobilisation de Rennes 2",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 15471,
+      "targetAmount": 117963
+    }
+  },
+  {
+    "id": "strike-fund-84",
+    "name": "Lycée François Truffaut de Bondoufle (91)",
+    "age": 40,
+    "bio": "Gréviste de Lycée François Truffaut de Bondoufle (91), en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-84",
+      "url": "https://www.leetchi.com/c/cadeau-f-truffaut?utm_source=copylink&utm_medium=social_sharing",
+      "title": "Lycée François Truffaut de Bondoufle (91)",
+      "description": "Caisse de grève locale : Lycée François Truffaut de Bondoufle (91)",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 8730,
+      "targetAmount": 80481
+    }
+  },
+  {
+    "id": "strike-fund-85",
+    "name": "Cheminots Juvisy",
+    "age": 63,
+    "bio": "Gréviste de Cheminots Juvisy, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-85",
+      "url": "https://www.leetchi.com/c/caisse-de-greve-et-de-solidarite-pour-les-cheminots-de-juvisy-en-lutte-contre-la-retraite-a-64-ans?utm_source=copylink&utm_medium=social_sharing",
+      "title": "Cheminots Juvisy",
+      "description": "Caisse de grève locale : Cheminots Juvisy",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 9905,
+      "targetAmount": 103230
+    }
+  },
+  {
+    "id": "strike-fund-86",
+    "name": "Sud CT Loire Atlantique (44)",
+    "age": 35,
+    "bio": "Gréviste de Sud CT Loire Atlantique (44), en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 47.2,
+      "lon": -1.6
+    },
+    "strikeFund": {
+      "id": "fund-86",
+      "url": "https://www.leetchi.com/c/une-caisse-de-greve-pour-soutenir-les-grevistes-wxygrjyd",
+      "title": "Sud CT Loire Atlantique (44)",
+      "description": "Caisse de grève locale : Sud CT Loire Atlantique (44)",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 27454,
+      "targetAmount": 69256
+    }
+  },
+  {
+    "id": "strike-fund-87",
+    "name": "Lycée Le Corbusier à Aubervilliers",
+    "age": 55,
+    "bio": "Gréviste de Lycée Le Corbusier à Aubervilliers, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-87",
+      "url": "https://www.papayoux-solidarite.com/fr/collecte/caisse-de-greve-corbu?fbclid=IwAR0glHeOgGmTS0o_AupohhwpIVfXsWK3nDmbXpwxJt3BC0FIzyvvSIAh9fM",
+      "title": "Lycée Le Corbusier à Aubervilliers",
+      "description": "Caisse de grève locale : Lycée Le Corbusier à Aubervilliers",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 1427,
+      "targetAmount": 88754
+    }
+  },
+  {
+    "id": "strike-fund-88",
+    "name": "ELECTRICIENS ET GAZIERS PARISIENS CONTRE LA RETRAITE A 64 ANS",
+    "age": 33,
+    "bio": "Gréviste de ELECTRICIENS ET GAZIERS PARISIENS CONTRE LA RETRAITE A 64 ANS, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-88",
+      "url": "https://www.leetchi.com/c/les-electriciens-et-gaziers-parisiens-contre-la-retraite-a-64-ans",
+      "title": "ELECTRICIENS ET GAZIERS PARISIENS CONTRE LA RETRAITE A 64 ANS",
+      "description": "Caisse de grève locale : ELECTRICIENS ET GAZIERS PARISIENS CONTRE LA RETRAITE A 64 ANS",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 30078,
+      "targetAmount": 103143
+    }
+  },
+  {
+    "id": "strike-fund-89",
+    "name": "Comité de Luttes Montilien",
+    "age": 58,
+    "bio": "Gréviste de Comité de Luttes Montilien, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-89",
+      "url": "https://www.helloasso.com/associations/comite-de-luttes-montilien/formulaires/1",
+      "title": "Comité de Luttes Montilien",
+      "description": "Caisse de grève locale : Comité de Luttes Montilien",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 23520,
+      "targetAmount": 142847
+    }
+  },
+  {
+    "id": "strike-fund-90",
+    "name": "Personnels grévistes du lycée des Graves",
+    "age": 44,
+    "bio": "Gréviste de Personnels grévistes du lycée des Graves, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 44.8,
+      "lon": -0.6
+    },
+    "strikeFund": {
+      "id": "fund-90",
+      "url": "https://www.papayoux-solidarite.com/fr/collecte/caisse-de-greve-et-de-solidarite-lycee-des-graves",
+      "title": "Personnels grévistes du lycée des Graves",
+      "description": "Caisse de grève locale : Personnels grévistes du lycée des Graves",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 37339,
+      "targetAmount": 73782
+    }
+  },
+  {
+    "id": "strike-fund-91",
+    "name": "Caisse de grève Lycée Marcelin Berthelot",
+    "age": 38,
+    "bio": "Gréviste de Caisse de grève Lycée Marcelin Berthelot, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-91",
+      "url": "https://www.leetchi.com/c/caisse-de-greve-pour-les-retraites-du-lycee-marcelin-berthelot?utm_source=whatsapp&utm_medium=social_sharing",
+      "title": "Caisse de grève Lycée Marcelin Berthelot",
+      "description": "Caisse de grève locale : Caisse de grève Lycée Marcelin Berthelot",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 4646,
+      "targetAmount": 128293
+    }
+  },
+  {
+    "id": "strike-fund-92",
+    "name": "Solidarité aux Pizzorno de Vitry",
+    "age": 46,
+    "bio": "Gréviste de Solidarité aux Pizzorno de Vitry, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-92",
+      "url": "https://www.helloasso.com/associations/caisse-de-solidarite-2/formulaires/36",
+      "title": "Solidarité aux Pizzorno de Vitry",
+      "description": "Caisse de grève locale : Solidarité aux Pizzorno de Vitry",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 5899,
+      "targetAmount": 109469
+    }
+  },
+  {
+    "id": "strike-fund-93",
+    "name": "Lycée Maurice Utrillo Stains",
+    "age": 29,
+    "bio": "Gréviste de Lycée Maurice Utrillo Stains, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-93",
+      "url": "https://www.papayoux.com/fr/cagnotte/caisse-de-greve-utrillo",
+      "title": "Lycée Maurice Utrillo Stains",
+      "description": "Caisse de grève locale : Lycée Maurice Utrillo Stains",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 50708,
+      "targetAmount": 90246
+    }
+  },
+  {
+    "id": "strike-fund-94",
+    "name": "Solidarité AED Lycée Bremontier",
+    "age": 37,
+    "bio": "Gréviste de Solidarité AED Lycée Bremontier, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 44.8,
+      "lon": -0.6
+    },
+    "strikeFund": {
+      "id": "fund-94",
+      "url": "https://lydia-app.com/pots?id=21632-caisse-solidarite-aed-bremontier",
+      "title": "Solidarité AED Lycée Bremontier",
+      "description": "Caisse de grève locale : Solidarité AED Lycée Bremontier",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 34409,
+      "targetAmount": 117561
+    }
+  },
+  {
+    "id": "strike-fund-95",
+    "name": "Solidaires RATP métro lignes 3/3bis",
+    "age": 52,
+    "bio": "Gréviste de Solidaires RATP métro lignes 3/3bis, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-95",
+      "url": "https://www.cotizup.com/pour-aider-a-lutte-contre-cett",
+      "title": "Solidaires RATP métro lignes 3/3bis",
+      "description": "Caisse de grève locale : Solidaires RATP métro lignes 3/3bis",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 32863,
+      "targetAmount": 102486
+    }
+  },
+  {
+    "id": "strike-fund-96",
+    "name": "SUD Rail Paris Sud Est",
+    "age": 64,
+    "bio": "Gréviste de SUD Rail Paris Sud Est, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-96",
+      "url": "https://www.leetchi.com/c/greve-des-retraites-sud-rail-pse?utm_source=copylink&utm_medium=social_sharing",
+      "title": "SUD Rail Paris Sud Est",
+      "description": "Caisse de grève locale : SUD Rail Paris Sud Est",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 15466,
+      "targetAmount": 136161
+    }
+  },
+  {
+    "id": "strike-fund-97",
+    "name": "Solidaires 86 Vienne",
+    "age": 50,
+    "bio": "Gréviste de Solidaires 86 Vienne, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 46.6,
+      "lon": 0.3
+    },
+    "strikeFund": {
+      "id": "fund-97",
+      "url": "https://www.helloasso.com/associations/union-syndicale-solidaires-11/formulaires/1",
+      "title": "Solidaires 86 Vienne",
+      "description": "Caisse de grève locale : Solidaires 86 Vienne",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 19948,
+      "targetAmount": 142563
+    }
+  },
+  {
+    "id": "strike-fund-98",
+    "name": "Solidaires 27 Eure",
+    "age": 27,
+    "bio": "Gréviste de Solidaires 27 Eure, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-98",
+      "url": "https://www.leetchi.com/c/fond-de-greve-des-ud-de-leure-2023",
+      "title": "Solidaires 27 Eure",
+      "description": "Caisse de grève locale : Solidaires 27 Eure",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 17029,
+      "targetAmount": 67572
+    }
+  },
+  {
+    "id": "strike-fund-99",
+    "name": "Caisse de greve Sud Solidaires 06 Alpes Maritimes",
+    "age": 50,
+    "bio": "Gréviste de Caisse de greve Sud Solidaires 06 Alpes Maritimes, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 43.7,
+      "lon": 7.3
+    },
+    "strikeFund": {
+      "id": "fund-99",
+      "url": "https://www.cotizup.com/solidaires06",
+      "title": "Caisse de greve Sud Solidaires 06 Alpes Maritimes",
+      "description": "Caisse de grève locale : Caisse de greve Sud Solidaires 06 Alpes Maritimes",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 36782,
+      "targetAmount": 108461
+    }
+  },
+  {
+    "id": "strike-fund-100",
+    "name": "Grevistes de la tiru de saint-ouen",
+    "age": 64,
+    "bio": "Gréviste de Grevistes de la tiru de saint-ouen, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-100",
+      "url": "https://www.leetchi.com/c/soutien-aux-agents-grevistes-de-la-tiru-de-saint-ouen?utm_source=copylink&utm_medium=social_sharing",
+      "title": "Grevistes de la tiru de saint-ouen",
+      "description": "Caisse de grève locale : Grevistes de la tiru de saint-ouen",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 5310,
+      "targetAmount": 95594
+    }
+  },
+  {
+    "id": "strike-fund-101",
+    "name": "CGT Energie Charente",
+    "age": 55,
+    "bio": "Gréviste de CGT Energie Charente, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 45.6,
+      "lon": 0.2
+    },
+    "strikeFund": {
+      "id": "fund-101",
+      "url": "https://www.leetchi.com/c/cgt-energie-charente-soutien-contre-la-reforme-des-retraites?fbclid=IwAR2GVjx9feF_gV9P-WnTxQ_q1YPUw8I0fYJTj33LxNg6IcEEKu3hcKUIvNo",
+      "title": "CGT Energie Charente",
+      "description": "Caisse de grève locale : CGT Energie Charente",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 4845,
+      "targetAmount": 73250
+    }
+  },
+  {
+    "id": "strike-fund-102",
+    "name": "Raffinerie Plateforme Normandie",
+    "age": 45,
+    "bio": "Gréviste de Raffinerie Plateforme Normandie, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 49.4,
+      "lon": 0.2
+    },
+    "strikeFund": {
+      "id": "fund-102",
+      "url": "https://www.cotizup.com/plateformenormandie",
+      "title": "Raffinerie Plateforme Normandie",
+      "description": "Caisse de grève locale : Raffinerie Plateforme Normandie",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 38186,
+      "targetAmount": 76685
+    }
+  },
+  {
+    "id": "strike-fund-103",
+    "name": "Caisse de grève interprofessionnelle du Mantois",
+    "age": 38,
+    "bio": "Gréviste de Caisse de grève interprofessionnelle du Mantois, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-103",
+      "url": "https://sudeducation78.ouvaton.org/Une-caisse-de-greve-interpro-dans-le-Mantois",
+      "title": "Caisse de grève interprofessionnelle du Mantois",
+      "description": "Caisse de grève locale : Caisse de grève interprofessionnelle du Mantois",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 32146,
+      "targetAmount": 96279
+    }
+  },
+  {
+    "id": "strike-fund-104",
+    "name": "Technicentre Châtillon (maintenance TGV)",
+    "age": 35,
+    "bio": "Gréviste de Technicentre Châtillon (maintenance TGV), en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-104",
+      "url": "https://www.leetchi.com/c/caisse-de-greve-des-cheminots-de-chatillon",
+      "title": "Technicentre Châtillon (maintenance TGV)",
+      "description": "Caisse de grève locale : Technicentre Châtillon (maintenance TGV)",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 22512,
+      "targetAmount": 132482
+    }
+  },
+  {
+    "id": "strike-fund-105",
+    "name": "Enseignants et AESH 1er degré 19ème arrondissement",
+    "age": 30,
+    "bio": "Gréviste de Enseignants et AESH 1er degré 19ème arrondissement, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-105",
+      "url": "https://www.helloasso.com/associations/arret-images/formulaires/1",
+      "title": "Enseignants et AESH 1er degré 19ème arrondissement",
+      "description": "Caisse de grève locale : Enseignants et AESH 1er degré 19ème arrondissement",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 16344,
+      "targetAmount": 75162
+    }
+  },
+  {
+    "id": "strike-fund-106",
+    "name": "AG interprofessionnelle de Saint-Denis",
+    "age": 43,
+    "bio": "Gréviste de AG interprofessionnelle de Saint-Denis, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-106",
+      "url": "https://www.papayoux-solidarite.com/fr/collecte/caisse-de-greve-ag-interpro-saint-denis",
+      "title": "AG interprofessionnelle de Saint-Denis",
+      "description": "Caisse de grève locale : AG interprofessionnelle de Saint-Denis",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 5484,
+      "targetAmount": 61311
+    }
+  },
+  {
+    "id": "strike-fund-107",
+    "name": "CGT des laboratoires Pierre Fabre",
+    "age": 54,
+    "bio": "Gréviste de CGT des laboratoires Pierre Fabre, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 43.6,
+      "lon": 1.4
+    },
+    "strikeFund": {
+      "id": "fund-107",
+      "url": "https://www.helloasso.com/associations/syndicat-cgt-des-laboratoires-pierre-fabre/formulaires/1",
+      "title": "CGT des laboratoires Pierre Fabre",
+      "description": "Caisse de grève locale : CGT des laboratoires Pierre Fabre",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 42553,
+      "targetAmount": 124777
+    }
+  },
+  {
+    "id": "strike-fund-108",
+    "name": "Collectif des éboueurs de Nantes Métropole",
+    "age": 59,
+    "bio": "Gréviste de Collectif des éboueurs de Nantes Métropole, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 47.2,
+      "lon": -1.6
+    },
+    "strikeFund": {
+      "id": "fund-108",
+      "url": "https://caisse-solidarite.fr/c/eboueurs-nantes/",
+      "title": "Collectif des éboueurs de Nantes Métropole",
+      "description": "Caisse de grève locale : Collectif des éboueurs de Nantes Métropole",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 44678,
+      "targetAmount": 102767
+    }
+  },
+  {
+    "id": "strike-fund-109",
+    "name": "Cheminots de Paris Nord",
+    "age": 26,
+    "bio": "Gréviste de Cheminots de Paris Nord, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-109",
+      "url": "https://www.cotizup.com/bataille-retraite-cheminot-pno",
+      "title": "Cheminots de Paris Nord",
+      "description": "Caisse de grève locale : Cheminots de Paris Nord",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 20341,
+      "targetAmount": 93120
+    }
+  },
+  {
+    "id": "strike-fund-110",
+    "name": "Chauffeurs Poids Lourd de la Propreté de Paris",
+    "age": 26,
+    "bio": "Gréviste de Chauffeurs Poids Lourd de la Propreté de Paris, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-110",
+      "url": "https://caisse-solidarite.fr/c/chauffeurs-proprete-paris/",
+      "title": "Chauffeurs Poids Lourd de la Propreté de Paris",
+      "description": "Caisse de grève locale : Chauffeurs Poids Lourd de la Propreté de Paris",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 32226,
+      "targetAmount": 110865
+    }
+  },
+  {
+    "id": "strike-fund-111",
+    "name": "Universités et bibliothèques d'IDF en lutte",
+    "age": 55,
+    "bio": "Gréviste de Universités et bibliothèques d'IDF en lutte, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-111",
+      "url": "https://www.cotizup.com/caisse-de-greve-univ-bib",
+      "title": "Universités et bibliothèques d'IDF en lutte",
+      "description": "Caisse de grève locale : Universités et bibliothèques d'IDF en lutte",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 13532,
+      "targetAmount": 74370
+    }
+  },
+  {
+    "id": "strike-fund-112",
+    "name": "AG des Territoriaux Ville de Paris pour la grève reconductible (Propreté, espaces verts, affaires scolaires, petite enfance, social, culture...)",
+    "age": 31,
+    "bio": "Gréviste de AG des Territoriaux Ville de Paris pour la grève reconductible (Propreté, espaces verts, affaires scolaires, petite enfance, social, culture...), en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-112",
+      "url": "https://caisse-solidarite.fr/c/ville-de-paris-en-lutte",
+      "title": "AG des Territoriaux Ville de Paris pour la grève reconductible (Propreté, espaces verts, affaires scolaires, petite enfance, social, culture...)",
+      "description": "Caisse de grève locale : AG des Territoriaux Ville de Paris pour la grève reconductible (Propreté, espaces verts, affaires scolaires, petite enfance, social, culture...)",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 15745,
+      "targetAmount": 124433
+    }
+  },
+  {
+    "id": "strike-fund-113",
+    "name": "Eboueurs et travailleurs du SIVOM en grève - Varennes-Jarcy",
+    "age": 28,
+    "bio": "Gréviste de Eboueurs et travailleurs du SIVOM en grève - Varennes-Jarcy, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-113",
+      "url": "https://www.cotizup.com/eboueurs-sivom",
+      "title": "Eboueurs et travailleurs du SIVOM en grève - Varennes-Jarcy",
+      "description": "Caisse de grève locale : Eboueurs et travailleurs du SIVOM en grève - Varennes-Jarcy",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 15750,
+      "targetAmount": 136003
+    }
+  },
+  {
+    "id": "strike-fund-114",
+    "name": "Soutien aux éboueurs de Saint-Brieuc",
+    "age": 51,
+    "bio": "Gréviste de Soutien aux éboueurs de Saint-Brieuc, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.5,
+      "lon": -2.8
+    },
+    "strikeFund": {
+      "id": "fund-114",
+      "url": "https://www.leetchi.com/c/soutien-eboueurs-grevistes?fbclid=IwAR37klksknkq53BHqXrsFU_GmzgXkW6KKbvN2la2MXiwwVpND6BMhSRrpGo",
+      "title": "Soutien aux éboueurs de Saint-Brieuc",
+      "description": "Caisse de grève locale : Soutien aux éboueurs de Saint-Brieuc",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 42244,
+      "targetAmount": 82758
+    }
+  },
+  {
+    "id": "strike-fund-115",
+    "name": "Caisse de grève - Planning Familial de la Gironde",
+    "age": 56,
+    "bio": "Gréviste de Caisse de grève - Planning Familial de la Gironde, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 44.8,
+      "lon": -0.6
+    },
+    "strikeFund": {
+      "id": "fund-115",
+      "url": "https://www.papayoux-solidarite.com/fr/collecte/caisse-de-greve-planning-familial-de-la-gironde",
+      "title": "Caisse de grève - Planning Familial de la Gironde",
+      "description": "Caisse de grève locale : Caisse de grève - Planning Familial de la Gironde",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 31400,
+      "targetAmount": 98140
+    }
+  },
+  {
+    "id": "strike-fund-116",
+    "name": "Collectif MobiRetraites92",
+    "age": 27,
+    "bio": "Gréviste de Collectif MobiRetraites92, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-116",
+      "url": "https://www.cotizup.com/MobiRetraites92",
+      "title": "Collectif MobiRetraites92",
+      "description": "Caisse de grève locale : Collectif MobiRetraites92",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 40134,
+      "targetAmount": 145644
+    }
+  },
+  {
+    "id": "strike-fund-117",
+    "name": "Collège La Cerisaie",
+    "age": 37,
+    "bio": "Gréviste de Collège La Cerisaie, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-117",
+      "url": "https://www.leetchi.com/c/caisse-de-greve-la-cerisaie",
+      "title": "Collège La Cerisaie",
+      "description": "Caisse de grève locale : Collège La Cerisaie",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 48305,
+      "targetAmount": 129947
+    }
+  },
+  {
+    "id": "strike-fund-118",
+    "name": "Caisse de grève du collège E. Quinet",
+    "age": 47,
+    "bio": "Gréviste de Caisse de grève du collège E. Quinet, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 43.3,
+      "lon": 5.4
+    },
+    "strikeFund": {
+      "id": "fund-118",
+      "url": "https://www.leetchi.com/c/caisse-de-greve-du-college-e-quinet",
+      "title": "Caisse de grève du collège E. Quinet",
+      "description": "Caisse de grève locale : Caisse de grève du collège E. Quinet",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 15998,
+      "targetAmount": 100558
+    }
+  },
+  {
+    "id": "strike-fund-119",
+    "name": "Caisse de soutien aux éboueurs de Saint Etienne",
+    "age": 31,
+    "bio": "Gréviste de Caisse de soutien aux éboueurs de Saint Etienne, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 45.4,
+      "lon": 4.4
+    },
+    "strikeFund": {
+      "id": "fund-119",
+      "url": "https://www.leetchi.com/fr/c/lQv64OVE?utm_source=facebook&fbclid=IwAR2IBl4krpXCE_CUCBimw4cON9T_ZDszYDXScaQz98L_TtB7-Wg4aGFNoDM",
+      "title": "Caisse de soutien aux éboueurs de Saint Etienne",
+      "description": "Caisse de grève locale : Caisse de soutien aux éboueurs de Saint Etienne",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 46778,
+      "targetAmount": 145243
+    }
+  },
+  {
+    "id": "strike-fund-120",
+    "name": "Solidaire RATP",
+    "age": 43,
+    "bio": "Gréviste de Solidaire RATP, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-120",
+      "url": "https://www.cotizup.com/caissedegrevesolidairesratp",
+      "title": "Solidaire RATP",
+      "description": "Caisse de grève locale : Solidaire RATP",
+      "category": "Locale",
+      "urgency": "Élevée",
+      "currentAmount": 14367,
+      "targetAmount": 52588
+    }
+  },
+  {
+    "id": "strike-fund-121",
+    "name": "Personnels grévistes du lycée Jean Vilar",
+    "age": 46,
+    "bio": "Gréviste de Personnels grévistes du lycée Jean Vilar, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-121",
+      "url": "https://www.papayoux-solidarite.com/fr/collecte/caisse-de-greve-lycee-jean-vilar",
+      "title": "Personnels grévistes du lycée Jean Vilar",
+      "description": "Caisse de grève locale : Personnels grévistes du lycée Jean Vilar",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 44759,
+      "targetAmount": 79931
+    }
+  },
+  {
+    "id": "strike-fund-122",
+    "name": "Caisse de grève du collège Albert Camus (Le Plessis-Trévise, 94)",
+    "age": 53,
+    "bio": "Gréviste de Caisse de grève du collège Albert Camus (Le Plessis-Trévise, 94), en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-122",
+      "url": "https://caisse-solidarite.fr/c/albertcamus-plessistrevise/",
+      "title": "Caisse de grève du collège Albert Camus (Le Plessis-Trévise, 94)",
+      "description": "Caisse de grève locale : Caisse de grève du collège Albert Camus (Le Plessis-Trévise, 94)",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 43937,
+      "targetAmount": 110401
+    }
+  },
+  {
+    "id": "strike-fund-123",
+    "name": "Éducation Groupe scolaire Nanteuil MONTREUIL",
+    "age": 31,
+    "bio": "Gréviste de Éducation Groupe scolaire Nanteuil MONTREUIL, en lutte pour nos droits et notre avenir.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8,
+      "lon": 2.3
+    },
+    "strikeFund": {
+      "id": "fund-123",
+      "url": "https://www.cotizup.com/caissedegreve-nanteuil",
+      "title": "Éducation Groupe scolaire Nanteuil MONTREUIL",
+      "description": "Caisse de grève locale : Éducation Groupe scolaire Nanteuil MONTREUIL",
+      "category": "Locale",
+      "urgency": "Moyenne",
+      "currentAmount": 42061,
+      "targetAmount": 129517
+    }
+  },
+  {
+    "id": "strike-fund-124",
+    "name": "Caisse de grève Queer",
+    "age": 34,
+    "bio": "Membre actif de Caisse de grève Queer, engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-124",
+      "url": "https://www.papayoux.com/fr/cagnotte/caisse-de-greve-queer",
+      "title": "Caisse de grève Queer",
+      "description": "Caisse de grève thématique : Caisse de grève Queer",
+      "category": "Thématique",
+      "urgency": "Élevée",
+      "currentAmount": 28205,
+      "targetAmount": 130789
+    }
+  },
+  {
+    "id": "strike-fund-125",
+    "name": "Sud-Éducation",
+    "age": 45,
+    "bio": "Membre actif de Sud-Éducation, engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-125",
+      "url": "https://www.helloasso.com/associations/sud-education/collectes/solidarite-avec-les-grevistes-de-l-education-1",
+      "title": "Sud-Éducation",
+      "description": "Caisse de grève thématique : Sud-Éducation",
+      "category": "Thématique",
+      "urgency": "Moyenne",
+      "currentAmount": 2586,
+      "targetAmount": 139060
+    }
+  },
+  {
+    "id": "strike-fund-126",
+    "name": "CNT SO",
+    "age": 46,
+    "bio": "Membre actif de CNT SO, engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-126",
+      "url": "https://www.papayoux-solidarite.com/fr/collecte/caisse-de-greve-interpro-de-la-cnt-so",
+      "title": "CNT SO",
+      "description": "Caisse de grève thématique : CNT SO",
+      "category": "Thématique",
+      "urgency": "Élevée",
+      "currentAmount": 32876,
+      "targetAmount": 142948
+    }
+  },
+  {
+    "id": "strike-fund-127",
+    "name": "CGT",
+    "age": 62,
+    "bio": "Membre actif de CGT, engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-127",
+      "url": "https://www.leetchi.com/c/solidarite-cgt-mobilisation",
+      "title": "CGT",
+      "description": "Caisse de grève thématique : CGT",
+      "category": "Thématique",
+      "urgency": "Moyenne",
+      "currentAmount": 1482,
+      "targetAmount": 114341
+    }
+  },
+  {
+    "id": "strike-fund-128",
+    "name": "Solidarité Lutte FNME CGT – Fédé nationale Mines énergie",
+    "age": 28,
+    "bio": "Membre actif de Solidarité Lutte FNME CGT – Fédé nationale Mines énergie, engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-128",
+      "url": "https://www.leetchi.com/c/solidarite-lutte-fnme-cgt",
+      "title": "Solidarité Lutte FNME CGT – Fédé nationale Mines énergie",
+      "description": "Caisse de grève thématique : Solidarité Lutte FNME CGT – Fédé nationale Mines énergie",
+      "category": "Thématique",
+      "urgency": "Élevée",
+      "currentAmount": 32876,
+      "targetAmount": 91883
+    }
+  },
+  {
+    "id": "strike-fund-129",
+    "name": "Syndicat des Travailleurs et Travailleuses du Jeu Vidéo (STJV)",
+    "age": 61,
+    "bio": "Membre actif de Syndicat des Travailleurs et Travailleuses du Jeu Vidéo (STJV), engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-129",
+      "url": "https://www.stjv.fr/2023/01/mobilisation-pour-les-retraites-caisse-de-greve-du-stjv/",
+      "title": "Syndicat des Travailleurs et Travailleuses du Jeu Vidéo (STJV)",
+      "description": "Caisse de grève thématique : Syndicat des Travailleurs et Travailleuses du Jeu Vidéo (STJV)",
+      "category": "Thématique",
+      "urgency": "Moyenne",
+      "currentAmount": 36448,
+      "targetAmount": 76019
+    }
+  },
+  {
+    "id": "strike-fund-130",
+    "name": "Sud Rail Centraux",
+    "age": 47,
+    "bio": "Membre actif de Sud Rail Centraux, engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-130",
+      "url": "https://www.cotizup.com/solidaritecheminots",
+      "title": "Sud Rail Centraux",
+      "description": "Caisse de grève thématique : Sud Rail Centraux",
+      "category": "Thématique",
+      "urgency": "Moyenne",
+      "currentAmount": 50870,
+      "targetAmount": 61282
+    }
+  },
+  {
+    "id": "strike-fund-131",
+    "name": "Caisse de solidarité intersyndicale CGT-SUD",
+    "age": 30,
+    "bio": "Membre actif de Caisse de solidarité intersyndicale CGT-SUD, engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-131",
+      "url": "https://caisse-solidarite.fr",
+      "title": "Caisse de solidarité intersyndicale CGT-SUD",
+      "description": "Caisse de grève thématique : Caisse de solidarité intersyndicale CGT-SUD",
+      "category": "Thématique",
+      "urgency": "Élevée",
+      "currentAmount": 20482,
+      "targetAmount": 84882
+    }
+  },
+  {
+    "id": "strike-fund-132",
+    "name": "Caisse de grève des Métiers du Livre",
+    "age": 51,
+    "bio": "Membre actif de Caisse de grève des Métiers du Livre, engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-132",
+      "url": "https://www.cotizup.com/metier-du-livre-en-lutte",
+      "title": "Caisse de grève des Métiers du Livre",
+      "description": "Caisse de grève thématique : Caisse de grève des Métiers du Livre",
+      "category": "Thématique",
+      "urgency": "Élevée",
+      "currentAmount": 50106,
+      "targetAmount": 66142
+    }
+  },
+  {
+    "id": "strike-fund-133",
+    "name": "Caisse de grève des salariés de l'associatif ASSO Solidaires",
+    "age": 30,
+    "bio": "Membre actif de Caisse de grève des salariés de l'associatif ASSO Solidaires, engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-133",
+      "url": "https://www.helloasso.com/associations/syndicat-asso-solidaires/formulaires/1",
+      "title": "Caisse de grève des salariés de l'associatif ASSO Solidaires",
+      "description": "Caisse de grève thématique : Caisse de grève des salariés de l'associatif ASSO Solidaires",
+      "category": "Thématique",
+      "urgency": "Moyenne",
+      "currentAmount": 39749,
+      "targetAmount": 85794
+    }
+  },
+  {
+    "id": "strike-fund-134",
+    "name": "Caisse de grève des assistant.es d'éducation (AED) d'Île-de-France",
+    "age": 58,
+    "bio": "Membre actif de Caisse de grève des assistant.es d'éducation (AED) d'Île-de-France, engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-134",
+      "url": "https://www.papayoux-solidarite.com/fr/collecte/caisse-de-greve-des-surveillant-es-d-ile-de-france",
+      "title": "Caisse de grève des assistant.es d'éducation (AED) d'Île-de-France",
+      "description": "Caisse de grève thématique : Caisse de grève des assistant.es d'éducation (AED) d'Île-de-France",
+      "category": "Thématique",
+      "urgency": "Moyenne",
+      "currentAmount": 8662,
+      "targetAmount": 146514
+    }
+  },
+  {
+    "id": "strike-fund-135",
+    "name": "sud education",
+    "age": 47,
+    "bio": "Membre actif de sud education, engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-135",
+      "url": "https://www.sudeducation.org/caisse-de-greve-pour-soutenir-les-grevistes-de-leducation-et-de-lesr-contre-la-reforme-des-retraites/",
+      "title": "sud education",
+      "description": "Caisse de grève thématique : sud education",
+      "category": "Thématique",
+      "urgency": "Moyenne",
+      "currentAmount": 33194,
+      "targetAmount": 99430
+    }
+  },
+  {
+    "id": "strike-fund-136",
+    "name": "AG Education Ile-de-France",
+    "age": 47,
+    "bio": "Membre actif de AG Education Ile-de-France, engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-136",
+      "url": "https://www.helloasso.com/associations/association-crbp/formulaires/2",
+      "title": "AG Education Ile-de-France",
+      "description": "Caisse de grève thématique : AG Education Ile-de-France",
+      "category": "Thématique",
+      "urgency": "Moyenne",
+      "currentAmount": 12185,
+      "targetAmount": 59166
+    }
+  },
+  {
+    "id": "strike-fund-137",
+    "name": "Solidarité avec les luttes SUD PTT",
+    "age": 52,
+    "bio": "Membre actif de Solidarité avec les luttes SUD PTT, engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-137",
+      "url": "https://www.helloasso.com/associations/sud-ptt/formulaires/2",
+      "title": "Solidarité avec les luttes SUD PTT",
+      "description": "Caisse de grève thématique : Solidarité avec les luttes SUD PTT",
+      "category": "Thématique",
+      "urgency": "Moyenne",
+      "currentAmount": 36682,
+      "targetAmount": 142591
+    }
+  },
+  {
+    "id": "strike-fund-138",
+    "name": "coordination antirépression Paris IdF 07 52 95 71 11",
+    "age": 47,
+    "bio": "Membre actif de coordination antirépression Paris IdF 07 52 95 71 11, engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-138",
+      "url": "https://www.helloasso.com/associations/collectives-solidarites",
+      "title": "coordination antirépression Paris IdF 07 52 95 71 11",
+      "description": "Caisse de grève thématique : coordination antirépression Paris IdF 07 52 95 71 11",
+      "category": "Thématique",
+      "urgency": "Élevée",
+      "currentAmount": 15288,
+      "targetAmount": 91403
+    }
+  },
+  {
+    "id": "strike-fund-139",
+    "name": "caisse de soutien antirépression Marseille 07.53.05.25.30",
+    "age": 31,
+    "bio": "Membre actif de caisse de soutien antirépression Marseille 07.53.05.25.30, engagé dans la lutte sociale et la solidarité.",
+    "photoUrl": "https://thispersondoesnotexist.com/",
+    "location": {
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    "strikeFund": {
+      "id": "fund-139",
+      "url": "https://www.helloasso.com/associations/liberte-toujours?banner=true",
+      "title": "caisse de soutien antirépression Marseille 07.53.05.25.30",
+      "description": "Caisse de grève thématique : caisse de soutien antirépression Marseille 07.53.05.25.30",
+      "category": "Thématique",
+      "urgency": "Moyenne",
+      "currentAmount": 7357,
+      "targetAmount": 82811
+    }
+  }
+]

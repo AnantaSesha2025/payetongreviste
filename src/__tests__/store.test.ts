@@ -187,7 +187,7 @@ describe('useAppStore', () => {
     });
 
     const chat = result.current.chats['1'];
-    expect(chat[0].text).toContain(mockProfile.strikeFund.title);
+    expect(chat[1].text).toContain(mockProfile.strikeFund.title);
     expect(chat[2].text).toContain(mockProfile.strikeFund.url);
   });
 

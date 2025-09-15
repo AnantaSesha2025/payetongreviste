@@ -19,6 +19,7 @@ export type CardProps = {
     bio: string;
     photoUrl: string;
     strikeFund: { url: string; title: string };
+    distance?: number; // Distance in kilometers
   };
   /** Callback function triggered when card is swiped left or right */
   onSwipe?: (dir: 'left' | 'right') => void;
@@ -190,9 +191,17 @@ export function Card({
         blurDataURL={blurDataURL}
       />
       <div className="card-content">
-        <h3 className="card-name">
-          {profile.name}, {profile.age}
-        </h3>
+        <div className="card-header">
+          <h3 className="card-name">
+            {profile.name}, {profile.age}
+          </h3>
+          {profile.distance !== undefined &&
+            typeof profile.distance === 'number' && (
+              <div className="card-distance">
+                📍 {Math.round(profile.distance)}km
+              </div>
+            )}
+        </div>
         <p id={`card-${profile.id}-description`} className="card-bio">
           <BioWithFund bio={profile.bio} fund={profile.strikeFund} />
         </p>

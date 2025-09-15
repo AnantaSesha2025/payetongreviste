@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import type { PanInfo } from 'framer-motion';
 import { Card } from './Card';
@@ -12,7 +12,7 @@ import { mockProfiles, useAppStore } from '../store';
 import { githubGistService } from '../lib/githubGist';
 import { convertGistProfileToAppProfile } from '../lib/fakeProfiles';
 import { DEFAULT_GIST_ID } from '../lib/constants';
-// import { haversineKm } from '../lib/geo'
+import { haversineKm } from '../lib/geo';
 import './SwipeDeck.css';
 
 /**
@@ -24,8 +24,14 @@ import './SwipeDeck.css';
  */
 export function SwipeDeck({
   onCreateProfile,
+  userLocation: externalUserLocation,
+  maxDistance: externalMaxDistance,
+  sortByDistance: externalSortByDistance,
 }: {
   onCreateProfile: () => void;
+  userLocation?: { lat: number; lon: number } | null;
+  maxDistance?: number;
+  sortByDistance?: boolean;
 }) {
   const { profiles, setProfiles, likeProfile, passProfile } = useAppStore();
   const { showSuccess, showInfo } = useToast();
@@ -33,22 +39,30 @@ export function SwipeDeck({
     useSwipeHistory();
   const [index, setIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [userLocation, setUserLocation] = useState<{
+    lat: number;
+    lon: number;
+  } | null>(externalUserLocation || null);
+  const [locationError, setLocationError] = useState<string | null>(null);
+  const [locationSuccess, setLocationSuccess] = useState<string | null>(null);
+  const [locationRequested, setLocationRequested] = useState<boolean>(false);
+  const [maxDistance, setMaxDistance] = useState<number>(
+    externalMaxDistance || 50
+  ); // Default 50km radius
+  const [sortByDistance, setSortByDistance] = useState<boolean>(
+    externalSortByDistance ?? true
+  );
 
-  // Initialize profiles from Gist or mock data if none exist
+  // Auto-dismiss location messages after 3 seconds
   useEffect(() => {
-    if (profiles.length === 0) {
-      // In test environment, load mock data immediately
-      if (import.meta.env.MODE === 'test') {
-        setProfiles(mockProfiles);
-        setIsLoading(false);
-      } else {
-        // Load from your existing Gist
-        loadProfilesFromGist();
-      }
-    } else {
-      setIsLoading(false);
+    if (locationError || locationSuccess) {
+      const timer = setTimeout(() => {
+        setLocationError(null);
+        setLocationSuccess(null);
+      }, 3000);
+      return () => clearTimeout(timer);
     }
-  }, [profiles.length, setProfiles, loadProfilesFromGist]);
+  }, [locationError, locationSuccess]);
 
   // Function to load profiles from your Gist
   const loadProfilesFromGist = useCallback(async () => {
@@ -75,10 +89,96 @@ export function SwipeDeck({
     }
   }, [setProfiles]);
 
+  // Initialize profiles from Gist or mock data if none exist
+  useEffect(() => {
+    if (profiles.length === 0) {
+      // In test environment, load mock data immediately
+      if (import.meta.env.MODE === 'test') {
+        setProfiles(mockProfiles);
+        setIsLoading(false);
+      } else {
+        // Load from your existing Gist
+        loadProfilesFromGist();
+      }
+    } else {
+      setIsLoading(false);
+    }
+  }, [profiles.length, setProfiles, loadProfilesFromGist]);
+
+  // Sync with external props
+  useEffect(() => {
+    if (externalUserLocation) {
+      setUserLocation(externalUserLocation);
+    }
+  }, [externalUserLocation]);
+
+  useEffect(() => {
+    if (externalMaxDistance !== undefined) {
+      setMaxDistance(externalMaxDistance);
+    }
+  }, [externalMaxDistance]);
+
+  useEffect(() => {
+    if (externalSortByDistance !== undefined) {
+      setSortByDistance(externalSortByDistance);
+    }
+  }, [externalSortByDistance]);
+
+  // Set Paris as default location on component mount if no external location
+  useEffect(() => {
+    if (!userLocation && !locationRequested && !externalUserLocation) {
+      // Set Paris as default without requesting permission
+      setUserLocation({ lat: 48.8566, lon: 2.3522 });
+      setLocationRequested(true);
+    }
+  }, [userLocation, locationRequested, externalUserLocation]);
+
+  // Filter and sort profiles by distance
+  const filteredProfiles = useMemo(() => {
+    if (!userLocation) {
+      return profiles; // Show all profiles if no location
+    }
+
+    // Filter profiles that have valid location data
+    const profilesWithLocation = profiles.filter(
+      p =>
+        p.location &&
+        typeof p.location.lat === 'number' &&
+        typeof p.location.lon === 'number'
+    );
+
+    // If no profiles have location data, show all profiles
+    if (profilesWithLocation.length === 0) {
+      return profiles;
+    }
+
+    // Calculate distance for each profile and filter by max distance
+    const profilesWithDistance = profilesWithLocation
+      .map(profile => ({
+        ...profile,
+        distance: haversineKm(userLocation, profile.location),
+      }))
+      .filter(profile => profile.distance <= maxDistance);
+
+    // If all profiles are being filtered out due to distance, show all profiles with location data
+    if (profilesWithDistance.length === 0) {
+      return profilesWithLocation.map(profile => ({
+        ...profile,
+        distance: haversineKm(userLocation, profile.location),
+      }));
+    }
+
+    // Sort by distance if enabled
+    if (sortByDistance) {
+      return profilesWithDistance.sort((a, b) => a.distance - b.distance);
+    }
+
+    return profilesWithDistance;
+  }, [profiles, userLocation, maxDistance, sortByDistance]);
+
   // Get current and next profile for the card stack
-  // Geolocation temporarily disabled due to bugs; show all profiles
-  const current = profiles[index];
-  const next = profiles[index + 1];
+  const current = filteredProfiles[index];
+  const next = filteredProfiles[index + 1];
 
   // Handle refresh - reset to beginning of profiles
   const handleRefresh = () => {
@@ -161,6 +261,18 @@ export function SwipeDeck({
 
   return (
     <div className="deck">
+      {/* Location status indicators */}
+      {locationError && (
+        <div className="location-error">
+          <span>{locationError}</span>
+        </div>
+      )}
+      {locationSuccess && (
+        <div className="location-success">
+          <span>{locationSuccess}</span>
+        </div>
+      )}
+
       {/* Next card (behind) */}
       {next && <Card profile={next} disabled />}
 
@@ -371,7 +483,7 @@ function DetailsModal({
           <p className="details-bio">{bio}</p>
 
           <div className="details-strike-fund">
-            <h3>Support the Cause</h3>
+            <h3>Soutenir la Cause</h3>
             <a
               href={strikeUrl}
               target="_blank"

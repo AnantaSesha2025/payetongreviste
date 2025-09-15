@@ -8,6 +8,10 @@ export interface GistProfile {
   age: number;
   bio: string;
   photoUrl: string;
+  location: {
+    lat: number;
+    lon: number;
+  };
   strikeFund: {
     id: string;
     url: string;

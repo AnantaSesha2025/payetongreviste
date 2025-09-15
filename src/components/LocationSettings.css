@@ -1,0 +1,344 @@
+/* Location Settings Button */
+.location-settings-btn {
+  background: var(--primary-yellow);
+  color: var(--secondary-black);
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.location-settings-btn:hover {
+  background: #f7d94a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.location-settings-text {
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+/* Location Settings Popup */
+.location-settings-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--secondary-black);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 0;
+  min-width: 400px;
+  max-width: 90vw;
+  max-height: 80vh;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  animation: popupFadeIn 0.2s ease-out;
+  overflow: hidden;
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Popup Header */
+.location-settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.location-settings-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.location-settings-close {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-settings-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+/* Popup Content */
+.location-settings-content {
+  padding: 1.5rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.location-settings-section {
+  margin-bottom: 2rem;
+}
+
+.location-settings-section:last-child {
+  margin-bottom: 0;
+}
+
+.location-settings-section label {
+  display: block;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+/* Location Request */
+.location-request {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.location-request p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 0 0 1rem 0;
+}
+
+.location-request-btn {
+  background: var(--primary-yellow);
+  color: var(--secondary-black);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.location-request-btn:hover:not(:disabled) {
+  background: #f7d94a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(249, 226, 91, 0.3);
+}
+
+.location-request-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Location Info */
+.location-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.location-coordinates {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.location-refresh-btn {
+  background: transparent;
+  color: var(--primary-yellow);
+  border: 1px solid var(--primary-yellow);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  align-self: flex-start;
+}
+
+.location-refresh-btn:hover {
+  background: var(--primary-yellow);
+  color: var(--secondary-black);
+}
+
+/* Distance Slider */
+.distance-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border-color);
+  outline: none;
+  margin-bottom: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.distance-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary-yellow);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.distance-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary-yellow);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Distance Presets */
+.distance-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.distance-preset {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.distance-preset:hover {
+  background: rgba(249, 226, 91, 0.1);
+  border-color: var(--primary-yellow);
+  color: var(--text-primary);
+}
+
+.distance-preset.active {
+  background: var(--primary-yellow);
+  color: var(--secondary-black);
+  border-color: var(--primary-yellow);
+}
+
+/* Sort Toggle */
+.sort-toggle {
+  display: flex !important;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  margin-bottom: 0 !important;
+  font-size: 0.875rem;
+}
+
+.sort-toggle input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-yellow);
+}
+
+/* Footer */
+.location-settings-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.profile-count {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Mobile Responsive */
+@media (max-width: 40rem) {
+  .location-settings-popup {
+    min-width: 320px;
+    max-width: 95vw;
+  }
+
+  .location-settings-content {
+    padding: 1rem;
+  }
+
+  .location-settings-header {
+    padding: 1rem 1rem 0.75rem;
+  }
+
+  .location-settings-header h3 {
+    font-size: 1.125rem;
+  }
+
+  .location-settings-btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  .location-settings-text {
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 20rem) {
+  .location-settings-popup {
+    min-width: 280px;
+  }
+
+  .distance-presets {
+    gap: 0.375rem;
+  }
+
+  .distance-preset {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.6875rem;
+  }
+}

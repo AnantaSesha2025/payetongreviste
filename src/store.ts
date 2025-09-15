@@ -93,19 +93,16 @@ export const useAppStore = create<AppState>((set, get) => ({
         const strikeFundTitle = profile
           ? profile.strikeFund.title
           : 'Strike Fund';
-        const strikeFundDescription = profile
-          ? profile.strikeFund.description
-          : 'Support this cause';
 
         chats[id] = [
           {
             from: 'bot',
-            text: `Hey! Thanks for the support ❤️ — here's the link to help fund the strike: ${strikeFundTitle}`,
+            text: `Salut ! Merci pour le match ! 😊 Je suis vraiment content(e) de te rencontrer !`,
             ts: Date.now(),
           },
           {
             from: 'bot',
-            text: `${strikeFundDescription}`,
+            text: `Voici le lien pour soutenir notre cause : ${strikeFundTitle}`,
             ts: Date.now() + 1,
           },
           {
@@ -159,12 +156,12 @@ export const useAppStore = create<AppState>((set, get) => ({
           [id]: [
             {
               from: 'bot',
-              text: 'Hey! Appreciate you stopping by ✊',
+              text: 'Salut ! Merci de passer par ici ! ✊',
               ts: Date.now(),
             },
             {
               from: 'bot',
-              text: `Here's the link to support the cause: ${strikeFundTitle}`,
+              text: `Voici le lien pour soutenir notre cause : ${strikeFundTitle}`,
               ts: Date.now() + 1,
             },
             {

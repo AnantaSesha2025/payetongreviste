@@ -179,6 +179,22 @@ function getRandomPhotoUrl(): string {
 }
 
 /**
+ * Generate a random location in France (roughly within French borders)
+ */
+function getRandomLocation() {
+  // French territory bounds (approximate)
+  const minLat = 41.0; // Southern France
+  const maxLat = 51.5; // Northern France
+  const minLon = -5.5; // Western France
+  const maxLon = 9.5; // Eastern France
+
+  return {
+    lat: Math.random() * (maxLat - minLat) + minLat,
+    lon: Math.random() * (maxLon - minLon) + minLon,
+  };
+}
+
+/**
  * Generate a random strike fund
  */
 function getRandomStrikeFund() {
@@ -216,6 +232,7 @@ export function generateFakeProfile(): GistProfile {
     age: getRandomAge(),
     bio: getRandomBio(),
     photoUrl: getRandomPhotoUrl(),
+    location: getRandomLocation(),
     strikeFund: getRandomStrikeFund(),
   };
 }
@@ -243,7 +260,7 @@ export function convertGistProfileToAppProfile(gistProfile: GistProfile) {
     age: gistProfile.age,
     bio: gistProfile.bio,
     photoUrl: gistProfile.photoUrl,
-    location: { lat: 48.8566, lon: 2.3522 }, // Default Paris location
+    location: gistProfile.location || { lat: 48.8566, lon: 2.3522 }, // Use actual location from Gist or default to Paris
     strikeFund: gistProfile.strikeFund,
   };
 }
