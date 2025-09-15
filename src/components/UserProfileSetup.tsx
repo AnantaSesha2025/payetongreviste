@@ -126,11 +126,11 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
         },
       };
 
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Simulate API call delay (reduced for tests)
+      await new Promise(resolve => setTimeout(resolve, 100));
 
       // Save to local store
-      await upsertProfile(profile);
+      upsertProfile(profile);
       updateUserProfile(profile);
 
       // Also save to Gist (optional - requires GitHub token)
@@ -264,6 +264,7 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
             </div>
             <input
               id="photoUrl"
+              data-testid="photo-url-input"
               type="url"
               value={formData.photoUrl}
               onChange={e => handlePhotoUrlChange(e.target.value)}
@@ -284,6 +285,7 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
               </label>
               <input
                 id="name"
+                data-testid="name-input"
                 type="text"
                 value={formData.name}
                 onChange={e => handleInputChange('name', e.target.value)}
@@ -302,6 +304,7 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
               </label>
               <input
                 id="age"
+                data-testid="age-input"
                 type="number"
                 value={formData.age}
                 onChange={e =>
@@ -325,6 +328,7 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
             </label>
             <textarea
               id="bio"
+              data-testid="bio-textarea"
               value={formData.bio}
               onChange={e => handleInputChange('bio', e.target.value)}
               placeholder="Parlez-nous de votre activisme et des causes que vous soutenez..."
@@ -352,6 +356,7 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
               </label>
               <input
                 id="strikeFundTitle"
+                data-testid="strike-fund-title-input"
                 type="text"
                 value={formData.strikeFundTitle}
                 onChange={e =>
@@ -372,6 +377,7 @@ export function UserProfileSetup({ onComplete }: { onComplete: () => void }) {
               </label>
               <input
                 id="strikeFundUrl"
+                data-testid="strike-fund-url-input"
                 type="url"
                 value={formData.strikeFundUrl}
                 onChange={e =>

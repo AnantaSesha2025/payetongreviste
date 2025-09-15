@@ -86,3 +86,6 @@ jspm_packages/
 
 # TernJS port file
 .tern-port
+
+# Vitest test results
+vitest-results.json

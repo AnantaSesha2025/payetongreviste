@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
-import { vi } from 'vitest';
+import { vi, afterEach } from 'vitest';
+import { cleanup } from '@testing-library/react';
 
 // Mock IntersectionObserver for tests
 class MockIntersectionObserver implements IntersectionObserver {
@@ -97,4 +98,9 @@ Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     textBaseline: 'alphabetic',
     direction: 'inherit',
   })),
+});
+
+// Clean up after each test to prevent test pollution
+afterEach(() => {
+  cleanup();
 });

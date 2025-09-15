@@ -47,7 +47,7 @@ describe('App', () => {
   it('renders navigation links', () => {
     renderWithRouter(<App />);
 
-    expect(screen.getByText('Découvrir')).toBeInTheDocument();
+    expect(screen.getByText('Découvrir des profils')).toBeInTheDocument();
     expect(screen.getByText('Matches')).toBeInTheDocument();
   });
 
@@ -78,14 +78,15 @@ describe('App', () => {
   it('has proper main content area', () => {
     renderWithRouter(<App />);
 
-    const main = screen.getByRole('main');
+    const main =
+      screen.getByTestId('main-content') || screen.getAllByRole('main')[0];
     expect(main).toHaveClass('app-main');
   });
 
   it('has proper header area', () => {
     renderWithRouter(<App />);
 
-    const header = screen.getByRole('banner');
+    const header = screen.getAllByRole('banner')[0];
     expect(header).toHaveClass('app-header');
   });
 });

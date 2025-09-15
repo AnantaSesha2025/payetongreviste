@@ -28,7 +28,7 @@ function App() {
         <header className="app-header">
           <h1 className="app-title">PayeTonGréviste</h1>
         </header>
-        <main id="main-content" className="app-main">
+        <main id="main-content" data-testid="main-content" className="app-main">
           <ErrorBoundary>
             <Routes>
               <Route path="/" element={<DiscoverPage />} />
@@ -45,7 +45,7 @@ function App() {
             className={({ isActive }) => (isActive ? 'active' : '')}
           >
             <Search />
-            <span>Découvrir</span>
+            <span>Découvrir des profils</span>
           </NavLink>
           <NavLink
             to="/matches"
