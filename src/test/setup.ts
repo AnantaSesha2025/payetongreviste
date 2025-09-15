@@ -2,6 +2,70 @@ import '@testing-library/jest-dom';
 import { vi, afterEach } from 'vitest';
 import { cleanup } from '@testing-library/react';
 
+// Mock URL constructor for tests to avoid webidl-conversions errors
+class MockURL {
+  href: string;
+  protocol: string;
+  hostname: string;
+  port: string;
+  pathname: string;
+  search: string;
+  hash: string;
+  host: string;
+  origin: string;
+
+  constructor(url: string, base?: string) {
+    // Simple URL validation for tests
+    if (!url || typeof url !== 'string') {
+      throw new TypeError('Invalid URL');
+    }
+
+    // Handle relative URLs (like "/" used by React Router)
+    if (url.startsWith('/') || url.startsWith('./') || url.startsWith('../')) {
+      // For relative URLs, use a base URL or default to localhost
+      const baseUrl = base || 'http://localhost:3000';
+      url = baseUrl + (url.startsWith('/') ? url : '/' + url);
+    }
+
+    // Basic URL parsing for test purposes
+    try {
+      // Simple regex-based URL parsing for tests
+      const urlPattern = /^https?:\/\/[^\s/$.?#].[^\s]*$/i;
+      if (!urlPattern.test(url)) {
+        throw new Error('Invalid URL format');
+      }
+
+      this.href = url;
+      this.protocol = url.startsWith('https') ? 'https:' : 'http:';
+      this.hostname = url
+        .replace(/^https?:\/\//, '')
+        .split('/')[0]
+        .split(':')[0];
+      this.port =
+        url.includes(':') && !url.includes('://')
+          ? url.split(':')[1].split('/')[0]
+          : '';
+      this.pathname = url.includes('/')
+        ? '/' + url.split('/').slice(3).join('/').split('?')[0]
+        : '/';
+      this.search = url.includes('?')
+        ? '?' + url.split('?')[1].split('#')[0]
+        : '';
+      this.hash = url.includes('#') ? '#' + url.split('#')[1] : '';
+      this.host = this.hostname + (this.port ? ':' + this.port : '');
+      this.origin = this.protocol + '//' + this.host;
+    } catch {
+      throw new TypeError(`Invalid URL: ${url}`);
+    }
+  }
+
+  toString() {
+    return this.href;
+  }
+}
+
+globalThis.URL = MockURL as unknown as typeof URL;
+
 // Mock IntersectionObserver for tests
 class MockIntersectionObserver implements IntersectionObserver {
   root = null;
