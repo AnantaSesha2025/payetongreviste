@@ -112,6 +112,6 @@ jobs:
       # Deploy to gh-pages branch using gh-pages package
       - name: Deploy to GitHub Pages
         run: |
-          npx gh-pages -d dist -b gh-pages
+          npx gh-pages -d dist -b gh-pages --repo "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
