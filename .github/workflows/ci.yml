@@ -19,7 +19,7 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run test:run || echo "Tests failed but continuing with build"
-        continue-on-error: true
+          continue-on-error: true
       - run: npx tsc --noEmit
       - run: npm run build
       - uses: actions/upload-artifact@v4
