@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  base: mode === 'production' ? '/payetogreviste/' : '/',
+  base: mode === 'production' ? './' : '/',
   server: {
     host: '0.0.0.0', // Allow external connections
     port: 3000, // Default port
