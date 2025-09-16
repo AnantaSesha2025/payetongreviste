@@ -19,7 +19,7 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run test:run || echo "Tests failed but continuing with build"
-          continue-on-error: true
+        continue-on-error: true
       - run: npx tsc --noEmit
       - run: npm run build
       - uses: actions/upload-artifact@v4
@@ -51,15 +51,15 @@ jobs:
           touch dist/.nojekyll
           echo "✅ .nojekyll ensured"
 
-       # SPA routing fix: create enhanced 404.html with redirect script
-       - run: |
-           # Copy index.html to 404.html
-           cp dist/index.html dist/404.html
-           
-           # Add redirect script for SPA routing
-           sed -i 's|</body>|    <script>(function(){const p=window.location.pathname;const b="/payetogreviste/";if(!p.startsWith(b)){window.location.replace(b+p.replace(b,"")+window.location.search+window.location.hash)}})();</script>\n  </body>|' dist/404.html
-           
-           echo "✅ Enhanced 404.html created for SPA routing"
+      # SPA routing fix: create enhanced 404.html with redirect script
+      - run: |
+          # Copy index.html to 404.html
+          cp dist/index.html dist/404.html
+          
+          # Add redirect script for SPA routing
+          sed -i 's|</body>|    <script>(function(){const p=window.location.pathname;const b="/payetogreviste/";if(!p.startsWith(b)){window.location.replace(b+p.replace(b,"")+window.location.search+window.location.hash)}})();</script>\n  </body>|' dist/404.html
+          
+          echo "✅ Enhanced 404.html created for SPA routing"
 
       # Optional verification
       - run: |
