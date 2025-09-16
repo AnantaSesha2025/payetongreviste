@@ -50,7 +50,15 @@ function App() {
                     <h2>Page Not Found</h2>
                     <p>Current path: {window.location.pathname}</p>
                     <p>Base path: {import.meta.env.BASE_URL}</p>
-                    <a href="/">Go Home</a>
+                    <p>Full URL: {window.location.href}</p>
+                    <a href={import.meta.env.BASE_URL}>Go Home</a>
+                    <br />
+                    <button
+                      onClick={() => window.location.reload()}
+                      style={{ marginTop: '10px', padding: '8px 16px' }}
+                    >
+                      Reload Page
+                    </button>
                   </div>
                 }
               />
