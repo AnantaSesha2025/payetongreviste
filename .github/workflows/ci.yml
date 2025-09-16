@@ -10,35 +10,19 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-          
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: Run linting
-        run: npm run lint
-        
-      - name: Run tests
-        run: npm run test:run || echo "Tests failed but continuing with build"
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test:run || echo "Tests failed but continuing with build"
         continue-on-error: true
-        
-      - name: Run type checking
-        run: npx tsc --noEmit
-        
-      - name: Build project
-        run: npm run build
-        
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+      - run: npx tsc --noEmit
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
         with:
           name: build-files
           path: dist/
@@ -53,127 +37,39 @@ jobs:
       contents: read
       pages: write
       id-token: write
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-          
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: Build project
-        run: npm run build
-        
-      - name: Ensure .nojekyll file exists
-        run: |
-          if [ -f public/.nojekyll ]; then
-            cp public/.nojekyll dist/.nojekyll
-          else
-            touch dist/.nojekyll
-          fi
-          echo "✅ .nojekyll file ensured in dist/"
-          ls -la dist/.nojekyll
-          
-      - name: Note about MIME types
-        run: |
-          echo "ℹ️  GitHub Pages handles MIME types automatically for .js and .css files"
-          echo "ℹ️  No _headers file needed (GitHub Pages doesn't support it)"
-          
-      - name: Setup SPA routing for GitHub Pages
-        run: |
-          # Create enhanced 404.html with redirect script for SPA routing
-          echo "Creating enhanced 404.html with SPA routing fix..."
-          
-          # Copy index.html to 404.html first
-          cp dist/index.html dist/404.html
-          
-          # Create the redirect script content
-          cat > redirect_script.txt << 'EOF'
-<script>
-  // GitHub Pages SPA routing fix
-  (function() {
-    "use strict";
-    const currentPath = window.location.pathname;
-    const searchParams = window.location.search;
-    const hash = window.location.hash;
-    const basePath = "/payetogreviste/";
-    
-    console.log("404.html: Current path:", currentPath);
-    
-    if (!currentPath.startsWith(basePath)) {
-      console.log("404.html: Redirecting to base path...");
-      const redirectUrl = basePath + currentPath.replace(basePath, "") + searchParams + hash;
-      window.location.replace(redirectUrl);
-      return;
-    }
-    
-    console.log("404.html: Path is correct, React Router will handle routing");
-  })();
-</script>
-EOF
-          
-          # Insert the script before </body> tag
-          # Find the line with </body> and replace it with script + </body>
-          awk '
-            /<\/body>/ {
-              print "    <script>"
-              print "      // GitHub Pages SPA routing fix"
-              print "      (function() {"
-              print "        \"use strict\";"
-              print "        const currentPath = window.location.pathname;"
-              print "        const searchParams = window.location.search;"
-              print "        const hash = window.location.hash;"
-              print "        const basePath = \"/payetogreviste/\";"
-              print "        "
-              print "        console.log(\"404.html: Current path:\", currentPath);"
-              print "        "
-              print "        if (!currentPath.startsWith(basePath)) {"
-              print "          console.log(\"404.html: Redirecting to base path...\");"
-              print "          const redirectUrl = basePath + currentPath.replace(basePath, \"\") + searchParams + hash;"
-              print "          window.location.replace(redirectUrl);"
-              print "          return;"
-              print "        }"
-              print "        "
-              print "        console.log(\"404.html: Path is correct, React Router will handle routing\");"
-              print "      })();"
-              print "    </script>"
-              print "  </body>"
-              next
-            }
-            { print }
-          ' dist/index.html > dist/404.html
-          
-          # Clean up
-          rm redirect_script.txt
-          
-          echo "✅ Enhanced 404.html created for SPA routing"
-          ls -la dist/404.html
-          
-      - name: Verify assets and 404.html
-        run: |
-          echo "📁 Checking assets directory..."
-          ls -la dist/assets/
-          echo "📄 Checking 404.html content..."
-          echo "First 10 lines of 404.html:"
-          head -10 dist/404.html
-          echo "Last 10 lines of 404.html:"
-          tail -10 dist/404.html
-          echo "✅ Assets and 404.html verification complete"
-        
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - run: npm ci
+      - run: npm run build
+
+      # Ensure .nojekyll exists
+      - run: |
+          touch dist/.nojekyll
+          echo "✅ .nojekyll ensured"
+
+       # SPA routing fix: create enhanced 404.html with redirect script
+       - run: |
+           # Copy index.html to 404.html
+           cp dist/index.html dist/404.html
+           
+           # Add redirect script for SPA routing
+           sed -i 's|</body>|    <script>(function(){const p=window.location.pathname;const b="/payetogreviste/";if(!p.startsWith(b)){window.location.replace(b+p.replace(b,"")+window.location.search+window.location.hash)}})();</script>\n  </body>|' dist/404.html
+           
+           echo "✅ Enhanced 404.html created for SPA routing"
+
+      # Optional verification
+      - run: |
+          echo "Checking dist folder..."
+          ls -la dist/
+
+      # GitHub Pages setup and deployment
+      - uses: actions/configure-pages@v4
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-          
-      - name: Deploy to GitHub Pages
+      - uses: actions/deploy-pages@v4
         id: deployment
-        uses: actions/deploy-pages@v4
