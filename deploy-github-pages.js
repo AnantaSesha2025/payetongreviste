@@ -83,10 +83,12 @@ try {
         // If we're on the base path, let React Router handle it
         console.log('404.html: Path is correct, React Router will handle routing');
       })();
-    </script>`;
+    </script>
+    </body>
+    </html>`;
     
-    // Insert the script before the closing body tag
-    const updatedContent = indexContent.replace('</body>', redirectScript + '\n  </body>');
+    // Remove the original closing tags and add the script
+    const updatedContent = indexContent.replace(/\s*<\/body>\s*<\/html>\s*$/, redirectScript);
     
     // Write the enhanced 404.html
     fs.writeFileSync(notFoundDest, updatedContent);

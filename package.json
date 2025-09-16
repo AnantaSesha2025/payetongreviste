@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/fix-asset-paths.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
