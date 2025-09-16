@@ -34,7 +34,7 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/master'
     permissions:
-      contents: write
+      contents: read
       pages: write
       id-token: write
     steps:
@@ -103,15 +103,16 @@ jobs:
           node scripts/verify-deployment.js
           echo "✅ Deployment verification completed"
 
-      # Configure git identity for gh-pages
-      - name: Configure Git
-        run: |
-          git config --global user.email "action@github.com"
-          git config --global user.name "GitHub Action"
+      # Configure GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
-      # Deploy to gh-pages branch using gh-pages package
+      # Upload pages artifact
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        run: |
-          npx gh-pages -d dist -b gh-pages --repo "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/deploy-pages@v4
