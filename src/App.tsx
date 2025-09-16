@@ -1,5 +1,6 @@
 import { NavLink, Route, Routes } from 'react-router-dom';
 import { Search, MessageCircle, GitHub } from 'react-feather';
+import { useEffect } from 'react';
 import DiscoverPage from './pages/DiscoverPage';
 import MatchesPage from './pages/MatchesPage';
 import ActivistSetupPage from './pages/ActivistSetupPage';
@@ -7,6 +8,11 @@ import { GistDemoPage } from './pages/GistDemoPage';
 import { ToastContainer } from './components/Toast';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { useToast } from './hooks/useToast';
+import { useAppStore } from './store';
+import { githubGistService } from './lib/githubGist';
+import { DEFAULT_GIST_ID } from './lib/constants';
+import { convertGistProfileToAppProfile } from './lib/fakeProfiles';
+import { mockProfiles } from './store';
 import './App.css';
 
 /**
@@ -18,11 +24,42 @@ import './App.css';
  */
 function App() {
   const { toasts, removeToast } = useToast();
+  const { profiles, setProfiles } = useAppStore();
 
-  // Debug information
-  console.log('App rendered');
-  console.log('Current location:', window.location.href);
-  console.log('Pathname:', window.location.pathname);
+  // Initialize profiles from Gist on app startup
+  useEffect(() => {
+    const initializeProfiles = async () => {
+      // Only load if no profiles are already loaded
+      if (profiles.length === 0) {
+        try {
+          // Set the Gist ID
+          githubGistService.setGistId(DEFAULT_GIST_ID);
+
+          // Try to load profiles from Gist
+          const result = await githubGistService.readProfiles(DEFAULT_GIST_ID);
+
+          if (result.success && result.profiles && result.profiles.length > 0) {
+            // Convert Gist profiles to app format
+            const appProfiles = result.profiles.map(
+              convertGistProfileToAppProfile
+            );
+            setProfiles(appProfiles);
+            console.log('✅ Loaded profiles from Gist:', appProfiles.length);
+          } else {
+            // Fallback to mock data if Gist is empty or fails
+            console.log('⚠️ Gist is empty or failed to load, using mock data');
+            setProfiles(mockProfiles);
+          }
+        } catch (error) {
+          // Fallback to mock data on error
+          console.error('❌ Error loading from Gist, using mock data:', error);
+          setProfiles(mockProfiles);
+        }
+      }
+    };
+
+    initializeProfiles();
+  }, [profiles.length, setProfiles]);
 
   return (
     <ErrorBoundary>
@@ -32,9 +69,6 @@ function App() {
         </a>
         <header className="app-header">
           <h1 className="app-title">PayeTonGréviste</h1>
-          <div style={{ color: 'red', fontSize: '12px', marginTop: '10px' }}>
-            DEBUG: App is loading - {new Date().toLocaleTimeString()}
-          </div>
         </header>
         <main id="main-content" data-testid="main-content" className="app-main">
           <ErrorBoundary>
@@ -48,17 +82,8 @@ function App() {
                 element={
                   <div style={{ padding: '20px', textAlign: 'center' }}>
                     <h2>Page Not Found</h2>
-                    <p>Current path: {window.location.pathname}</p>
-                    <p>Base path: {import.meta.env.BASE_URL}</p>
-                    <p>Full URL: {window.location.href}</p>
-                    <a href={import.meta.env.BASE_URL}>Go Home</a>
-                    <br />
-                    <button
-                      onClick={() => window.location.reload()}
-                      style={{ marginTop: '10px', padding: '8px 16px' }}
-                    >
-                      Reload Page
-                    </button>
+                    <p>La page que vous recherchez n'existe pas.</p>
+                    <a href={import.meta.env.BASE_URL}>Retour à l'accueil</a>
                   </div>
                 }
               />

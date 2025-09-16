@@ -156,38 +156,32 @@ class GitHubGistService {
           };
         }
       } else {
-        const errorData = await apiResponse.json();
-        return {
-          success: false,
-          error: errorData.message || 'Not Found',
-        };
-      }
+        // If API fails, try the raw content URL (works for public gists)
+        console.log('API failed, trying raw content URL...');
+        const rawUrl = `https://gist.githubusercontent.com/AnantaSesha2025/${gistId}/raw/profiles.json`;
+        const rawResponse = await fetch(rawUrl);
 
-      // If API fails, try the raw content URL (works for public gists)
-      console.log('API failed, trying raw content URL...');
-      const rawUrl = `https://gist.githubusercontent.com/AnantaSesha2025/${gistId}/raw/profiles.json`;
-      const rawResponse = await fetch(rawUrl);
-
-      if (!rawResponse.ok) {
-        if (rawResponse.status === 404) {
+        if (!rawResponse.ok) {
+          if (rawResponse.status === 404) {
+            return {
+              success: false,
+              error: 'Aucun fichier profiles.json trouvé dans le Gist',
+            };
+          }
           return {
             success: false,
-            error: 'Aucun fichier profiles.json trouvé dans le Gist',
+            error: `Erreur lors de la lecture du Gist (${rawResponse.status}): ${rawResponse.statusText}`,
           };
         }
+
+        const profilesContent = await rawResponse.text();
+        const profiles = JSON.parse(profilesContent) as GistProfile[];
+
         return {
-          success: false,
-          error: `Erreur lors de la lecture du Gist (${rawResponse.status}): ${rawResponse.statusText}`,
+          success: true,
+          profiles,
         };
       }
-
-      const profilesContent = await rawResponse.text();
-      const profiles = JSON.parse(profilesContent) as GistProfile[];
-
-      return {
-        success: true,
-        profiles,
-      };
     } catch (error) {
       return {
         success: false,
