@@ -20,7 +20,8 @@
     "prepare": "husky install",
     "pre-commit": "lint-staged",
     "deploy": "npm run build && (copy public\\.nojekyll dist\\.nojekyll 2>nul || echo. > dist\\.nojekyll) && copy dist\\index.html dist\\404.html && gh-pages -d dist",
-    "deploy:github": "node deploy-github-pages.js"
+    "deploy:github": "node deploy-github-pages.js",
+    "deploy:gh-pages": "node scripts/deploy-to-gh-pages.js"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",
