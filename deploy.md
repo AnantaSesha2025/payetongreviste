@@ -5,7 +5,7 @@ Your app is now configured for GitHub Pages deployment! Here's what has been set
 ## ✅ What's Already Configured
 
 1. **Vite Configuration**: Updated to use the correct base path for GitHub Pages (`/payetogreviste/`)
-2. **Package.json**: Added `gh-pages` dependency and `deploy` script
+2. **Package.json**: Updated deploy scripts for GitHub Actions
 3. **GitHub Actions**: Workflow is set up to automatically deploy on push to main branch
 4. **Build Process**: Tested and working locally
 

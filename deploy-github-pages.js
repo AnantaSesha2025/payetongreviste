@@ -98,9 +98,9 @@ try {
     process.exit(1);
   }
 
-  // Deploy to GitHub Pages
-  console.log('🌐 Deploying to GitHub Pages...');
-  execSync('gh-pages -d dist', { stdio: 'inherit' });
+  // Note: GitHub Pages deployment is now handled by GitHub Actions
+  console.log('🌐 GitHub Pages deployment is handled by GitHub Actions');
+  console.log('📝 Push your changes to master branch to trigger deployment');
 
   console.log('🎉 Deployment completed successfully!');
   console.log('🔗 Your app should be available at: https://anantasesha2025.github.io/payetogreviste/');

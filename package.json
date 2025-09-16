@@ -19,9 +19,8 @@
     "test:coverage": "vitest run --coverage",
     "prepare": "husky install",
     "pre-commit": "lint-staged",
-    "deploy": "npm run build && (copy public\\.nojekyll dist\\.nojekyll 2>nul || echo. > dist\\.nojekyll) && copy dist\\index.html dist\\404.html && gh-pages -d dist",
-    "deploy:github": "node deploy-github-pages.js",
-    "deploy:gh-pages": "node scripts/deploy-to-gh-pages.js"
+    "deploy": "npm run build && echo 'Use GitHub Actions for deployment'",
+    "deploy:github": "node deploy-github-pages.js"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",
@@ -44,7 +43,6 @@
     "eslint": "^9.33.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
-    "gh-pages": "^6.1.1",
     "globals": "^16.3.0",
     "husky": "^9.1.7",
     "jsdom": "^27.0.0",
