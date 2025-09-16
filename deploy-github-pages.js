@@ -28,14 +28,8 @@ try {
     console.log('✅ Created .nojekyll file in dist/');
   }
 
-  // Copy _headers file to dist for proper MIME types
-  const headersSource = path.join('public', '_headers');
-  const headersDest = path.join('dist', '_headers');
-  
-  if (fs.existsSync(headersSource)) {
-    fs.copyFileSync(headersSource, headersDest);
-    console.log('✅ Copied _headers file to dist/');
-  }
+  // Note: GitHub Pages doesn't support _headers files for MIME type configuration
+  // MIME types are handled automatically by GitHub Pages
 
   // Copy fallback loader to dist
   const fallbackSource = path.join('public', 'fallback-loader.js');
