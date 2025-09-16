@@ -1,0 +1,17 @@
+# GitHub Pages doesn't support .htaccess, but this is for reference
+# The _headers file should handle MIME types
+
+# Force correct MIME types for JavaScript files
+<FilesMatch "\.(js|mjs)$">
+    Header set Content-Type "application/javascript"
+</FilesMatch>
+
+# Force correct MIME types for CSS files
+<FilesMatch "\.css$">
+    Header set Content-Type "text/css"
+</FilesMatch>
+
+# Cache static assets
+<FilesMatch "\.(js|css|png|jpg|jpeg|gif|ico|svg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
