@@ -60,8 +60,43 @@ try {
   const notFoundDest = path.join('dist', '404.html');
   
   if (fs.existsSync(indexSource)) {
-    fs.copyFileSync(indexSource, notFoundDest);
-    console.log('✅ Created 404.html for SPA routing');
+    // Read the index.html content
+    let indexContent = fs.readFileSync(indexSource, 'utf8');
+    
+    // Add the redirect script to the 404.html
+    const redirectScript = `
+    <script>
+      // GitHub Pages SPA routing fix
+      // This script runs immediately to handle routing before React loads
+      (function() {
+        'use strict';
+        
+        const currentPath = window.location.pathname;
+        const searchParams = window.location.search;
+        const hash = window.location.hash;
+        const basePath = '/payetogreviste/';
+        
+        console.log('404.html: Current path:', currentPath);
+        
+        // If we're not on the correct base path, redirect
+        if (!currentPath.startsWith(basePath)) {
+          console.log('404.html: Redirecting to base path...');
+          const redirectUrl = basePath + currentPath.replace(basePath, '') + searchParams + hash;
+          window.location.replace(redirectUrl);
+          return;
+        }
+        
+        // If we're on the base path, let React Router handle it
+        console.log('404.html: Path is correct, React Router will handle routing');
+      })();
+    </script>`;
+    
+    // Insert the script before the closing body tag
+    const updatedContent = indexContent.replace('</body>', redirectScript + '\n  </body>');
+    
+    // Write the enhanced 404.html
+    fs.writeFileSync(notFoundDest, updatedContent);
+    console.log('✅ Created enhanced 404.html for SPA routing');
   } else {
     console.error('❌ index.html not found in dist/');
     process.exit(1);
