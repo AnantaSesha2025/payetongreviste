@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>GitHub Pages Deployment Test</h1>
+    
+    <div class="test-section info">
+        <h3>Test Instructions</h3>
+        <p>This page helps you test if your GitHub Pages deployment is working correctly.</p>
+        <ol>
+            <li>Deploy your changes to GitHub Pages</li>
+            <li>Test the main page: <a href="https://anantasesha2025.github.io/payetogreviste/" target="_blank">https://anantasesha2025.github.io/payetogreviste/</a></li>
+            <li>Test direct routes: <a href="https://anantasesha2025.github.io/payetogreviste/discover" target="_blank">https://anantasesha2025.github.io/payetogreviste/discover</a></li>
+            <li>Test 404 handling: <a href="https://anantasesha2025.github.io/payetogreviste/nonexistent" target="_blank">https://anantasesha2025.github.io/payetogreviste/nonexistent</a></li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h3>What was fixed:</h3>
+        <ul>
+            <li>✅ 404.html now includes the React app scripts</li>
+            <li>✅ 404.html includes the redirect script for proper routing</li>
+            <li>✅ All asset paths use the correct base path (/payetogreviste/)</li>
+            <li>✅ CSP headers updated to be more secure</li>
+            <li>✅ Redirect script improved to handle search params and hash</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h3>Expected Behavior:</h3>
+        <ul>
+            <li><strong>Main page:</strong> Should load the React app normally</li>
+            <li><strong>Direct routes:</strong> Should load the React app and navigate to the correct route</li>
+            <li><strong>404 pages:</strong> Should load the React app and let React Router handle the routing</li>
+            <li><strong>No CSP errors:</strong> Console should be clean of Content Security Policy violations</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h3>Deployment Commands:</h3>
+        <pre><code># Build the project
+npm run build
+
+# Commit and push changes
+git add .
+git commit -m "Fix GitHub Pages deployment issues"
+git push origin master
+
+# The GitHub Actions workflow should automatically deploy to Pages
+</code></pre>
+    </div>
+
+    <script>
+        // Test if we can access the redirect script
+        function testRedirectScript() {
+            const script = document.createElement('script');
+            script.src = '/payetogreviste/redirect.js';
+            script.onload = () => {
+                console.log('✅ Redirect script loaded successfully');
+            };
+            script.onerror = () => {
+                console.error('❌ Failed to load redirect script');
+            };
+            document.head.appendChild(script);
+        }
+
+        // Test if we can access the main app script
+        function testAppScript() {
+            fetch('/payetogreviste/assets/index-DE_QOLij.js')
+                .then(response => {
+                    if (response.ok) {
+                        console.log('✅ Main app script accessible');
+                    } else {
+                        console.error('❌ Main app script not accessible:', response.status);
+                    }
+                })
+                .catch(error => {
+                    console.error('❌ Error testing app script:', error);
+                });
+        }
+
+        // Run tests when page loads
+        window.addEventListener('load', () => {
+            console.log('Running GitHub Pages deployment tests...');
+            testRedirectScript();
+            testAppScript();
+        });
+    </script>
+</body>
+</html>
