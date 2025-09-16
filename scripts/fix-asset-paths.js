@@ -18,11 +18,11 @@ try {
   let content = fs.readFileSync(indexPath, 'utf8');
   
   // Fix double slashes in asset paths
-  content = content.replace(/\/payetogreviste\/\//g, '/payetogreviste/');
+  content = content.replace(/\/payetongreviste\/\//g, '/payetongreviste/');
   
   // Ensure all asset paths start with the correct base path
-  content = content.replace(/href="\/(?!payetogreviste\/)/g, 'href="/payetogreviste/');
-  content = content.replace(/src="\/(?!payetogreviste\/)/g, 'src="/payetogreviste/');
+  content = content.replace(/href="\/(?!payetongreviste\/)/g, 'href="/payetogreviste/');
+  content = content.replace(/src="\/(?!payetongreviste\/)/g, 'src="/payetogreviste/');
   
   // Write the fixed content back
   fs.writeFileSync(indexPath, content);

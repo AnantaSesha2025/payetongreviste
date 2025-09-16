@@ -67,7 +67,7 @@ jobs:
               const currentPath = window.location.pathname;
               const searchParams = window.location.search;
               const hash = window.location.hash;
-              const basePath = '/payetogreviste/';
+              const basePath = '/payetongreviste/';
               
               console.log('404.html: Current path:', currentPath);
               
@@ -120,7 +120,7 @@ jobs:
               const currentPath = window.location.pathname;
               const searchParams = window.location.search;
               const hash = window.location.hash;
-              const basePath = '/payetogreviste/';
+              const basePath = '/payeton/';
               
               console.log('404.html: Current path:', currentPath);
               
