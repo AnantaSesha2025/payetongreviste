@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/payetogreviste/favicon.ico" />
+    <link rel="shortcut icon" href="/payetogreviste/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/payetogreviste/favicon.svg" />
+    <link rel="apple-touch-icon" href="/payetogreviste/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paye ton Gréviste</title>
+    <!-- Using system fonts instead of Google Fonts in solidarity with the strike movement -->
+    <style>
+      @import url('https://fonts.bunny.net/css?family=inter:400,500,700,800');
+    </style>
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; img-src 'self' data: https: blob:; font-src 'self' https://fonts.bunny.net; connect-src 'self' https:; object-src 'none'; base-uri 'self';">
+    <script type="module" crossorigin src="/payetogreviste/assets/index-DE_QOLij.js"></script>
+    <link rel="modulepreload" crossorigin href="/payetogreviste/assets/vendor-gH-7aFTg.js">
+    <link rel="modulepreload" crossorigin href="/payetogreviste/assets/motion-Bdng1qfT.js">
+    <link rel="modulepreload" crossorigin href="/payetogreviste/assets/router-BoQ7bh5q.js">
+    <link rel="stylesheet" crossorigin href="/payetogreviste/assets/index-BwUKSc2y.css">
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script>
+      // GitHub Pages SPA routing fix
+      (function() {
+        'use strict';
+        
+        const currentPath = window.location.pathname;
+        const searchParams = window.location.search;
+        const hash = window.location.hash;
+        const basePath = '/payetogreviste/';
+        
+        console.log('404.html: Current path:', currentPath);
+        
+        // If we're not on the correct base path, redirect
+        if (!currentPath.startsWith(basePath)) {
+          console.log('404.html: Redirecting to base path...');
+          const redirectUrl = basePath + currentPath.replace(basePath, '') + searchParams + hash;
+          window.location.replace(redirectUrl);
+          return;
+        }
+        
+        // If we're on the base path, let React Router handle it
+        console.log('404.html: Path is correct, React Router will handle routing');
+      })();
+    </script>
+  </body>
+</html>

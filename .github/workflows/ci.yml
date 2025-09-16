@@ -94,6 +94,10 @@ jobs:
           # Verify 404.html is in the root of dist
           ls -la dist/ | grep 404.html
           echo "✅ 404.html created with SPA routing in dist root"
+          
+          # Copy 404.html to .github folder for GitHub Pages
+          cp dist/404.html .github/404.html
+          echo "✅ 404.html copied to .github folder"
 
       # Ensure .nojekyll exists
       - run: |
