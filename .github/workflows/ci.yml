@@ -81,8 +81,13 @@ jobs:
           
       - name: Setup SPA routing for GitHub Pages
         run: |
+          # Copy index.html to 404.html for SPA routing
           cp dist/index.html dist/404.html
-          echo "✅ 404.html created for SPA routing"
+          # Ensure 404.html has the redirect script for proper routing
+          if ! grep -q "redirect.js" dist/404.html; then
+            sed -i 's|</body>|    <script src="/payetogreviste/redirect.js"></script>\n  </body>|' dist/404.html
+          fi
+          echo "✅ 404.html created for SPA routing with redirect script"
           ls -la dist/404.html
         
       - name: Setup Pages

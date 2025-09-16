@@ -26,4 +26,11 @@
   
   // If we're already on the correct base path, let React Router handle the rest
   console.log('Path is correct, React Router will handle the routing...');
+  
+  // Additional check: if we're on the base path but React Router hasn't loaded yet,
+  // wait for it to initialize
+  if (currentPath === basePath && !window.React) {
+    console.log('Waiting for React Router to initialize...');
+    // This will be handled by the React app once it loads
+  }
 })();
