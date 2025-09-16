@@ -24,4 +24,6 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
+  // Ensure proper handling of static assets for GitHub Pages
+  publicDir: 'public',
 }));
