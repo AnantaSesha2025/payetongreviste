@@ -53,12 +53,47 @@ jobs:
 
       # Ensure 404.html exists for SPA routing
       - run: |
-          if [ ! -f dist/404.html ]; then
-            cp dist/index.html dist/404.html
-            echo "✅ Created 404.html from index.html"
-          else
-            echo "✅ 404.html already exists"
-          fi
+          # Always recreate 404.html to ensure it has the latest assets
+          cp dist/index.html dist/404.html
+          
+          # Add SPA routing script to 404.html
+          cat >> dist/404.html << 'EOF'
+          
+          <script>
+            // GitHub Pages SPA routing fix
+            (function() {
+              'use strict';
+              
+              const currentPath = window.location.pathname;
+              const searchParams = window.location.search;
+              const hash = window.location.hash;
+              const basePath = '/payetogreviste/';
+              
+              console.log('404.html: Current path:', currentPath);
+              
+              // If we're not on the correct base path, redirect
+              if (!currentPath.startsWith(basePath)) {
+                console.log('404.html: Redirecting to base path...');
+                const redirectUrl = basePath + currentPath.replace(basePath, '') + searchParams + hash;
+                window.location.replace(redirectUrl);
+                return;
+              }
+              
+              // If we're on the base path, let React Router handle it
+              console.log('404.html: Path is correct, React Router will handle routing');
+            })();
+          </script>
+          </body>
+          </html>
+          EOF
+          
+          # Remove the original closing tags since we added them in the script
+          sed -i 's|</body>||' dist/404.html
+          sed -i 's|</html>||' dist/404.html
+          
+          # Verify 404.html is in the root of dist
+          ls -la dist/ | grep 404.html
+          echo "✅ 404.html created with SPA routing in dist root"
 
       # Ensure .nojekyll exists
       - run: |
