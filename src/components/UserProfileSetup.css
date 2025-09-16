@@ -234,8 +234,8 @@
   transform: none;
 }
 
-/* Loading Spinner */
-.loading-spinner {
+/* Loading Spinner - Only for the circle element */
+.submit-btn .loading-spinner {
   width: 20px;
   height: 20px;
   border: 2px solid transparent;
