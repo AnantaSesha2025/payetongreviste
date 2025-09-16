@@ -46,6 +46,15 @@ try {
     console.log('✅ Copied fallback-loader.js to dist/');
   }
 
+  // Copy redirect.js to dist for SPA routing
+  const redirectSource = path.join('public', 'redirect.js');
+  const redirectDest = path.join('dist', 'redirect.js');
+  
+  if (fs.existsSync(redirectSource)) {
+    fs.copyFileSync(redirectSource, redirectDest);
+    console.log('✅ Copied redirect.js to dist/');
+  }
+
   // Setup SPA routing for GitHub Pages
   const indexSource = path.join('dist', 'index.html');
   const notFoundDest = path.join('dist', '404.html');
