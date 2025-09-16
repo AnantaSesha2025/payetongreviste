@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import './index.css';
 import './utils/populateGist.ts'; // Load the utility
 import App from './App.tsx';
@@ -10,13 +10,10 @@ console.log('Environment:', import.meta.env.MODE);
 console.log('Base URL:', import.meta.env.BASE_URL);
 console.log('Current pathname:', window.location.pathname);
 
-const basename = import.meta.env.PROD ? '/payetogreviste' : '/';
-console.log('Router basename:', basename);
-
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter basename={basename}>
+    <HashRouter>
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </StrictMode>
 );
