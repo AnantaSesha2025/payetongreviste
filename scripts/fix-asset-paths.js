@@ -20,9 +20,15 @@ try {
   // Fix double slashes in asset paths
   content = content.replace(/\/payetongreviste\/\//g, '/payetongreviste/');
   
-  // Ensure all asset paths start with the correct base path
-  content = content.replace(/href="\/(?!payetongreviste\/)/g, 'href="/payetongreviste/');
-  content = content.replace(/src="\/(?!payetongreviste\/)/g, 'src="/payetongreviste/');
+  // Fix double base paths (payetongreviste/payetogreviste -> payetongreviste)
+  content = content.replace(/\/payetongreviste\/payetogreviste\//g, '/payetongreviste/');
+  
+  // Fix paths that have the old incorrect spelling (payetogreviste -> payetongreviste)
+  content = content.replace(/\/payetogreviste\//g, '/payetongreviste/');
+  
+  // Ensure all asset paths start with the correct base path (only for paths that don't already have it)
+  content = content.replace(/href="\/(?!payetongreviste\/)([^"]*)/g, 'href="/payetongreviste/$1');
+  content = content.replace(/src="\/(?!payetongreviste\/)([^"]*)/g, 'src="/payetongreviste/$1');
   
   // Write the fixed content back
   fs.writeFileSync(indexPath, content);
