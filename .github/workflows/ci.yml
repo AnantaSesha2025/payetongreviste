@@ -103,6 +103,12 @@ jobs:
           node scripts/verify-deployment.js
           echo "✅ Deployment verification completed"
 
+      # Configure git identity for gh-pages
+      - name: Configure Git
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+
       # Deploy to gh-pages branch using gh-pages package
       - name: Deploy to GitHub Pages
         run: |
