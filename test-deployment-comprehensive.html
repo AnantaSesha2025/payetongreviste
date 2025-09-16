@@ -100,7 +100,7 @@
             <tr>
                 <td>Base Path Configuration</td>
                 <td><span class="checkmark">✅ Good</span></td>
-                <td>/payetogreviste/</td>
+                <td>/payetongreviste/</td>
                 <td>Correctly set in vite.config.ts</td>
             </tr>
             <tr>
@@ -136,7 +136,7 @@
             <p><strong>Solution:</strong> All paths now use absolute paths with base path</p>
             <div class="code">
                 // Before: href="./favicon.ico"<br>
-                // After: href="/payetogreviste/favicon.ico"
+                // After: href="/payetongreviste/favicon.ico"
             </div>
         </div>
 
@@ -208,12 +208,12 @@ git commit -m "Fix GitHub Pages deployment issues"
 git push origin master
 
 # 2. Wait for GitHub Actions to complete
-# Check: https://github.com/anantasesha2025/payetogreviste/actions
+# Check: https://github.com/anantasesha2025/payetongreviste/actions
 
 # 3. Test your deployment
-# Main: https://anantasesha2025.github.io/payetogreviste/
-# Routes: https://anantasesha2025.github.io/payetogreviste/discover
-# 404: https://anantasesha2025.github.io/payetogreviste/nonexistent
+# Main: https://anantasesha2025.github.io/payetongreviste/
+# Routes: https://anantasesha2025.github.io/payetongreviste/discover
+# 404: https://anantasesha2025.github.io/payetongreviste/nonexistent
         </div>
     </div>
 
@@ -222,7 +222,7 @@ git push origin master
             const result = document.getElementById('test-results');
             result.innerHTML = '<div class="status info">Testing main page...</div>';
             
-            fetch('https://anantasesha2025.github.io/payetogreviste/')
+            fetch('https://anantasesha2025.github.io/payetongreviste/')
                 .then(response => {
                     if (response.ok) {
                         result.innerHTML = '<div class="status success">✅ Main page loads successfully</div>';
@@ -244,7 +244,7 @@ git push origin master
             let passed = 0;
             
             routes.forEach(route => {
-                fetch(`https://anantasesha2025.github.io/payetogreviste${route}`)
+                fetch(`https://anantasesha2025.github.io/payetongreviste${route}`)
                     .then(response => {
                         tests++;
                         if (response.ok) {
@@ -287,9 +287,9 @@ git push origin master
             result.innerHTML = '<div class="status info">Testing asset loading...</div>';
             
             const assets = [
-                '/payetogreviste/assets/index-DE_QOLij.js',
-                '/payetogreviste/assets/index-BwUKSc2y.css',
-                '/payetogreviste/favicon.ico'
+                '/payetongreviste/assets/index-DE_QOLij.js',
+                '/payetongreviste/assets/index-BwUKSc2y.css',
+                '/payetongreviste/favicon.ico'
             ];
             
             let tests = 0;
@@ -323,7 +323,7 @@ git push origin master
             const result = document.getElementById('test-results');
             result.innerHTML = '<div class="status info">Testing favicon...</div>';
             
-            fetch('https://anantasesha2025.github.io/payetogreviste/favicon.ico')
+            fetch('https://anantasesha2025.github.io/payetongreviste/favicon.ico')
                 .then(response => {
                     if (response.ok) {
                         result.innerHTML = '<div class="status success">✅ Favicon loads successfully</div>';

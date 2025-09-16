@@ -17,7 +17,7 @@
       // Try alternative path
       const altScript = document.createElement('script');
       altScript.type = 'module';
-      altScript.src = '/payetogreviste/assets/index-DE_QOLij.js';
+      altScript.src = '/payetongreviste/assets/index-DE_QOLij.js';
       
       altScript.onerror = function() {
         console.error('❌ All script loading attempts failed');

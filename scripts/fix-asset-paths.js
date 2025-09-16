@@ -21,8 +21,8 @@ try {
   content = content.replace(/\/payetongreviste\/\//g, '/payetongreviste/');
   
   // Ensure all asset paths start with the correct base path
-  content = content.replace(/href="\/(?!payetongreviste\/)/g, 'href="/payetogreviste/');
-  content = content.replace(/src="\/(?!payetongreviste\/)/g, 'src="/payetogreviste/');
+  content = content.replace(/href="\/(?!payetongreviste\/)/g, 'href="/payetongreviste/');
+  content = content.replace(/src="\/(?!payetongreviste\/)/g, 'src="/payetongreviste/');
   
   // Write the fixed content back
   fs.writeFileSync(indexPath, content);
@@ -45,7 +45,7 @@ try {
         const currentPath = window.location.pathname;
         const searchParams = window.location.search;
         const hash = window.location.hash;
-        const basePath = '/payetogreviste/';
+        const basePath = '/payetongreviste/';
         
         console.log('404.html: Current path:', currentPath);
         

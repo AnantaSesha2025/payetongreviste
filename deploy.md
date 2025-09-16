@@ -4,7 +4,7 @@ Your app is now configured for GitHub Pages deployment! Here's what has been set
 
 ## ✅ What's Already Configured
 
-1. **Vite Configuration**: Updated to use the correct base path for GitHub Pages (`/payetogreviste/`)
+1. **Vite Configuration**: Updated to use the correct base path for GitHub Pages (`/payetongreviste/`)
 2. **Package.json**: Updated deploy scripts for GitHub Actions
 3. **GitHub Actions**: Workflow is set up to automatically deploy on push to main branch
 4. **Build Process**: Tested and working locally
@@ -15,7 +15,7 @@ Your app is now configured for GitHub Pages deployment! Here's what has been set
 
 1. Push your changes to the `main` branch
 2. The GitHub Actions workflow will automatically build and deploy your app
-3. Your app will be available at: `https://yourusername.github.io/payetogreviste/`
+3. Your app will be available at: `https://yourusername.github.io/payetongreviste/`
 
 ### Option 2: Manual Deployment
 
@@ -42,13 +42,13 @@ To enable GitHub Pages in your repository:
 ## 🔗 Your App URL
 
 Once deployed, your app will be available at:
-`https://yourusername.github.io/payetogreviste/`
+`https://yourusername.github.io/payetongreviste/`
 
 Replace `yourusername` with your actual GitHub username.
 
 ## 📝 Notes
 
-- The app is configured to work with the `/payetogreviste/` subpath
+- The app is configured to work with the `/payetongreviste/` subpath
 - All assets and routing are properly configured for GitHub Pages
 - The build process creates optimized bundles for production
 - GitHub Actions will automatically redeploy when you push changes to main

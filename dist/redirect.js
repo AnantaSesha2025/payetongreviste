@@ -8,7 +8,7 @@
   const currentPath = window.location.pathname;
   const searchParams = window.location.search;
   const hash = window.location.hash;
-  const basePath = '/payetogreviste/';
+  const basePath = '/payetongreviste/';
   
   console.log('Current path:', currentPath);
   console.log('Search params:', searchParams);

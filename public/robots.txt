@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://anantasesha2025.github.io/payetogreviste/sitemap.xml
+Sitemap: https://anantasesha2025.github.io/payetongreviste/sitemap.xml

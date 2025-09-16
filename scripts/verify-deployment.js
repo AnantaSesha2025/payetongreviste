@@ -63,7 +63,7 @@ if (fs.existsSync(indexPath)) {
   const content = fs.readFileSync(indexPath, 'utf8');
   
   // Check for double slashes
-  if (content.includes('/payetogreviste//')) {
+  if (content.includes('/payetongreviste//')) {
     console.error('❌ Double slashes found in asset paths');
     hasErrors = true;
   } else {
@@ -71,7 +71,7 @@ if (fs.existsSync(indexPath)) {
   }
   
   // Check for correct base path
-  if (content.includes('href="/payetogreviste/') && content.includes('src="/payetogreviste/')) {
+  if (content.includes('href="/payetongreviste/') && content.includes('src="/payetongreviste/')) {
     console.log('✅ Correct base path in asset references');
   } else {
     console.error('❌ Incorrect base path in asset references');
@@ -99,7 +99,7 @@ if (fs.existsSync(notFoundPath)) {
     hasErrors = true;
   }
   
-  if (content.includes('/payetogreviste/')) {
+  if (content.includes('/payetongreviste/')) {
     console.log('✅ Correct base path in 404.html');
   } else {
     console.error('❌ Incorrect base path in 404.html');
@@ -114,5 +114,5 @@ if (hasErrors) {
   process.exit(1);
 } else {
   console.log('✅ Deployment verification PASSED - Ready for GitHub Pages!');
-  console.log('🌐 Your app should work at: https://anantasesha2025.github.io/payetogreviste/');
+  console.log('🌐 Your app should work at: https://anantasesha2025.github.io/payetongreviste/');
 }

@@ -43,9 +43,9 @@
         <p>This page helps you test if your GitHub Pages deployment is working correctly.</p>
         <ol>
             <li>Deploy your changes to GitHub Pages</li>
-            <li>Test the main page: <a href="https://anantasesha2025.github.io/payetogreviste/" target="_blank">https://anantasesha2025.github.io/payetogreviste/</a></li>
-            <li>Test direct routes: <a href="https://anantasesha2025.github.io/payetogreviste/discover" target="_blank">https://anantasesha2025.github.io/payetogreviste/discover</a></li>
-            <li>Test 404 handling: <a href="https://anantasesha2025.github.io/payetogreviste/nonexistent" target="_blank">https://anantasesha2025.github.io/payetogreviste/nonexistent</a></li>
+            <li>Test the main page: <a href="https://anantasesha2025.github.io/payetongreviste/" target="_blank">https://anantasesha2025.github.io/payetongreviste/</a></li>
+            <li>Test direct routes: <a href="https://anantasesha2025.github.io/payetongreviste/discover" target="_blank">https://anantasesha2025.github.io/payetongreviste/discover</a></li>
+            <li>Test 404 handling: <a href="https://anantasesha2025.github.io/payetongreviste/nonexistent" target="_blank">https://anantasesha2025.github.io/payetongreviste/nonexistent</a></li>
         </ol>
     </div>
 
@@ -54,7 +54,7 @@
         <ul>
             <li>✅ 404.html now includes the React app scripts</li>
             <li>✅ 404.html includes the redirect script for proper routing</li>
-            <li>✅ All asset paths use the correct base path (/payetogreviste/)</li>
+            <li>✅ All asset paths use the correct base path (/payetongreviste/)</li>
             <li>✅ CSP headers updated to be more secure</li>
             <li>✅ Redirect script improved to handle search params and hash</li>
         </ul>
@@ -88,7 +88,7 @@ git push origin master
         // Test if we can access the redirect script
         function testRedirectScript() {
             const script = document.createElement('script');
-            script.src = '/payetogreviste/redirect.js';
+            script.src = '/payetongreviste/redirect.js';
             script.onload = () => {
                 console.log('✅ Redirect script loaded successfully');
             };
@@ -100,7 +100,7 @@ git push origin master
 
         // Test if we can access the main app script
         function testAppScript() {
-            fetch('/payetogreviste/assets/index-DE_QOLij.js')
+            fetch('/payetongreviste/assets/index-DE_QOLij.js')
                 .then(response => {
                     if (response.ok) {
                         console.log('✅ Main app script accessible');

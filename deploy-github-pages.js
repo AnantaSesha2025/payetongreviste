@@ -68,7 +68,7 @@ try {
         const currentPath = window.location.pathname;
         const searchParams = window.location.search;
         const hash = window.location.hash;
-        const basePath = '/payetogreviste/';
+        const basePath = '/payetongreviste/';
         
         console.log('404.html: Current path:', currentPath);
         
@@ -103,7 +103,7 @@ try {
   console.log('📝 Push your changes to master branch to trigger deployment');
 
   console.log('🎉 Deployment completed successfully!');
-  console.log('🔗 Your app should be available at: https://anantasesha2025.github.io/payetogreviste/');
+  console.log('🔗 Your app should be available at: https://anantasesha2025.github.io/payetongreviste/');
   
 } catch (error) {
   console.error('❌ Deployment failed:', error.message);
