@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deployment Status Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 4px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Deployment Status Check</h1>
+    <div id="status"></div>
+    
+    <script>
+        function addStatus(message, type = 'info') {
+            const status = document.getElementById('status');
+            const div = document.createElement('div');
+            div.className = `status ${type}`;
+            div.innerHTML = `<strong>${new Date().toLocaleTimeString()}</strong> - ${message}`;
+            status.appendChild(div);
+        }
+
+        // Check if we're on the correct domain
+        const currentDomain = window.location.hostname;
+        const expectedDomain = 'anantasesha2025.github.io';
+        
+        if (currentDomain === expectedDomain) {
+            addStatus(`✅ Correct domain: ${currentDomain}`, 'success');
+        } else {
+            addStatus(`❌ Wrong domain: ${currentDomain} (expected: ${expectedDomain})`, 'error');
+        }
+
+        // Check current path
+        const currentPath = window.location.pathname;
+        addStatus(`📍 Current path: ${currentPath}`, 'info');
+
+        // Check if we can load the main app assets
+        fetch('./assets/index-DE_QOLij.js')
+            .then(response => {
+                if (response.ok) {
+                    addStatus('✅ Main app assets are accessible', 'success');
+                } else {
+                    addStatus(`❌ Main app assets not accessible: ${response.status}`, 'error');
+                }
+            })
+            .catch(error => {
+                addStatus(`❌ Error loading main app assets: ${error.message}`, 'error');
+            });
+
+        // Check .nojekyll file
+        fetch('./.nojekyll')
+            .then(response => {
+                if (response.ok) {
+                    addStatus('✅ .nojekyll file is present', 'success');
+                } else {
+                    addStatus('❌ .nojekyll file is missing', 'error');
+                }
+            })
+            .catch(error => {
+                addStatus(`❌ Error checking .nojekyll: ${error.message}`, 'error');
+            });
+
+        // Check 404.html
+        fetch('./404.html')
+            .then(response => {
+                if (response.ok) {
+                    addStatus('✅ 404.html file is present', 'success');
+                } else {
+                    addStatus('❌ 404.html file is missing', 'error');
+                }
+            })
+            .catch(error => {
+                addStatus(`❌ Error checking 404.html: ${error.message}`, 'error');
+            });
+    </script>
+</body>
+</html>
