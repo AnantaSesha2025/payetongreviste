@@ -78,6 +78,12 @@ jobs:
           fi
           echo "✅ .nojekyll file ensured in dist/"
           ls -la dist/.nojekyll
+          
+      - name: Setup SPA routing for GitHub Pages
+        run: |
+          cp dist/index.html dist/404.html
+          echo "✅ 404.html created for SPA routing"
+          ls -la dist/404.html
         
       - name: Setup Pages
         uses: actions/configure-pages@v4

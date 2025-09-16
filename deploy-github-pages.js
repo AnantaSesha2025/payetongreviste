@@ -24,6 +24,18 @@ try {
     console.log('✅ Created .nojekyll file in dist/');
   }
 
+  // Setup SPA routing for GitHub Pages
+  const indexSource = path.join('dist', 'index.html');
+  const notFoundDest = path.join('dist', '404.html');
+  
+  if (fs.existsSync(indexSource)) {
+    fs.copyFileSync(indexSource, notFoundDest);
+    console.log('✅ Created 404.html for SPA routing');
+  } else {
+    console.error('❌ index.html not found in dist/');
+    process.exit(1);
+  }
+
   // Deploy to GitHub Pages
   console.log('🌐 Deploying to GitHub Pages...');
   execSync('gh-pages -d dist', { stdio: 'inherit' });
