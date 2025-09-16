@@ -79,6 +79,26 @@ jobs:
           echo "✅ .nojekyll file ensured in dist/"
           ls -la dist/.nojekyll
           
+      - name: Ensure _headers file exists for proper MIME types
+        run: |
+          if [ -f public/_headers ]; then
+            cp public/_headers dist/_headers
+          else
+            cat > dist/_headers << 'EOF'
+/assets/*
+  Content-Type: application/javascript
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
+  Content-Type: application/javascript
+
+/*.css
+  Content-Type: text/css
+EOF
+          fi
+          echo "✅ _headers file ensured in dist/"
+          ls -la dist/_headers
+          
       - name: Setup SPA routing for GitHub Pages
         run: |
           # Copy index.html to 404.html for SPA routing
@@ -89,6 +109,16 @@ jobs:
           fi
           echo "✅ 404.html created for SPA routing with redirect script"
           ls -la dist/404.html
+          
+      - name: Verify assets and fix MIME types
+        run: |
+          echo "📁 Checking assets directory..."
+          ls -la dist/assets/
+          echo "📄 Checking _headers file..."
+          cat dist/_headers
+          echo "🔧 Ensuring proper file permissions..."
+          chmod -R 644 dist/assets/*
+          echo "✅ Assets verification complete"
         
       - name: Setup Pages
         uses: actions/configure-pages@v4

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://anantasesha2025.github.io/payetogreviste/sitemap.xml

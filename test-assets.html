@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Loading Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        .info { background-color: #d1ecf1; color: #0c5460; }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background-color: #0056b3; }
+        .code { background-color: #f8f9fa; padding: 10px; border-radius: 5px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>🔧 Asset Loading Test</h1>
+    
+    <div class="test-result info">
+        <h3>Testing JavaScript Asset Loading</h3>
+        <p>This test checks if the JavaScript assets are being served with the correct MIME type.</p>
+    </div>
+
+    <button onclick="testAsset('index-DE_QOLij.js')">Test Main JS</button>
+    <button onclick="testAsset('vendor-gH-7aFTg.js')">Test Vendor JS</button>
+    <button onclick="testAsset('router-BoQ7bh5q.js')">Test Router JS</button>
+    <button onclick="testAsset('motion-Bdng1qfT.js')">Test Motion JS</button>
+    <button onclick="testAsset('index-BwUKSc2y.css')">Test CSS</button>
+    
+    <div id="results"></div>
+
+    <div class="test-result info">
+        <h3>Expected Results</h3>
+        <ul>
+            <li><strong>Success:</strong> Assets should load with <code>Content-Type: application/javascript</code></li>
+            <li><strong>Error:</strong> If you see <code>text/html</code>, GitHub Pages is serving 404.html instead</li>
+        </ul>
+    </div>
+
+    <div class="test-result info">
+        <h3>If Assets Fail to Load</h3>
+        <p>The issue is likely that GitHub Pages is serving the 404.html page instead of the actual JavaScript files. This can happen when:</p>
+        <ul>
+            <li>The <code>_headers</code> file is not being processed</li>
+            <li>The assets directory structure is incorrect</li>
+            <li>GitHub Pages is not recognizing the file types</li>
+        </ul>
+    </div>
+
+    <script>
+        function testAsset(filename) {
+            const resultsDiv = document.getElementById('results');
+            const url = `https://anantasesha2025.github.io/payetogreviste/assets/${filename}`;
+            
+            resultsDiv.innerHTML += `<div class="test-result info">Testing ${filename}...</div>`;
+            
+            fetch(url, { method: 'HEAD' })
+                .then(response => {
+                    const contentType = response.headers.get('content-type');
+                    const status = response.status;
+                    
+                    if (status === 200) {
+                        if (contentType && contentType.includes('application/javascript')) {
+                            resultsDiv.innerHTML += `<div class="test-result success">✅ ${filename}: Correct MIME type (${contentType})</div>`;
+                        } else if (contentType && contentType.includes('text/html')) {
+                            resultsDiv.innerHTML += `<div class="test-result error">❌ ${filename}: Wrong MIME type (${contentType}) - GitHub Pages serving 404.html</div>`;
+                        } else {
+                            resultsDiv.innerHTML += `<div class="test-result error">❌ ${filename}: Unexpected MIME type (${contentType})</div>`;
+                        }
+                    } else {
+                        resultsDiv.innerHTML += `<div class="test-result error">❌ ${filename}: HTTP ${status}</div>`;
+                    }
+                })
+                .catch(error => {
+                    resultsDiv.innerHTML += `<div class="test-result error">❌ ${filename}: Network error - ${error.message}</div>`;
+                });
+        }
+
+        // Auto-test on page load
+        window.addEventListener('load', () => {
+            testAsset('index-DE_QOLij.js');
+        });
+    </script>
+</body>
+</html>
