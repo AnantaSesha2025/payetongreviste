@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+import { execSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 console.log('🚀 Starting GitHub Pages deployment...');
 
@@ -22,6 +26,24 @@ try {
     // Create .nojekyll file if it doesn't exist
     fs.writeFileSync(nojekyllDest, '');
     console.log('✅ Created .nojekyll file in dist/');
+  }
+
+  // Copy _headers file to dist for proper MIME types
+  const headersSource = path.join('public', '_headers');
+  const headersDest = path.join('dist', '_headers');
+  
+  if (fs.existsSync(headersSource)) {
+    fs.copyFileSync(headersSource, headersDest);
+    console.log('✅ Copied _headers file to dist/');
+  }
+
+  // Copy fallback loader to dist
+  const fallbackSource = path.join('public', 'fallback-loader.js');
+  const fallbackDest = path.join('dist', 'fallback-loader.js');
+  
+  if (fs.existsSync(fallbackSource)) {
+    fs.copyFileSync(fallbackSource, fallbackDest);
+    console.log('✅ Copied fallback-loader.js to dist/');
   }
 
   // Setup SPA routing for GitHub Pages
