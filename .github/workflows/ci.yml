@@ -51,6 +51,15 @@ jobs:
           node scripts/fix-asset-paths.js
           echo "✅ Asset paths fixed"
 
+      # Ensure 404.html exists for SPA routing
+      - run: |
+          if [ ! -f dist/404.html ]; then
+            cp dist/index.html dist/404.html
+            echo "✅ Created 404.html from index.html"
+          else
+            echo "✅ 404.html already exists"
+          fi
+
       # Ensure .nojekyll exists
       - run: |
           touch dist/.nojekyll

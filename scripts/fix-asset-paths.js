@@ -29,17 +29,14 @@ try {
   
   console.log('✅ Fixed asset paths in index.html');
   
-  // Also fix 404.html if it exists
+  // Create/update 404.html for SPA routing
   const notFoundPath = path.join(distDir, '404.html');
-  if (fs.existsSync(notFoundPath)) {
-    let notFoundContent = fs.readFileSync(notFoundPath, 'utf8');
-    notFoundContent = notFoundContent.replace(/\/payetogreviste\/\//g, '/payetogreviste/');
-    notFoundContent = notFoundContent.replace(/href="\/(?!payetogreviste\/)/g, 'href="/payetogreviste/');
-    notFoundContent = notFoundContent.replace(/src="\/(?!payetogreviste\/)/g, 'src="/payetogreviste/');
-    
-    // Add the SPA routing script if it's missing
-    if (!notFoundContent.includes('GitHub Pages SPA routing fix')) {
-      const redirectScript = `
+  
+  // Read the fixed index.html content
+  const fixedIndexContent = fs.readFileSync(indexPath, 'utf8');
+  
+  // Add SPA routing script to the end of the body
+  const redirectScript = `
     <script>
       // GitHub Pages SPA routing fix
       (function() {
@@ -64,17 +61,12 @@ try {
         console.log('404.html: Path is correct, React Router will handle routing');
       })();
     </script>`;
-      
-      // Replace the redirect.js script with the inline script
-      notFoundContent = notFoundContent.replace(
-        /<script src="\/payetogreviste\/redirect\.js"><\/script>/,
-        redirectScript
-      );
-    }
-    
-    fs.writeFileSync(notFoundPath, notFoundContent);
-    console.log('✅ Fixed asset paths and SPA routing in 404.html');
-  }
+  
+  // Create 404.html with all assets and SPA routing
+  const notFoundContent = fixedIndexContent.replace('</body>', redirectScript + '\n  </body>');
+  
+  fs.writeFileSync(notFoundPath, notFoundContent);
+  console.log('✅ Created/updated 404.html with all assets and SPA routing');
   
   console.log('🎉 Asset path fixes completed!');
   
