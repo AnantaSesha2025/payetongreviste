@@ -29,6 +29,589 @@ function formatRelativeTime(timestamp: number): string {
 }
 
 /**
+ * Gets a human-readable label for message status
+ * @param status - The message status
+ * @returns A human-readable status label
+ */
+function getStatusLabel(
+  status: 'sending' | 'sent' | 'delivered' | 'read' | 'failed'
+): string {
+  switch (status) {
+    case 'sending':
+      return 'Envoi en cours';
+    case 'sent':
+      return 'Envoyé';
+    case 'delivered':
+      return 'Livré';
+    case 'read':
+      return 'Lu';
+    case 'failed':
+      return "Échec de l'envoi";
+    default:
+      return 'Inconnu';
+  }
+}
+
+/**
+ * Common emojis for the emoji picker
+ */
+const EMOJI_CATEGORIES = {
+  Faces: [
+    '😀',
+    '😃',
+    '😄',
+    '😁',
+    '😆',
+    '😅',
+    '🤣',
+    '😂',
+    '🙂',
+    '🙃',
+    '😉',
+    '😊',
+    '😇',
+    '🥰',
+    '😍',
+    '🤩',
+    '😘',
+    '😗',
+    '😚',
+    '😙',
+    '😋',
+    '😛',
+    '😜',
+    '🤪',
+    '😝',
+    '🤑',
+    '🤗',
+    '🤭',
+    '🤫',
+    '🤔',
+    '🤐',
+    '🤨',
+    '😐',
+    '😑',
+    '😶',
+    '😏',
+    '😒',
+    '🙄',
+    '😬',
+    '🤥',
+    '😔',
+    '😕',
+    '🙁',
+    '☹️',
+    '😣',
+    '😖',
+    '😫',
+    '😩',
+    '🥺',
+    '😢',
+    '😭',
+    '😤',
+    '😠',
+    '😡',
+    '🤬',
+    '🤯',
+    '😳',
+    '🥵',
+    '🥶',
+    '😱',
+    '😨',
+    '😰',
+    '😥',
+    '😓',
+    '🤗',
+    '🤔',
+    '🤭',
+    '🤫',
+    '🤥',
+    '😶',
+    '😐',
+    '😑',
+    '😬',
+    '🙄',
+    '😯',
+    '😦',
+    '😧',
+    '😮',
+    '😲',
+    '🥱',
+    '😴',
+    '🤤',
+    '😪',
+    '😵',
+    '🤐',
+    '🥴',
+    '🤢',
+    '🤮',
+    '🤧',
+    '😷',
+    '🤒',
+    '🤕',
+    '🤑',
+    '🤠',
+    '😈',
+    '👿',
+    '👹',
+    '👺',
+    '🤡',
+    '💩',
+    '👻',
+    '💀',
+    '☠️',
+    '👽',
+    '👾',
+    '🤖',
+    '🎃',
+    '😺',
+    '😸',
+    '😹',
+    '😻',
+    '😼',
+    '😽',
+    '🙀',
+    '😿',
+    '😾',
+  ],
+  Gestes: [
+    '👋',
+    '🤚',
+    '🖐️',
+    '✋',
+    '🖖',
+    '👌',
+    '🤏',
+    '✌️',
+    '🤞',
+    '🤟',
+    '🤘',
+    '🤙',
+    '👈',
+    '👉',
+    '👆',
+    '🖕',
+    '👇',
+    '☝️',
+    '👍',
+    '👎',
+    '👊',
+    '✊',
+    '🤛',
+    '🤜',
+    '👏',
+    '🙌',
+    '👐',
+    '🤲',
+    '🤝',
+    '🙏',
+    '✍️',
+    '💅',
+    '🤳',
+    '💪',
+    '🦾',
+    '🦿',
+    '🦵',
+    '🦶',
+    '👂',
+    '🦻',
+    '👃',
+    '🧠',
+    '🦷',
+    '🦴',
+    '👀',
+    '👁️',
+    '👅',
+    '👄',
+    '💋',
+    '🩸',
+  ],
+  Objets: [
+    '💎',
+    '🔔',
+    '🔕',
+    '📢',
+    '📣',
+    '📯',
+    '🎺',
+    '🎷',
+    '🥁',
+    '🎸',
+    '🎹',
+    '🎵',
+    '🎶',
+    '📻',
+    '🎙️',
+    '🎚️',
+    '🎛️',
+    '📺',
+    '📷',
+    '📸',
+    '📹',
+    '🎥',
+    '💽',
+    '💾',
+    '💿',
+    '📀',
+    '📱',
+    '☎️',
+    '📞',
+    '📟',
+    '📠',
+    '🔌',
+    '🔋',
+    '🔍',
+    '🔎',
+    '🕯️',
+    '💡',
+    '🔦',
+    '🏮',
+    '🪔',
+    '📔',
+    '📕',
+    '📖',
+    '📗',
+    '📘',
+    '📙',
+    '📚',
+    '📓',
+    '📒',
+    '📃',
+    '📜',
+    '📄',
+    '📰',
+    '🗞️',
+    '📑',
+    '🔖',
+    '🏷️',
+    '💰',
+    '💴',
+    '💵',
+    '💶',
+    '💷',
+    '💸',
+    '💳',
+    '💹',
+    '💱',
+    '💲',
+    '✉️',
+    '📧',
+    '📨',
+    '📩',
+    '📤',
+    '📥',
+    '📦',
+    '📫',
+    '📪',
+    '📬',
+    '📭',
+    '📮',
+    '🗳️',
+    '✏️',
+    '✒️',
+    '🖋️',
+    '🖊️',
+    '🖌️',
+    '🖍️',
+    '📝',
+    '✂️',
+    '🗃️',
+    '🗄️',
+    '🗑️',
+    '🔒',
+    '🔓',
+    '🔏',
+    '🔐',
+    '🔑',
+    '🗝️',
+    '🔨',
+    '🪓',
+    '⛏️',
+    '⚒️',
+    '🛠️',
+    '🗡️',
+    '⚔️',
+    '🔫',
+    '🏹',
+    '🛡️',
+    '🔧',
+    '🔩',
+    '⚙️',
+    '🗜️',
+    '⚖️',
+    '🦯',
+    '🔗',
+    '⛓️',
+    '🧰',
+    '🧲',
+    '⚗️',
+    '🧪',
+    '🧫',
+    '🧬',
+    '🔬',
+    '🔭',
+    '📡',
+    '💉',
+    '💊',
+    '🩹',
+    '🩺',
+    '🚪',
+    '🛏️',
+    '🛋️',
+    '🚽',
+    '🚿',
+    '🛁',
+    '🛀',
+    '🧴',
+    '🧷',
+    '🧹',
+    '🧺',
+    '🧻',
+    '🚰',
+    '🧼',
+    '🧽',
+    '🧯',
+    '🛒',
+  ],
+  Nourriture: [
+    '🍎',
+    '🍊',
+    '🍋',
+    '🍌',
+    '🍉',
+    '🍇',
+    '🍓',
+    '🫐',
+    '🍈',
+    '🍒',
+    '🍑',
+    '🥭',
+    '🍍',
+    '🥥',
+    '🥝',
+    '🍅',
+    '🍆',
+    '🥑',
+    '🥦',
+    '🥬',
+    '🥒',
+    '🌶️',
+    '🫑',
+    '🌽',
+    '🥕',
+    '🫒',
+    '🧄',
+    '🧅',
+    '🥔',
+    '🍠',
+    '🥐',
+    '🥖',
+    '🍞',
+    '🥨',
+    '🥯',
+    '🧀',
+    '🥚',
+    '🍳',
+    '🧈',
+    '🥞',
+    '🧇',
+    '🥓',
+    '🥩',
+    '🍗',
+    '🍖',
+    '🦴',
+    '🌭',
+    '🍔',
+    '🍟',
+    '🍕',
+    '🫓',
+    '🥙',
+    '🌮',
+    '🌯',
+    '🫔',
+    '🥗',
+    '🥘',
+    '🫕',
+    '🥫',
+    '🍝',
+    '🍜',
+    '🍲',
+    '🍛',
+    '🍣',
+    '🍱',
+    '🥟',
+    '🦪',
+    '🍤',
+    '🍙',
+    '🍚',
+    '🍘',
+    '🍥',
+    '🥠',
+    '🥮',
+    '🍢',
+    '🍡',
+    '🍧',
+    '🍨',
+    '🍦',
+    '🥧',
+    '🧁',
+    '🍰',
+    '🎂',
+    '🍮',
+    '🍭',
+    '🍬',
+    '🍫',
+    '🍿',
+    '🍩',
+    '🍪',
+    '🌰',
+    '🥜',
+    '🍯',
+  ],
+  Activités: [
+    '⚽',
+    '🏀',
+    '🏈',
+    '⚾',
+    '🥎',
+    '🎾',
+    '🏐',
+    '🏉',
+    '🎱',
+    '🪀',
+    '🏓',
+    '🏸',
+    '🏒',
+    '🏑',
+    '🥍',
+    '🏏',
+    '🪃',
+    '🥅',
+    '⛳',
+    '🪁',
+    '🏹',
+    '🎣',
+    '🤿',
+    '🥊',
+    '🥋',
+    '🎽',
+    '🛹',
+    '🛷',
+    '⛸️',
+    '🥌',
+    '🎿',
+    '⛷️',
+    '🏂',
+    '🪂',
+    '🏋️‍♀️',
+    '🏋️',
+    '🏋️‍♂️',
+    '🤼‍♀️',
+    '🤼',
+    '🤼‍♂️',
+    '🤸‍♀️',
+    '🤸',
+    '🤸‍♂️',
+    '⛹️‍♀️',
+    '⛹️',
+    '⛹️‍♂️',
+    '🤺',
+    '🤾‍♀️',
+    '🤾',
+    '🤾‍♂️',
+    '🏌️‍♀️',
+    '🏌️',
+    '🏌️‍♂️',
+    '🏇',
+    '🧘‍♀️',
+    '🧘',
+    '🧘‍♂️',
+    '🏄‍♀️',
+    '🏄',
+    '🏄‍♂️',
+    '🏊‍♀️',
+    '🏊',
+    '🏊‍♂️',
+    '🤽‍♀️',
+    '🤽',
+    '🤽‍♂️',
+    '🚣‍♀️',
+    '🚣',
+    '🚣‍♂️',
+    '🧗‍♀️',
+    '🧗',
+    '🧗‍♂️',
+    '🚵‍♀️',
+    '🚵',
+    '🚵‍♂️',
+    '🚴‍♀️',
+    '🚴',
+    '🚴‍♂️',
+    '🏆',
+    '🥇',
+    '🥈',
+    '🥉',
+    '🏅',
+    '🎖️',
+    '🏵️',
+    '🎗️',
+    '🎫',
+    '🎟️',
+    '🎪',
+    '🤹',
+    '🤹‍♀️',
+    '🤹‍♂️',
+    '🎭',
+    '🩰',
+    '🎨',
+    '🎬',
+    '🎤',
+    '🎧',
+    '🎼',
+    '🎵',
+    '🎶',
+    '🪘',
+    '🥁',
+    '🎹',
+    '🎷',
+    '🎺',
+    '🎸',
+    '🪕',
+    '🎻',
+    '🎲',
+    '♠️',
+    '♥️',
+    '♦️',
+    '♣️',
+    '♟️',
+    '🃏',
+    '🀄',
+    '🎴',
+    '🎯',
+    '🎳',
+    '🎮',
+    '🕹️',
+    '🎰',
+    '🧩',
+  ],
+};
+
+/**
+ * Inserts an emoji into the text input
+ */
+function insertEmoji(
+  text: string,
+  emoji: string,
+  cursorPosition: number
+): { newText: string; newCursorPosition: number } {
+  const beforeCursor = text.slice(0, cursorPosition);
+  const afterCursor = text.slice(cursorPosition);
+  const newText = beforeCursor + emoji + afterCursor;
+  const newCursorPosition = cursorPosition + emoji.length;
+  return { newText, newCursorPosition };
+}
+
+/**
  * Matches page component that displays liked profiles and chat interface.
  * Shows a dropdown for match selection and chat window below.
  *
@@ -114,13 +697,34 @@ export default function MatchesPage() {
     }
   }, [focusedIndex, filteredMatches]);
 
+  // Focus management when switching matches
+  useEffect(() => {
+    if (activeId) {
+      // Focus the chat input when switching to a new match
+      const input = document.querySelector(
+        '.message-input'
+      ) as HTMLInputElement;
+      if (input) {
+        // Small delay to ensure the chat window is rendered
+        setTimeout(() => {
+          input.focus();
+        }, 100);
+      }
+    }
+  }, [activeId]);
+
   // Global keyboard shortcuts
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
-      // Ctrl/Cmd + K to focus search (if we had search)
+      // Ctrl/Cmd + K to focus search
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault();
-        // Future: focus search input
+        const searchInput = document.querySelector(
+          '.search-input, .mobile-search-input'
+        ) as HTMLInputElement;
+        if (searchInput) {
+          searchInput.focus();
+        }
       }
 
       // Escape to close dropdown
@@ -148,6 +752,18 @@ export default function MatchesPage() {
               onClick={() => {
                 console.log('Dropdown clicked, current state:', isDropdownOpen);
                 setIsDropdownOpen(!isDropdownOpen);
+
+                // Focus search input when dropdown opens
+                if (!isDropdownOpen) {
+                  setTimeout(() => {
+                    const searchInput = document.querySelector(
+                      '.mobile-search-input'
+                    ) as HTMLInputElement;
+                    if (searchInput) {
+                      searchInput.focus();
+                    }
+                  }, 100);
+                }
               }}
             >
               <div className="match-selector-content">
@@ -294,6 +910,16 @@ export default function MatchesPage() {
                             console.log('Match selected:', p.name, p.id);
                             setActiveId(p.id);
                             setIsDropdownOpen(false);
+
+                            // Focus chat input after selection
+                            setTimeout(() => {
+                              const input = document.querySelector(
+                                '.message-input'
+                              ) as HTMLInputElement;
+                              if (input) {
+                                input.focus();
+                              }
+                            }, 200);
                           }}
                         >
                           <img
@@ -399,6 +1025,16 @@ export default function MatchesPage() {
                     onClick={() => {
                       console.log('Desktop match selected:', p.name, p.id);
                       setActiveId(p.id);
+
+                      // Focus chat input after selection
+                      setTimeout(() => {
+                        const input = document.querySelector(
+                          '.message-input'
+                        ) as HTMLInputElement;
+                        if (input) {
+                          input.focus();
+                        }
+                      }, 100);
                     }}
                   >
                     <img
@@ -481,10 +1117,14 @@ function ChatWindow({ matchId }: { matchId: string }) {
   const [showInput, setShowInput] = useState(true);
   const [, setTimestampUpdate] = useState(0); // Force re-render for timestamps
   const [, setFailedMessages] = useState<Set<number>>(new Set());
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [selectedEmojiCategory, setSelectedEmojiCategory] =
+    useState<keyof typeof EMOJI_CATEGORIES>('Faces');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const lastScrollTop = useRef(0);
+  const emojiPickerRef = useRef<HTMLDivElement>(null);
 
   // Ensure chat exists for this match
   useEffect(() => {
@@ -557,6 +1197,24 @@ function ChatWindow({ matchId }: { matchId: string }) {
     return () => chatContainer.removeEventListener('scroll', handleScroll);
   }, [showInput]);
 
+  // Close emoji picker when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        emojiPickerRef.current &&
+        !emojiPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowEmojiPicker(false);
+      }
+    };
+
+    if (showEmojiPicker) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () =>
+        document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [showEmojiPicker]);
+
   /**
    * Scrolls to the bottom of the messages
    */
@@ -608,6 +1266,13 @@ function ChatWindow({ matchId }: { matchId: string }) {
         1000 + Math.random() * 2000
       ); // 1-3 second delay
     }
+
+    // Keep focus on input after sending
+    setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, 50);
   };
 
   /**
@@ -628,6 +1293,33 @@ function ChatWindow({ matchId }: { matchId: string }) {
     setTimeout(() => {
       updateMessageStatus(matchId, messageIndex, 'delivered');
     }, 1000);
+  };
+
+  /**
+   * Handles emoji selection
+   */
+  const handleEmojiSelect = (emoji: string) => {
+    if (inputRef.current) {
+      const cursorPosition = inputRef.current.selectionStart || 0;
+      const { newText, newCursorPosition } = insertEmoji(
+        text,
+        emoji,
+        cursorPosition
+      );
+      setText(newText);
+
+      // Set cursor position after emoji
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.setSelectionRange(
+            newCursorPosition,
+            newCursorPosition
+          );
+          inputRef.current.focus();
+        }
+      }, 0);
+    }
+    setShowEmojiPicker(false);
   };
 
   /**
@@ -702,7 +1394,10 @@ function ChatWindow({ matchId }: { matchId: string }) {
       <div className="chat-header-new">
         <div className="chat-profile-info">
           <div className="chat-avatar">
-            <img src={profile.photoUrl} alt={profile.name} />
+            <img
+              src={profile.photoUrl}
+              alt={`Photo de profil de ${profile.name}`}
+            />
           </div>
           <div className="chat-profile-details">
             <h3 className="chat-name">{profile.name}</h3>
@@ -715,11 +1410,19 @@ function ChatWindow({ matchId }: { matchId: string }) {
             target="_blank"
             rel="noreferrer"
             className="strike-fund-btn"
+            aria-label={`Soutenir la cause ${profile.strikeFund.title}`}
           >
             <span>Soutenir</span>
             <span className="fund-title">{profile.strikeFund.title}</span>
           </a>
         </div>
+      </div>
+
+      {/* Screen Reader Instructions */}
+      <div id="chat-instructions" className="sr-only">
+        Conversation avec {profile.name}. Utilisez les flèches pour naviguer
+        dans les messages. Appuyez sur Entrée pour envoyer un message. Les
+        réponses automatiques sont indiquées par un indicateur de bot.
       </div>
 
       {/* Scrollable Chat Messages */}
@@ -729,6 +1432,7 @@ function ChatWindow({ matchId }: { matchId: string }) {
         role="log"
         aria-label="Messages de conversation"
         aria-live="polite"
+        aria-describedby="chat-instructions"
       >
         {messages.length === 0 ? (
           <div className="empty-chat">
@@ -743,11 +1447,17 @@ function ChatWindow({ matchId }: { matchId: string }) {
             <div
               key={i}
               className={`message ${m.from === 'user' ? 'message--user' : 'message--bot'}`}
+              role="article"
+              aria-label={`Message ${m.from === 'user' ? 'de vous' : `de ${profile.name}`}`}
             >
               {m.from === 'bot' && (
                 <div className="message-avatar">
                   <img src={profile.photoUrl} alt={profile.name} />
-                  <div className="bot-indicator" title="Réponse automatique">
+                  <div
+                    className="bot-indicator"
+                    title="Réponse automatique"
+                    aria-label="Réponse automatique"
+                  >
                     🤖
                   </div>
                 </div>
@@ -767,13 +1477,17 @@ function ChatWindow({ matchId }: { matchId: string }) {
                       {formatRelativeTime(m.ts)}
                     </div>
                     {m.from === 'user' && m.status && (
-                      <div className="message-status">
+                      <div
+                        className="message-status"
+                        aria-label={`Statut du message: ${getStatusLabel(m.status)}`}
+                      >
                         {m.status === 'sending' && (
                           <svg
                             width="12"
                             height="12"
                             viewBox="0 0 24 24"
                             fill="none"
+                            aria-label="Envoi en cours"
                           >
                             <circle
                               cx="12"
@@ -796,6 +1510,7 @@ function ChatWindow({ matchId }: { matchId: string }) {
                             height="12"
                             viewBox="0 0 24 24"
                             fill="none"
+                            aria-label="Message envoyé"
                           >
                             <path
                               d="M20 6L9 17L4 12"
@@ -812,6 +1527,7 @@ function ChatWindow({ matchId }: { matchId: string }) {
                             height="12"
                             viewBox="0 0 24 24"
                             fill="none"
+                            aria-label="Message livré"
                           >
                             <path
                               d="M20 6L9 17L4 12"
@@ -836,6 +1552,7 @@ function ChatWindow({ matchId }: { matchId: string }) {
                             height="12"
                             viewBox="0 0 24 24"
                             fill="none"
+                            aria-label="Message lu"
                           >
                             <path
                               d="M20 6L9 17L4 12"
@@ -860,12 +1577,14 @@ function ChatWindow({ matchId }: { matchId: string }) {
                             className="retry-button"
                             onClick={() => retryMessage(i)}
                             title="Réessayer d'envoyer le message"
+                            aria-label="Réessayer d'envoyer le message"
                           >
                             <svg
                               width="12"
                               height="12"
                               viewBox="0 0 24 24"
                               fill="none"
+                              aria-label="Réessayer"
                             >
                               <path
                                 d="M1 4v6h6"
@@ -905,11 +1624,18 @@ function ChatWindow({ matchId }: { matchId: string }) {
           <div className="message message--bot">
             <div className="message-avatar">
               <img src={profile.photoUrl} alt={profile.name} />
-              <div className="bot-indicator" title="Réponse automatique"></div>
+              <div
+                className="bot-indicator"
+                title="Réponse automatique"
+                aria-label="Bot"
+              ></div>
             </div>
             <div className="message-content">
               <div className="message-bubble message-bubble--bot">
-                <div className="typing-indicator">
+                <div
+                  className="typing-indicator"
+                  aria-label="En train d'écrire"
+                >
                   <span></span>
                   <span></span>
                   <span></span>
@@ -919,6 +1645,14 @@ function ChatWindow({ matchId }: { matchId: string }) {
           </div>
         )}
 
+        {/* Live region for screen readers */}
+        <div
+          id="message-status-announcements"
+          className="sr-only"
+          aria-live="polite"
+          aria-atomic="true"
+        ></div>
+
         {/* Scroll anchor */}
         <div ref={messagesEndRef} />
       </div>
@@ -926,6 +1660,15 @@ function ChatWindow({ matchId }: { matchId: string }) {
       {/* Smart Chat Input - At the bottom, above nav bar */}
       <div className={`chat-input-new ${showInput ? 'visible' : 'hidden'}`}>
         <div className="input-container">
+          <button
+            className="emoji-button"
+            onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+            aria-label="Ouvrir le sélecteur d'emojis"
+            type="button"
+            disabled={isTyping}
+          >
+            😊
+          </button>
           <input
             ref={inputRef}
             value={text}
@@ -969,6 +1712,44 @@ function ChatWindow({ matchId }: { matchId: string }) {
             )}
           </button>
         </div>
+
+        {/* Emoji Picker */}
+        {showEmojiPicker && (
+          <div className="emoji-picker" ref={emojiPickerRef}>
+            <div className="emoji-categories">
+              {Object.keys(EMOJI_CATEGORIES).map(category => (
+                <button
+                  key={category}
+                  className={`emoji-category ${selectedEmojiCategory === category ? 'active' : ''}`}
+                  onClick={() =>
+                    setSelectedEmojiCategory(
+                      category as keyof typeof EMOJI_CATEGORIES
+                    )
+                  }
+                  aria-label={`Catégorie ${category}`}
+                >
+                  {category === 'Faces' && '😀'}
+                  {category === 'Gestes' && '👋'}
+                  {category === 'Objets' && '💎'}
+                  {category === 'Nourriture' && '🍎'}
+                  {category === 'Activités' && '⚽'}
+                </button>
+              ))}
+            </div>
+            <div className="emoji-grid">
+              {EMOJI_CATEGORIES[selectedEmojiCategory].map((emoji, index) => (
+                <button
+                  key={index}
+                  className="emoji-item"
+                  onClick={() => handleEmojiSelect(emoji)}
+                  aria-label={`Emoji ${emoji}`}
+                >
+                  {emoji}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
         <div className="input-hint" id="input-hint">
           <span>
             Entrée ou Ctrl+Entrée pour envoyer • Shift+Entrée pour une nouvelle
