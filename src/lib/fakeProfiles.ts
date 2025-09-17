@@ -259,7 +259,7 @@ export function convertGistProfileToAppProfile(gistProfile: GistProfile) {
     name: gistProfile.name,
     age: gistProfile.age,
     bio: gistProfile.bio,
-    photoUrl: gistProfile.photoUrl,
+    photoUrl: gistProfile.photoUrl, // Vite handles base URL automatically for relative paths
     location: gistProfile.location || { lat: 48.8566, lon: 2.3522 }, // Use actual location from Gist or default to Paris
     strikeFund: gistProfile.strikeFund,
   };

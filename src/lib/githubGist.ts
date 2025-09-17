@@ -156,30 +156,44 @@ class GitHubGistService {
           };
         }
       } else {
-        // If API fails, try the raw content URL (works for public gists)
-        console.log('API failed, trying raw content URL...');
-        const rawUrl = `https://gist.githubusercontent.com/AnantaSesha2025/${gistId}/raw/profiles.json`;
-        const rawResponse = await fetch(rawUrl);
+        // Handle API errors first
+        const errorData = await apiResponse.json().catch(() => ({}));
+        const errorMessage =
+          errorData.message ||
+          `Erreur ${apiResponse.status}: ${apiResponse.statusText}`;
 
-        if (!rawResponse.ok) {
-          if (rawResponse.status === 404) {
+        // Only try raw content URL for 404 errors (Gist not found)
+        if (apiResponse.status === 404) {
+          console.log('API returned 404, trying raw content URL...');
+          const rawUrl = `https://gist.githubusercontent.com/AnantaSesha2025/${gistId}/raw/profiles.json`;
+          const rawResponse = await fetch(rawUrl);
+
+          if (!rawResponse.ok) {
+            if (rawResponse.status === 404) {
+              return {
+                success: false,
+                error: 'Aucun fichier profiles.json trouvé dans le Gist',
+              };
+            }
             return {
               success: false,
-              error: 'Aucun fichier profiles.json trouvé dans le Gist',
+              error: `Erreur lors de la lecture du Gist (${rawResponse.status}): ${rawResponse.statusText}`,
             };
           }
+
+          const profilesContent = await rawResponse.text();
+          const profiles = JSON.parse(profilesContent) as GistProfile[];
+
           return {
-            success: false,
-            error: `Erreur lors de la lecture du Gist (${rawResponse.status}): ${rawResponse.statusText}`,
+            success: true,
+            profiles,
           };
         }
 
-        const profilesContent = await rawResponse.text();
-        const profiles = JSON.parse(profilesContent) as GistProfile[];
-
+        // For other API errors, return the error message directly
         return {
-          success: true,
-          profiles,
+          success: false,
+          error: errorMessage,
         };
       }
     } catch (error) {
