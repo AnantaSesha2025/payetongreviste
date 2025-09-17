@@ -1,68 +1,72 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, Heart, X, ArrowUp, Users, Target } from 'react-feather'
-import './OnboardingFlow.css'
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Heart, X, ArrowUp, Users, Target } from 'react-feather';
+import './OnboardingFlow.css';
 
 /**
  * Onboarding flow component that introduces users to the app
  * Includes welcome screen, gesture tutorial, and feature overview
  */
 export function OnboardingFlow({ onComplete }: { onComplete: () => void }) {
-  const [currentStep, setCurrentStep] = useState(0)
-  const [isVisible, setIsVisible] = useState(true)
+  const [currentStep, setCurrentStep] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
 
   const steps = [
     {
-      title: "Bienvenue sur PayeTonGréviste",
-      subtitle: "Connectez-vous avec des activistes qui luttent pour le changement",
-      content: "Découvrez des activistes partageant vos idées, soutenez leurs causes et créez des liens significatifs dans la lutte pour la justice sociale.",
+      title: 'Bienvenue sur PayeTonGréviste',
+      subtitle: 'Découvrez des caisses de grève réelles',
+      content:
+        'Cette app vous aide à découvrir et soutenir des caisses de grève authentiques. Les profils que vous verrez sont fictifs, mais les causes et les fonds de grève sont bien réels !',
       icon: <Users size={48} />,
-      color: "var(--primary-yellow)"
+      color: 'var(--primary-yellow)',
     },
     {
-      title: "Glissez pour vous Connecter",
-      subtitle: "Apprenez les gestes",
-      content: "Glissez vers la droite pour aimer, vers la gauche pour passer, ou vers le haut pour voir plus de détails sur la cause de chaque activiste.",
+      title: 'Glissez pour Découvrir',
+      subtitle: 'Apprenez les gestes',
+      content:
+        'Glissez vers la droite pour soutenir une cause, vers la gauche pour passer, ou vers le haut pour voir plus de détails sur la caisse de grève de chaque activiste.',
       icon: <Target size={48} />,
-      color: "#10b981",
-      gestures: true
+      color: '#10b981',
+      gestures: true,
     },
     {
-      title: "Soutenir les Causes",
-      subtitle: "Faites une vraie différence",
-      content: "Chaque activiste a une caisse de grève que vous pouvez soutenir. Chaque contribution aide à faire avancer leur cause.",
+      title: 'Soutenez les Caisses de Grève',
+      subtitle: 'Faites une vraie différence',
+      content:
+        'Chaque profil fictif est lié à une vraie caisse de grève que vous pouvez soutenir. Vos contributions vont directement aux travailleurs en lutte.',
       icon: <Heart size={48} />,
-      color: "#ef4444"
+      color: '#ef4444',
     },
     {
-      title: "Créez Votre Profil",
-      subtitle: "Rejoignez le mouvement",
-      content: "Configurez votre propre profil d'activiste pour vous connecter avec d'autres et partager votre propre caisse de grève.",
+      title: 'Profils Fictifs, Causes Réelles',
+      subtitle: "Comprendre l'app",
+      content:
+        "Les profils d'activistes sont créés pour rendre la découverte des caisses de grève plus engageante. Chaque profil représente une vraie cause et vous redirige vers un vrai fonds de grève.",
       icon: <Users size={48} />,
-      color: "var(--primary-yellow)"
-    }
-  ]
+      color: 'var(--primary-yellow)',
+    },
+  ];
 
   const handleNext = () => {
     if (currentStep < steps.length - 1) {
-      setCurrentStep(currentStep + 1)
+      setCurrentStep(currentStep + 1);
     } else {
-      handleComplete()
+      handleComplete();
     }
-  }
+  };
 
   const handleSkip = () => {
-    handleComplete()
-  }
+    handleComplete();
+  };
 
   const handleComplete = () => {
-    setIsVisible(false)
+    setIsVisible(false);
     setTimeout(() => {
-      onComplete()
-    }, 300)
-  }
+      onComplete();
+    }, 300);
+  };
 
-  if (!isVisible) return null
+  if (!isVisible) return null;
 
   return (
     <AnimatePresence>
@@ -93,10 +97,13 @@ export function OnboardingFlow({ onComplete }: { onComplete: () => void }) {
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="step-icon" style={{ color: steps[currentStep].color }}>
+            <div
+              className="step-icon"
+              style={{ color: steps[currentStep].color }}
+            >
               {steps[currentStep].icon}
             </div>
-            
+
             <h1 className="step-title">{steps[currentStep].title}</h1>
             <h2 className="step-subtitle">{steps[currentStep].subtitle}</h2>
             <p className="step-description">{steps[currentStep].content}</p>
@@ -117,7 +124,7 @@ export function OnboardingFlow({ onComplete }: { onComplete: () => void }) {
                       </div>
                       <div className="arrow-right">
                         <Heart size={24} />
-                        <span>Aimer</span>
+                        <span>Soutenir</span>
                       </div>
                     </div>
                   </div>
@@ -128,16 +135,10 @@ export function OnboardingFlow({ onComplete }: { onComplete: () => void }) {
 
           {/* Action buttons */}
           <div className="onboarding-actions">
-            <button 
-              className="skip-btn"
-              onClick={handleSkip}
-            >
+            <button className="skip-btn" onClick={handleSkip}>
               Passer
             </button>
-            <button 
-              className="next-btn"
-              onClick={handleNext}
-            >
+            <button className="next-btn" onClick={handleNext}>
               {currentStep === steps.length - 1 ? 'Commencer' : 'Suivant'}
               <ArrowRight size={16} />
             </button>
@@ -145,5 +146,5 @@ export function OnboardingFlow({ onComplete }: { onComplete: () => void }) {
         </div>
       </motion.div>
     </AnimatePresence>
-  )
+  );
 }
