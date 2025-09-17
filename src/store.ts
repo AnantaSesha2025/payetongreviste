@@ -54,6 +54,8 @@ type AppState = {
   ensureChatFor: (id: string) => void;
   /** Function to add a user message to a chat */
   addUserMessage: (id: string, text: string) => void;
+  /** Function to add a bot message to a chat */
+  addBotMessage: (id: string, text: string) => void;
   /** Function to create or update a profile */
   upsertProfile: (profile: Profile) => void;
   /** Function to remove a profile */
@@ -72,7 +74,7 @@ type AppState = {
  */
 export const useAppStore = create<AppState>((set, get) => ({
   profiles: [],
-  likedIds: new Set<string>(),
+  likedIds: new Set<string>(['1', '2', '3']), // Test data for immediate chat testing
   passedIds: new Set<string>(),
   chats: {},
   currentUser: null,
@@ -187,6 +189,17 @@ export const useAppStore = create<AppState>((set, get) => ({
         chats: {
           ...state.chats,
           [id]: [...current, { from: 'user', text, ts: Date.now() }],
+        },
+      };
+    }),
+
+  addBotMessage: (id, text) =>
+    set(state => {
+      const current = state.chats[id] ?? [];
+      return {
+        chats: {
+          ...state.chats,
+          [id]: [...current, { from: 'bot', text, ts: Date.now() }],
         },
       };
     }),
