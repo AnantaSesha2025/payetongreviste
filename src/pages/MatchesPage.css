@@ -882,24 +882,29 @@
 
 .input-container {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   align-items: center;
   position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
+  border-radius: 25px;
+  padding: 8px 8px 8px 16px;
+  transition: all 0.3s ease;
 }
 
 .message-input {
   flex: 1;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid var(--border-color);
-  border-radius: 24px;
-  padding: 12px 16px;
+  background: transparent;
+  border: none;
   color: var(--text-primary);
   font-size: 16px; /* 16px prevents mobile zoom */
   outline: none;
   transition: all 0.2s ease;
+  padding: 8px 12px;
+  min-width: 0; /* Allow input to shrink */
 }
 
-.message-input:focus {
+.input-container:focus-within {
   border-color: var(--primary-yellow);
   background: rgba(255, 255, 255, 0.15);
 }
@@ -909,8 +914,8 @@
 }
 
 .send-btn {
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   background: var(--primary-yellow);
   border: none;
   border-radius: 50%;
@@ -920,6 +925,8 @@
   cursor: pointer;
   transition: all 0.2s ease;
   color: var(--secondary-black);
+  flex-shrink: 0;
+  margin-left: 4px;
 }
 
 .send-btn:hover:not(:disabled) {
@@ -1131,7 +1138,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px;
+  padding: 6px;
   border-radius: 8px;
   font-size: 18px;
   transition: all 0.2s ease;
@@ -1139,6 +1146,9 @@
   align-items: center;
   justify-content: center;
   color: var(--text-secondary);
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
 }
 
 .emoji-button:hover {
@@ -1163,8 +1173,9 @@
   max-height: 300px;
   display: flex;
   flex-direction: column;
-  z-index: 1000;
+  z-index: 10000;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transform: translateY(-8px);
 }
 
 .emoji-categories {
