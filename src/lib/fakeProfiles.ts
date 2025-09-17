@@ -254,12 +254,22 @@ export function generateFakeProfiles(count: number): GistProfile[] {
  * Convert GistProfile to the app's Profile format
  */
 export function convertGistProfileToAppProfile(gistProfile: GistProfile) {
+  // Handle photoUrl to ensure it works with the app's base URL
+  let photoUrl = gistProfile.photoUrl;
+
+  // If it's a relative URL starting with /assets/, prepend the base URL
+  if (photoUrl && photoUrl.startsWith('/assets/')) {
+    // Get the base URL from import.meta.env.BASE_URL (handled by Vite)
+    const baseUrl = import.meta.env.BASE_URL || '/';
+    photoUrl = baseUrl + photoUrl.substring(1); // Remove leading slash and add base URL
+  }
+
   return {
     id: gistProfile.id,
     name: gistProfile.name,
     age: gistProfile.age,
     bio: gistProfile.bio,
-    photoUrl: gistProfile.photoUrl, // Vite handles base URL automatically for relative paths
+    photoUrl: photoUrl,
     location: gistProfile.location || { lat: 48.8566, lon: 2.3522 }, // Use actual location from Gist or default to Paris
     strikeFund: gistProfile.strikeFund,
   };
