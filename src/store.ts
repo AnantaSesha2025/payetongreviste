@@ -154,7 +154,9 @@ export const useAppStore = create<AppState>((set, get) => ({
    */
   ensureChatFor: id =>
     set(state => {
-      if (state.chats[id]) return {};
+      if (state.chats[id]) {
+        return {};
+      }
 
       // Find the profile to get strike fund information
       const profile = state.profiles.find(p => p.id === id);

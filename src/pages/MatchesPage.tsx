@@ -641,7 +641,25 @@ export default function MatchesPage() {
     );
   }, [allMatches, searchQuery]);
 
-  const activeProfile = filteredMatches.find(p => p.id === activeId);
+  // Find activeProfile from allMatches, not filteredMatches, to ensure consistency
+  const activeProfile = allMatches.find(p => p.id === activeId);
+
+  // Debug logging (can be removed in production)
+  // console.log('Debug - activeId:', activeId);
+  // console.log('Debug - filteredMatches:', filteredMatches.map(p => p.id));
+  // console.log('Debug - activeProfile:', activeProfile?.name);
+
+  // Handle case where allMatches changes and we need to set a default activeId
+  useEffect(() => {
+    if (allMatches.length > 0 && !activeId) {
+      setActiveId(allMatches[0].id);
+    }
+  }, [allMatches, activeId]);
+
+  // Track activeId changes (debug only)
+  // useEffect(() => {
+  //   console.log('activeId changed to:', activeId);
+  // }, [activeId]);
 
   // Detect screen size
   useEffect(() => {
@@ -690,12 +708,20 @@ export default function MatchesPage() {
     }
   }, [isDropdownOpen, isMobile, filteredMatches, focusedIndex]);
 
-  // Update activeId when focusedIndex changes
+  // Update focusedIndex when activeId changes (to keep them in sync)
   useEffect(() => {
-    if (filteredMatches[focusedIndex]) {
-      setActiveId(filteredMatches[focusedIndex].id);
+    if (activeId) {
+      const newFocusedIndex = filteredMatches.findIndex(p => p.id === activeId);
+      if (newFocusedIndex !== -1) {
+        setFocusedIndex(prevIndex => {
+          if (prevIndex !== newFocusedIndex) {
+            return newFocusedIndex;
+          }
+          return prevIndex;
+        });
+      }
     }
-  }, [focusedIndex, filteredMatches]);
+  }, [activeId, filteredMatches]);
 
   // Focus management when switching matches
   useEffect(() => {
@@ -907,7 +933,6 @@ export default function MatchesPage() {
                           aria-label={`Correspondance avec ${p.name}`}
                           tabIndex={-1}
                           onClick={() => {
-                            console.log('Match selected:', p.name, p.id);
                             setActiveId(p.id);
                             setIsDropdownOpen(false);
 
@@ -1023,7 +1048,6 @@ export default function MatchesPage() {
                     aria-label={`Correspondance avec ${p.name}`}
                     tabIndex={0}
                     onClick={() => {
-                      console.log('Desktop match selected:', p.name, p.id);
                       setActiveId(p.id);
 
                       // Focus chat input after selection
@@ -1073,7 +1097,11 @@ export default function MatchesPage() {
 
       {/* Chat Section */}
       <div className="chat-section">
-        {activeId ? <ChatWindow matchId={activeId} /> : <EmptyChatState />}
+        {activeId ? (
+          <ChatWindow key={activeId} matchId={activeId} />
+        ) : (
+          <EmptyChatState />
+        )}
       </div>
     </div>
   );
@@ -1111,7 +1139,9 @@ function ChatWindow({ matchId }: { matchId: string }) {
     updateMessageStatus,
   } = useAppStore();
   const profile = profiles.find(p => p.id === matchId)!;
-  const messages = useMemo(() => chats[matchId] ?? [], [chats, matchId]);
+  const messages = useMemo(() => {
+    return chats[matchId] ?? [];
+  }, [chats, matchId]);
   const [text, setText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [showInput, setShowInput] = useState(true);
@@ -1128,8 +1158,19 @@ function ChatWindow({ matchId }: { matchId: string }) {
 
   // Ensure chat exists for this match
   useEffect(() => {
-    ensureChatFor(matchId);
+    if (!chats[matchId]) {
+      ensureChatFor(matchId);
+    }
   }, [matchId, ensureChatFor]);
+
+  // Reset internal state when matchId changes
+  useEffect(() => {
+    setText('');
+    setIsTyping(false);
+    setShowInput(true);
+    setShowEmojiPicker(false);
+    setSelectedEmojiCategory('Faces');
+  }, [matchId]);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -1229,11 +1270,13 @@ function ChatWindow({ matchId }: { matchId: string }) {
     if (!text.trim()) return;
 
     const userMessage = text.trim();
+
+    // Get the current message count before adding the new message
+    const currentMessages = chats[matchId] ?? [];
+    const messageIndex = currentMessages.length;
+
     addUserMessage(matchId, userMessage);
     setText('');
-
-    // Get the message index for status updates
-    const messageIndex = messages.length;
 
     // Simulate message sending with potential failure
     const shouldFail = Math.random() < 0.1; // 10% chance of failure for demo
