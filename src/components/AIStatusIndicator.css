@@ -1,0 +1,76 @@
+/* AI Status Indicator Styles */
+.ai-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ai-status--ready {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.ai-status--loading {
+  background: rgba(249, 226, 91, 0.2);
+  color: var(--primary-yellow);
+  border-color: rgba(249, 226, 91, 0.3);
+}
+
+.ai-status--error {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.ai-status--offline {
+  background: rgba(107, 114, 128, 0.2);
+  color: #6b7280;
+  border-color: rgba(107, 114, 128, 0.3);
+}
+
+.ai-status-icon {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ai-status-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .ai-status {
+    top: 10px;
+    right: 10px;
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
