@@ -45,8 +45,20 @@ export default function MatchesPage() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [focusedIndex, setFocusedIndex] = useState<number>(0);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const activeProfile = allMatches.find(p => p.id === activeId);
+  // Filter matches based on search query
+  const filteredMatches = useMemo(() => {
+    if (!searchQuery.trim()) return allMatches;
+    return allMatches.filter(
+      match =>
+        match.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        match.bio.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        match.strikeFund.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [allMatches, searchQuery]);
+
+  const activeProfile = filteredMatches.find(p => p.id === activeId);
 
   // Detect screen size
   useEffect(() => {
@@ -62,23 +74,23 @@ export default function MatchesPage() {
   // Keyboard navigation for match selection
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (allMatches.length === 0) return;
+      if (filteredMatches.length === 0) return;
 
       switch (e.key) {
         case 'ArrowDown':
           e.preventDefault();
-          setFocusedIndex(prev => (prev + 1) % allMatches.length);
+          setFocusedIndex(prev => (prev + 1) % filteredMatches.length);
           break;
         case 'ArrowUp':
           e.preventDefault();
           setFocusedIndex(prev =>
-            prev === 0 ? allMatches.length - 1 : prev - 1
+            prev === 0 ? filteredMatches.length - 1 : prev - 1
           );
           break;
         case 'Enter':
           e.preventDefault();
-          if (allMatches[focusedIndex]) {
-            setActiveId(allMatches[focusedIndex].id);
+          if (filteredMatches[focusedIndex]) {
+            setActiveId(filteredMatches[focusedIndex].id);
             setIsDropdownOpen(false);
           }
           break;
@@ -93,14 +105,14 @@ export default function MatchesPage() {
       document.addEventListener('keydown', handleKeyDown);
       return () => document.removeEventListener('keydown', handleKeyDown);
     }
-  }, [isDropdownOpen, isMobile, allMatches, focusedIndex]);
+  }, [isDropdownOpen, isMobile, filteredMatches, focusedIndex]);
 
   // Update activeId when focusedIndex changes
   useEffect(() => {
-    if (allMatches[focusedIndex]) {
-      setActiveId(allMatches[focusedIndex].id);
+    if (filteredMatches[focusedIndex]) {
+      setActiveId(filteredMatches[focusedIndex].id);
     }
-  }, [focusedIndex, allMatches]);
+  }, [focusedIndex, filteredMatches]);
 
   // Global keyboard shortcuts
   useEffect(() => {
@@ -213,28 +225,67 @@ export default function MatchesPage() {
                       </svg>
                     </button>
                   </div>
+                  <div className="mobile-search-container">
+                    <input
+                      type="text"
+                      placeholder="Rechercher..."
+                      value={searchQuery}
+                      onChange={e => setSearchQuery(e.target.value)}
+                      className="mobile-search-input"
+                      aria-label="Rechercher dans les correspondances"
+                    />
+                    {searchQuery && (
+                      <button
+                        className="mobile-clear-search"
+                        onClick={() => setSearchQuery('')}
+                        aria-label="Effacer la recherche"
+                      >
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M18 6L6 18M6 6L18 18"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    )}
+                  </div>
                   <div
                     className="match-dropdown-list"
                     role="listbox"
                     aria-label="Liste des correspondances"
                   >
-                    {allMatches.length === 0 ? (
+                    {filteredMatches.length === 0 ? (
                       <div className="no-matches-message">
                         <div className="no-matches-icon">💔</div>
-                        <h3>Aucune correspondance trouvée</h3>
+                        <h3>
+                          {allMatches.length === 0
+                            ? 'Aucune correspondance trouvée'
+                            : 'Aucun résultat pour cette recherche'}
+                        </h3>
                         <p>
-                          Commencez à liker des profils sur la page Découvrir
-                          pour créer des correspondances
+                          {allMatches.length === 0
+                            ? 'Commencez à liker des profils sur la page Découvrir pour créer des correspondances'
+                            : "Essayez avec d'autres mots-clés"}
                         </p>
-                        <a href="/" className="cta-button">
-                          Découvrir des profils
-                        </a>
+                        {allMatches.length === 0 && (
+                          <a href="/" className="cta-button">
+                            Découvrir des profils
+                          </a>
+                        )}
                       </div>
                     ) : (
-                      allMatches.map(p => (
+                      filteredMatches.map(p => (
                         <div
                           key={p.id}
-                          className={`match-dropdown-item ${activeId === p.id ? 'active' : ''} ${focusedIndex === allMatches.indexOf(p) ? 'focused' : ''}`}
+                          className={`match-dropdown-item ${activeId === p.id ? 'active' : ''} ${focusedIndex === filteredMatches.indexOf(p) ? 'focused' : ''}`}
                           role="option"
                           aria-selected={activeId === p.id}
                           aria-label={`Correspondance avec ${p.name}`}
@@ -285,28 +336,62 @@ export default function MatchesPage() {
           // Desktop: Direct List
           <div className="desktop-matches-list">
             <h3 className="desktop-matches-title">Vos correspondances</h3>
+            <div className="search-container">
+              <input
+                type="text"
+                placeholder="Rechercher une correspondance..."
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)}
+                className="search-input"
+                aria-label="Rechercher dans les correspondances"
+              />
+              {searchQuery && (
+                <button
+                  className="clear-search"
+                  onClick={() => setSearchQuery('')}
+                  aria-label="Effacer la recherche"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M18 6L6 18M6 6L18 18"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              )}
+            </div>
             <div
               className="desktop-matches-container"
               role="listbox"
               aria-label="Liste des correspondances"
             >
-              {allMatches.length === 0 ? (
+              {filteredMatches.length === 0 ? (
                 <div className="no-matches-message">
                   <div className="no-matches-icon">💔</div>
-                  <h3>Aucune correspondance trouvée</h3>
+                  <h3>
+                    {allMatches.length === 0
+                      ? 'Aucune correspondance trouvée'
+                      : 'Aucun résultat pour cette recherche'}
+                  </h3>
                   <p>
-                    Commencez à liker des profils sur la page Découvrir pour
-                    créer des correspondances
+                    {allMatches.length === 0
+                      ? 'Commencez à liker des profils sur la page Découvrir pour créer des correspondances'
+                      : "Essayez avec d'autres mots-clés"}
                   </p>
-                  <a href="/" className="cta-button">
-                    Découvrir des profils
-                  </a>
+                  {allMatches.length === 0 && (
+                    <a href="/" className="cta-button">
+                      Découvrir des profils
+                    </a>
+                  )}
                 </div>
               ) : (
-                allMatches.map(p => (
+                filteredMatches.map(p => (
                   <div
                     key={p.id}
-                    className={`desktop-match-item ${activeId === p.id ? 'active' : ''} ${focusedIndex === allMatches.indexOf(p) ? 'focused' : ''}`}
+                    className={`desktop-match-item ${activeId === p.id ? 'active' : ''} ${focusedIndex === filteredMatches.indexOf(p) ? 'focused' : ''}`}
                     role="option"
                     aria-selected={activeId === p.id}
                     aria-label={`Correspondance avec ${p.name}`}
@@ -381,14 +466,21 @@ function EmptyChatState() {
  * @returns JSX element representing the chat interface
  */
 function ChatWindow({ matchId }: { matchId: string }) {
-  const { profiles, chats, ensureChatFor, addUserMessage, addBotMessage } =
-    useAppStore();
+  const {
+    profiles,
+    chats,
+    ensureChatFor,
+    addUserMessage,
+    addBotMessage,
+    updateMessageStatus,
+  } = useAppStore();
   const profile = profiles.find(p => p.id === matchId)!;
   const messages = useMemo(() => chats[matchId] ?? [], [chats, matchId]);
   const [text, setText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [showInput, setShowInput] = useState(true);
   const [, setTimestampUpdate] = useState(0); // Force re-render for timestamps
+  const [, setFailedMessages] = useState<Set<number>>(new Set());
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -482,16 +574,60 @@ function ChatWindow({ matchId }: { matchId: string }) {
     addUserMessage(matchId, userMessage);
     setText('');
 
-    // Simulate bot response after a delay
-    setIsTyping(true);
-    setTimeout(
-      () => {
-        const botResponse = generateBotResponse(userMessage, profile);
-        addBotMessage(matchId, botResponse);
-        setIsTyping(false);
-      },
-      1000 + Math.random() * 2000
-    ); // 1-3 second delay
+    // Get the message index for status updates
+    const messageIndex = messages.length;
+
+    // Simulate message sending with potential failure
+    const shouldFail = Math.random() < 0.1; // 10% chance of failure for demo
+
+    setTimeout(() => {
+      if (shouldFail) {
+        updateMessageStatus(matchId, messageIndex, 'failed');
+        setFailedMessages(prev => new Set([...prev, messageIndex]));
+      } else {
+        updateMessageStatus(matchId, messageIndex, 'sent');
+      }
+    }, 500);
+
+    if (!shouldFail) {
+      setTimeout(() => {
+        updateMessageStatus(matchId, messageIndex, 'delivered');
+      }, 1000);
+
+      // Simulate bot response after a delay
+      setIsTyping(true);
+      setTimeout(
+        () => {
+          const botResponse = generateBotResponse(userMessage, profile);
+          addBotMessage(matchId, botResponse);
+          setIsTyping(false);
+
+          // Mark user message as read when bot responds
+          updateMessageStatus(matchId, messageIndex, 'read');
+        },
+        1000 + Math.random() * 2000
+      ); // 1-3 second delay
+    }
+  };
+
+  /**
+   * Retries sending a failed message
+   */
+  const retryMessage = (messageIndex: number) => {
+    setFailedMessages(prev => {
+      const newSet = new Set(prev);
+      newSet.delete(messageIndex);
+      return newSet;
+    });
+
+    // Simulate retry
+    setTimeout(() => {
+      updateMessageStatus(matchId, messageIndex, 'sent');
+    }, 500);
+
+    setTimeout(() => {
+      updateMessageStatus(matchId, messageIndex, 'delivered');
+    }, 1000);
   };
 
   /**
@@ -623,11 +759,140 @@ function ChatWindow({ matchId }: { matchId: string }) {
                   <div className="message-text">
                     {renderMessageText(m.text)}
                   </div>
-                  <div
-                    className="message-time"
-                    title={new Date(m.ts).toLocaleString('fr-FR')}
-                  >
-                    {formatRelativeTime(m.ts)}
+                  <div className="message-time-container">
+                    <div
+                      className="message-time"
+                      title={new Date(m.ts).toLocaleString('fr-FR')}
+                    >
+                      {formatRelativeTime(m.ts)}
+                    </div>
+                    {m.from === 'user' && m.status && (
+                      <div className="message-status">
+                        {m.status === 'sending' && (
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                          >
+                            <circle
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              opacity="0.3"
+                            />
+                            <path
+                              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
+                              fill="currentColor"
+                              opacity="0.3"
+                            />
+                          </svg>
+                        )}
+                        {m.status === 'sent' && (
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                          >
+                            <path
+                              d="M20 6L9 17L4 12"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        )}
+                        {m.status === 'delivered' && (
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                          >
+                            <path
+                              d="M20 6L9 17L4 12"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M20 6L9 17L4 12"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              transform="translate(0, 4)"
+                            />
+                          </svg>
+                        )}
+                        {m.status === 'read' && (
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                          >
+                            <path
+                              d="M20 6L9 17L4 12"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M20 6L9 17L4 12"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              transform="translate(0, 4)"
+                            />
+                            <circle cx="18" cy="6" r="2" fill="currentColor" />
+                          </svg>
+                        )}
+                        {m.status === 'failed' && (
+                          <button
+                            className="retry-button"
+                            onClick={() => retryMessage(i)}
+                            title="Réessayer d'envoyer le message"
+                          >
+                            <svg
+                              width="12"
+                              height="12"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                            >
+                              <path
+                                d="M1 4v6h6"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                              <path
+                                d="M23 20v-6h-6"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                              <path
+                                d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </button>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

@@ -88,6 +88,52 @@
   padding: 0 8px;
 }
 
+.search-container {
+  position: relative;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.search-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: var(--primary-yellow);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.clear-search {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.clear-search:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .desktop-matches-container {
   flex: 1;
   overflow-y: auto;
@@ -290,6 +336,51 @@
 .match-dropdown-close:hover {
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-primary);
+}
+
+.mobile-search-container {
+  position: relative;
+  padding: 0 16px 16px 16px;
+}
+
+.mobile-search-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.mobile-search-input:focus {
+  border-color: var(--primary-yellow);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.mobile-search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.mobile-clear-search {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.mobile-clear-search:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .match-dropdown-list {
@@ -652,18 +743,60 @@
   line-height: 1.4;
 }
 
-.message-time {
-  font-size: 11px;
-  opacity: 0.7;
+.message-time-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   margin-top: 4px;
 }
 
-.message--user .message-time {
-  text-align: right;
+.message-time {
+  font-size: 11px;
+  opacity: 0.7;
 }
 
-.message--bot .message-time {
-  text-align: left;
+.message--user .message-time-container {
+  justify-content: flex-end;
+}
+
+.message--bot .message-time-container {
+  justify-content: flex-start;
+}
+
+.message-status {
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+}
+
+.message-status svg {
+  color: var(--text-secondary);
+}
+
+.message-status svg[data-status='read'] {
+  color: var(--primary-yellow);
+}
+
+.retry-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: #ef4444;
+}
+
+.retry-button:hover {
+  background: rgba(239, 68, 68, 0.1);
+  transform: scale(1.1);
+}
+
+.retry-button:active {
+  transform: scale(0.95);
 }
 
 /* Smart Chat Input */

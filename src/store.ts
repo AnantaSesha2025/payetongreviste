@@ -41,7 +41,15 @@ type AppState = {
   /** Set of profile IDs that have been passed */
   passedIds: Set<string>;
   /** Chat messages organized by profile ID */
-  chats: Record<string, { from: 'bot' | 'user'; text: string; ts: number }[]>;
+  chats: Record<
+    string,
+    {
+      from: 'bot' | 'user';
+      text: string;
+      ts: number;
+      status?: 'sending' | 'sent' | 'delivered' | 'read' | 'failed';
+    }[]
+  >;
   /** Current user profile */
   currentUser: Profile | null;
   /** Function to like a profile and initialize chat */
@@ -56,6 +64,12 @@ type AppState = {
   addUserMessage: (id: string, text: string) => void;
   /** Function to add a bot message to a chat */
   addBotMessage: (id: string, text: string) => void;
+  /** Function to update message status */
+  updateMessageStatus: (
+    id: string,
+    messageIndex: number,
+    status: 'sending' | 'sent' | 'delivered' | 'read' | 'failed'
+  ) => void;
   /** Function to create or update a profile */
   upsertProfile: (profile: Profile) => void;
   /** Function to remove a profile */
@@ -188,7 +202,10 @@ export const useAppStore = create<AppState>((set, get) => ({
       return {
         chats: {
           ...state.chats,
-          [id]: [...current, { from: 'user', text, ts: Date.now() }],
+          [id]: [
+            ...current,
+            { from: 'user', text, ts: Date.now(), status: 'sending' },
+          ],
         },
       };
     }),
@@ -199,7 +216,35 @@ export const useAppStore = create<AppState>((set, get) => ({
       return {
         chats: {
           ...state.chats,
-          [id]: [...current, { from: 'bot', text, ts: Date.now() }],
+          [id]: [
+            ...current,
+            { from: 'bot', text, ts: Date.now(), status: 'sent' },
+          ],
+        },
+      };
+    }),
+
+  /**
+   * Updates the status of a specific message
+   * @param id - Profile ID to update message for
+   * @param messageIndex - Index of the message to update
+   * @param status - New status for the message
+   */
+  updateMessageStatus: (id, messageIndex, status) =>
+    set(state => {
+      const current = state.chats[id] ?? [];
+      if (messageIndex >= current.length) return {};
+
+      const updatedMessages = [...current];
+      updatedMessages[messageIndex] = {
+        ...updatedMessages[messageIndex],
+        status,
+      };
+
+      return {
+        chats: {
+          ...state.chats,
+          [id]: updatedMessages,
         },
       };
     }),
