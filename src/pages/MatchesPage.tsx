@@ -1662,7 +1662,13 @@ function ChatWindow({ matchId }: { matchId: string }) {
         <div className="input-container">
           <button
             className="emoji-button"
-            onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+            onClick={() => {
+              console.log(
+                'Emoji button clicked, current state:',
+                showEmojiPicker
+              );
+              setShowEmojiPicker(!showEmojiPicker);
+            }}
             aria-label="Ouvrir le sélecteur d'emojis"
             type="button"
             disabled={isTyping}
@@ -1715,7 +1721,11 @@ function ChatWindow({ matchId }: { matchId: string }) {
 
         {/* Emoji Picker */}
         {showEmojiPicker && (
-          <div className="emoji-picker" ref={emojiPickerRef}>
+          <div
+            className="emoji-picker"
+            ref={emojiPickerRef}
+            style={{ display: 'flex' }}
+          >
             <div className="emoji-categories">
               {Object.keys(EMOJI_CATEGORIES).map(category => (
                 <button
